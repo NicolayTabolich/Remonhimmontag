@@ -396,6 +396,11 @@ main {
       -ms-transform: rotate(-45deg) translateY(50%);
           transform: rotate(-45deg) translateY(50%);
 }
+@media (max-width: 576px) {
+  .header_burger.active {
+    gap: 1px;
+  }
+}
 
 .header_burger_menu.active {
   display: none;
@@ -559,6 +564,11 @@ main {
   .header_link:hover::before {
     right: 50%;
     width: 50%;
+  }
+}
+@media (max-width: 567.98px) {
+  .header_link {
+    font-size: 16px;
   }
 }
 
