@@ -1,0 +1,629 @@
+
+/* 
+      &display=swap
+      &subset=cyrillic-ext 
+      */
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap&subset=cyrillic-ext');
+
+/* ОБНУЛЕНИЕ СТИЛЕЙ */
+*,
+*::before,
+*::after {
+   margin: 0;
+   padding: 0;
+   border: 0;
+   box-sizing: border-box;
+}
+
+li {
+   list-style: none;
+}
+
+a,
+a:visited {
+   text-decoration: none;
+}
+
+a:hover {
+   text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+   font-weight: inherit;
+   font-size: inherit;
+}
+
+img {
+   vertical-align: top;
+}
+
+html,
+body {
+   height: 100%;
+}
+
+html {
+   /* по умолчанию */
+   font-size: 15px;
+}
+
+body {
+   line-height: 1;
+   color: #000000;
+   background-color: #ffffff;
+   font-family: 'Comfortaa', sans-serif;
+   position: relative;
+}
+
+body.menu-open {
+   overflow: hidden;
+}
+
+.wrapper {
+   min-height: 100vh;
+   display: flex;
+   flex-direction: column;
+}
+
+main {
+   flex-grow: 1;
+}
+
+.container {
+   max-width: 1440px;
+   margin: 0 auto;
+   padding: 0 15px;
+}
+
+/* Верхний блок */
+.top-header {
+   height: 30px;
+   background-color: #f8f8f8;
+   display: flex;
+   align-items: center;
+   font-size: 12px;
+   position: relative;
+   z-index: 1002;
+}
+
+.top-header .container {
+   display: flex;
+   justify-content: space-between;
+   width: 100%;
+}
+
+.social-icons {
+   display: flex;
+   gap: 12px;
+}
+
+.social-icons a {
+   color: #333;
+   transition: color 0.3s;
+}
+
+.social-icons a:hover {
+   color: #0077cc;
+}
+
+.top-right {
+   display: flex;
+   align-items: center;
+   gap: 20px;
+}
+
+.contact-info {
+   display: flex;
+   gap: 15px;
+}
+
+.language-switcher {
+   display: flex;
+   gap: 5px;
+}
+
+.language-switcher span {
+   cursor: pointer;
+   padding: 2px 5px;
+   border-radius: 2px;
+   transition: background-color 0.3s;
+}
+
+.language-switcher span:hover {
+   background-color: #f0f0f0;
+}
+
+.language-switcher span.active {
+   color: #0077cc;
+   font-weight: bold;
+   background-color: #e6f2ff;
+}
+
+.vision-helper {
+   display: flex;
+   align-items: center;
+   cursor: pointer;
+}
+
+/* Основная шапка */
+.main-header {
+   height: 65px;
+   display: flex;
+   align-items: center;
+   position: sticky;
+   top: 0;
+   left: 0;
+   right: 0;
+   z-index: 11;
+   transition: background-color 0.3s ease;
+}
+
+.main-header.scrolled {
+   background-color: rgba(255, 255, 255, 0.95);
+   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.main-header .container {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   width: 100%;
+}
+
+.search-section {
+   display: flex;
+   align-items: center;
+   gap: 8px;
+   cursor: pointer;
+}
+
+.logo {
+   position: absolute;
+   left: 50%;
+   transform: translateX(-50%);
+}
+
+.logo h1 {
+   font-size: 24px;
+   font-weight: bold;
+   color: #333;
+}
+
+.burger-container {
+   display: flex;
+   align-items: center;
+   gap: 10px;
+   cursor: pointer;
+   position: relative;
+   z-index: 1003;
+}
+
+.burger-menu {
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+   width: 24px;
+   height: 18px;
+   position: relative;
+   transition: transform 0.3s ease;
+}
+
+.burger-menu span {
+   height: 2px;
+   width: 100%;
+   background-color: #333;
+   transition: all 0.3s ease;
+   transform-origin: center;
+}
+
+.burger-container.active .burger-menu span:nth-child(1) {
+   transform: translateY(8px) rotate(45deg);
+}
+
+.burger-container.active .burger-menu span:nth-child(2) {
+   opacity: 0;
+}
+
+.burger-container.active .burger-menu span:nth-child(3) {
+   transform: translateY(-8px) rotate(-45deg);
+}
+
+.menu-text {
+   transition: opacity 0.3s ease;
+}
+
+.close-text {
+   position: absolute;
+   opacity: 0;
+   transition: opacity 0.3s ease;
+   white-space: nowrap;
+}
+
+.burger-container.active .menu-text {
+   opacity: 0;
+}
+
+.burger-container.active .close-text {
+   opacity: 1;
+}
+
+/* Overlay для размытия фона */
+.menu-overlay {
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100vw;
+   height: 100vh;
+   background-color: rgba(0, 0, 0, 0.5);
+   backdrop-filter: blur(5px);
+   z-index: 999;
+   opacity: 0;
+   visibility: hidden;
+   transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.menu-overlay.active {
+   opacity: 1;
+   visibility: visible;
+}
+
+/* Мобильное меню */
+.mobile-nav {
+   position: fixed;
+   top: 0;
+   right: -40%;
+   width: 40%;
+   height: 100vh;
+   background-color: white;
+   box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+   transition: right 0.3s ease;
+   z-index: 1000;
+   padding: 100px 30px 30px;
+   overflow-y: auto;
+}
+
+.mobile-nav.active {
+   right: 0;
+}
+
+.mobile-nav ul {
+   list-style: none;
+   margin-top: 20px;
+}
+
+.mobile-nav ul li {
+   margin-bottom: 20px;
+}
+
+.mobile-nav ul li a {
+   text-decoration: none;
+   color: #333;
+   font-size: 20px;
+   transition: color 0.3s;
+   display: block;
+   padding: 10px 0;
+   font-weight: 500;
+}
+
+.mobile-nav ul li a:hover {
+   color: #0077cc;
+}
+
+/* Контактная информация в мобильном меню */
+.mobile-contact-info {
+   display: none;
+   margin-top: 30px;
+   padding-top: 20px;
+   border-top: 1px solid #eee;
+}
+
+.mobile-contact-info span {
+   display: block;
+   margin-bottom: 10px;
+   color: #555;
+   font-size: 14px;
+}
+
+/* Кнопка закрытия в мобильном меню */
+.mobile-close-btn {
+   position: absolute;
+   top: 30px;
+   right: 30px;
+   background: none;
+   border: none;
+   font-size: 24px;
+   cursor: pointer;
+   color: #333;
+   z-index: 1001;
+   /* Увеличиваем z-index чтобы кнопка была поверх меню */
+   display: block;
+   /* Всегда показываем кнопку */
+}
+
+/* Окно поиска */
+.search-overlay {
+   position: fixed;
+   top: -100%;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   background-color: rgba(255, 255, 255, 0.98);
+   z-index: 1002;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   transition: top 0.5s ease;
+}
+
+.search-overlay.active {
+   top: 0;
+}
+
+.search-form {
+   width: 80%;
+   max-width: 600px;
+   position: relative;
+}
+
+.search-input {
+   width: 100%;
+   padding: 15px 20px;
+   font-size: 18px;
+   border: none;
+   border-bottom: 2px solid #0077cc;
+   outline: none;
+}
+
+.close-search {
+   position: absolute;
+   top: -40px;
+   right: 0;
+   font-size: 30px;
+   cursor: pointer;
+   color: #333;
+}
+
+/* Главный экран со слайдером как фон */
+.hero-slider {
+   position: absolute;
+   top: 0px;
+   left: 0;
+   width: 100%;
+   height: 100vh;
+   z-index: 10;
+   overflow: hidden;
+}
+
+.slides {
+   height: 100%;
+   position: relative;
+}
+
+.slide {
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   opacity: 0;
+   transition: opacity 1s ease;
+   background-size: cover;
+   background-position: center;
+   background-repeat: no-repeat;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.slide.active {
+   opacity: 1;
+}
+
+.slide:nth-child(1) {
+   background-image: url("/img/bg_1.jpg");
+}
+
+.slide:nth-child(2) {
+   background-image: url('/img/bg_2.jpg');
+}
+
+.slide:nth-child(3) {
+   background-image: url('/img/bg_3.jpg');
+}
+
+.slide:nth-child(4) {
+   background-image: url('/img/bg_4.jpg');
+}
+
+.slide:nth-child(5) {
+   background-image: url('/img/bg_5.jpg');
+}
+
+
+/* Подписи к слайдам */
+.slide-caption {
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   color: white;
+   font-size: 4rem;
+   font-weight: bold;
+   text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+   text-align: center;
+   z-index: 5;
+}
+
+@media (max-width: 768px) {
+   .slide-caption {
+      font-size: 3rem;
+   }
+}
+
+@media (max-width: 576px) {
+   .slide-caption {
+      font-size: 2.5rem;
+   }
+}
+
+.services-btn {
+   position: absolute;
+   bottom: 80px;
+   left: 50%;
+   transform: translateX(-50%);
+   padding: 15px 40px;
+   background-color: #0077cc;
+   color: white;
+   border: none;
+   border-radius: 30px;
+   font-size: 1.1rem;
+   font-weight: 600;
+   cursor: pointer;
+   transition: all 0.3s ease;
+   box-shadow: 0 4px 15px rgba(0, 119, 204, 0.4);
+   z-index: 10;
+}
+
+.services-btn:hover {
+   background-color: #005fa3;
+   transform: translateX(-50%) translateY(-2px);
+   box-shadow: 0 6px 20px rgba(0, 119, 204, 0.6);
+}
+
+.slider-controls {
+   position: absolute;
+   bottom: 30px;
+   left: 50%;
+   transform: translateX(-50%);
+   display: flex;
+   gap: 10px;
+   z-index: 10;
+}
+
+.slider-dot {
+   width: 12px;
+   height: 12px;
+   border-radius: 50%;
+   background-color: rgba(255, 255, 255, 0.5);
+   cursor: pointer;
+   transition: background-color 0.3s ease;
+}
+
+.slider-dot.active {
+   background-color: white;
+}
+
+.slider-arrows {
+   display: none;
+}
+
+.slider-arrow {
+   width: 50px;
+   height: 50px;
+   border-radius: 50%;
+   background-color: rgba(255, 255, 255, 0.2);
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   cursor: pointer;
+   transition: background-color 0.3s ease;
+}
+
+.slider-arrow:hover {
+   background-color: rgba(255, 255, 255, 0.4);
+}
+
+/* Контент после слайдера */
+.content {
+   position: relative;
+   z-index: 2;
+   background: white;
+   min-height: 100vh;
+   margin-top: 100vh;
+   padding: 40px 20px;
+}
+
+.content h2 {
+   text-align: center;
+   margin-bottom: 30px;
+   font-size: 2.5rem;
+   color: #333;
+}
+
+.content p {
+   max-width: 800px;
+   margin: 0 auto 20px;
+   line-height: 1.6;
+   font-size: 1.1rem;
+   color: 555;
+}
+
+/* Адаптивность */
+@media (max-width: 992px) {
+   .mobile-nav {
+      width: 50%;
+      right: -50%;
+   }
+}
+
+@media (max-width: 768px) {
+   .social-icons {
+      display: none;
+   }
+
+   .top-header .container {
+      justify-content: flex-end;
+   }
+
+   .search-section span {
+      display: none;
+   }
+
+   .mobile-nav {
+      width: 70%;
+      right: -70%;
+   }
+
+   .services-btn {
+      padding: 12px 30px;
+      font-size: 1rem;
+   }
+}
+
+@media (max-width: 576px) {
+   .language-switcher {
+      display: none;
+   }
+
+   .contact-info {
+      display: none;
+   }
+
+   .mobile-contact-info {
+      display: block;
+   }
+
+   .mobile-nav {
+      width: 85%;
+      right: -85%;
+   }
+
+   .menu-text,
+   .close-text {
+      display: none;
+   }
+
+   .slider-arrows {
+      padding: 0 15px;
+   }
+
+   .slider-arrow {
+      width: 40px;
+      height: 40px;
+   }
+}
