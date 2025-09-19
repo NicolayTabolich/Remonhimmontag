@@ -564,7 +564,7 @@ main {
 }
 
 /* Адаптивность */
-@media (max-width: 992px) {
+@media (max-width: 991.98px) {
    .mobile-nav {
       width: 50%;
       right: -50%;

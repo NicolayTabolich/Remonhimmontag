@@ -728,7 +728,7 @@ body {
    padding: 15px 35px;
    display: flex;
    overflow: hidden;
-   color: #f7d4d4;
+   color: #ffffff;
    font-size: 20px;;
    text-align: center;
    // text-transform: uppercase;
@@ -897,14 +897,14 @@ body {
 .services {
    padding: 60px 0px 10px 0px;
    @media (max-width: 991.98px) {
-      padding: 50px 0px;
+      padding: 50px 0px 10px 0px; 
    }
    @media (max-width: 767.98px) {
-      padding: 40px 0px;
+      padding: 40px 0px 10px 0px;
    }
 
    @media (max-width: 576px) {
-      padding: 30px 0px;
+      padding: 30px 0px 10px 0px;
    }
 }
 
@@ -942,7 +942,7 @@ body {
       gap: 30px;
    }
    @media (max-width: 768px) {
-      margin-bottom: 35px;
+      margin-bottom: 30px;
    }
    @media (max-width: 576px) {
       gap: 20px;
@@ -1011,15 +1011,30 @@ body {
       }
 }
 
+// .services_bot_link{
+//    position: relative;
+//    // display: block;
+//    display: flex;
+//    flex-direction: column;
+//    justify-content: center;
+//    align-self: center;
+//    align-items: center;
+//    max-width: 143px;
+//    margin-bottom: 30px;
+// }
+
 .services_bot_link{
-   position: relative;
-   // display: block;
-   display: flex;
-   flex-direction: column;
-   justify-content: center;
+   margin-bottom: 30px;
+   display: inline-flex;
    align-self: center;
+   justify-content: center;
    align-items: center;
-   max-width: 143px;
+   text-align: center;
+   flex-grow: 1;
+   width: 100%;
+   @media (max-width: 576px) {
+         margin-bottom: 15px;
+      }
 }
 
 
@@ -1034,61 +1049,78 @@ body {
 
 .company__container {}
 
-.company_block {}
+.company_block {
+   display: flex;
+   flex-direction: column;
+   text-align: center;
+}
 
-.company_title {}
+.company_title {
+   font-size: 36px;
+   margin-bottom: 60px;
+   @media (max-width: 991.98px) {
+         font-size: 30px;
+         margin-bottom: 45px;
+      }
+   
+      @media (max-width: 767.98px) {
+         // padding: 13px 28px;
+         font-size: 24px;
+         margin-bottom: 35px;
+      }
+   
+      @media (max-width: 576px) {
+         // padding: 12px 23px;
+         font-size: 20px;
+         margin-bottom: 30px;
+      }
+}
 
 .company_midle {
    display: flex;
-   gap: 60px;
+   column-gap: 50px;
    justify-content: space-between;
-   align-items: center;
-   max-height: 456px;
+   // align-items: center;
+   width: 100%;
    overflow: hidden;
    flex-wrap: wrap;
+   max-height: 450px;
 }
 
 
 .company_video {
-   flex: 0 1 50%;
+   flex: 0 1 45%;
    position: relative;
-   padding-bottom: 56.25%;
+   // padding-bottom: 56.25%;
    /* Соотношение сторон 16:9 */
-   height: 0;
-   overflow: hidden;
-   min-width: 300px;
+   // height: 0;
+   // overflow: hidden;
+   // min-height: 100%;
 }
 
 .company_video iframe {
-   position: absolute;
+   // position: absolute;
    top: 0;
    left: 0;
    width: 100%;
-   height: 100%;
+   // height: 100%;
    border: none;
 }
 
 
 .company_text {
-   flex: 0 1 50%;
+   flex: 0 1 45%;
+   font-weight: 600;
+   margin-bottom: 60px;
+   line-height: 120%;
+   max-height: 450px;
+      overflow: hidden;
+      text-align: justify;
 }
 
-.company_bot {}
+
 
 .button {}
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 .company_bot {
@@ -1102,37 +1134,29 @@ body {
    width: 100%;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .button {
    position: relative;
-   color: #06041a;
-   padding: 20px 50px;
-   border: 2px solid #06041a;
+   color: #ffffff;
+   line-height: 110%;
+   border: 2px solid #ffffff;
    overflow: hidden;
    transition: all 0.3s ease-in-out;
+   background-color: #06041a;
+   font-size: 20px;
+   padding: 15px 35px;
+   @media (max-width: 991.98px) {
+      font-size: 18px;
+   }
+
+   @media (max-width: 767.98px) {
+      font-size: 16px;
+         padding: 14px 30px;
+   }
+
+   @media (max-width: 576px) {
+      font-size: 14px;
+         padding: 12px 26px;
+   }
 }
 
 .button:before {
@@ -1148,13 +1172,26 @@ body {
 }
 
 .button:hover {
-   color: #ecf0f1;
+   color: #06041a;
+   border: 2px solid #06041a;
+   background-color: #ffffff;
 }
 
 .button:hover:before {
    left: 0;
 }
 
+.white {
+   color: #06041a;
+   background-color: #ffffff;
+   border: 2px solid #06041a;
+}
+
+.white:hover {
+   color: #ffffff;
+   border: 2px solid #ffffff;
+   background-color: #06041a;
+}
 
 
 
