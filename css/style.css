@@ -457,6 +457,10 @@ main {
 }
 
 .header_nav {
+  -webkit-overflow-scrolling: touch;
+  /* Плавный скролл на iOS */
+  -ms-scroll-chaining: none;
+      overscroll-behavior: contain;
   --scrollbar-width: 0px;
   z-index: 6;
   padding-bottom: 20px;
@@ -1280,14 +1284,6 @@ main {
   max-width: 143px;
 }
 
-.header_nav {
-  -webkit-overflow-scrolling: touch;
-  /* Плавный скролл на iOS */
-  -ms-scroll-chaining: none;
-      overscroll-behavior: contain;
-  /* Предотвращает скролл body при достижении границ меню */
-}
-
 /* Улучшаем отображение на мобильных устройствах */
 @media (max-width: 767.98px) {
   .header_nav {
@@ -1308,7 +1304,7 @@ main {
   }
   .mobile_contact_info {
     padding: 20px 0;
-    margin-top: auto;
+    margin-bottom: auto;
     /* Прижимаем к низу меню */
   }
 }

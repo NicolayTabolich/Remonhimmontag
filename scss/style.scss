@@ -334,6 +334,9 @@ body {
 
 // навигация
 .header_nav {
+   -webkit-overflow-scrolling: touch;
+      /* Плавный скролл на iOS */
+      overscroll-behavior: contain;
    --scrollbar-width: 0px;
    // position: absolute;
    z-index: 6; 
@@ -978,12 +981,7 @@ body {
 
 
 
-.header_nav {
-   -webkit-overflow-scrolling: touch;
-   /* Плавный скролл на iOS */
-   overscroll-behavior: contain;
-   /* Предотвращает скролл body при достижении границ меню */
-}
+
 
 /* Улучшаем отображение на мобильных устройствах */
 @media (max-width: 767.98px) {
@@ -1003,7 +1001,7 @@ body {
 
    .mobile_contact_info {
       padding: 20px 0;
-      margin-top: auto;
+      margin-bottom: auto;
       /* Прижимаем к низу меню */
    }
 }
