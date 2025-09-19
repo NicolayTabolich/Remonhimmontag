@@ -1279,3 +1279,43 @@ main {
           align-items: center;
   max-width: 143px;
 }
+
+.header_nav {
+  -webkit-overflow-scrolling: touch;
+  /* Плавный скролл на iOS */
+  -ms-scroll-chaining: none;
+      overscroll-behavior: contain;
+  /* Предотвращает скролл body при достижении границ меню */
+}
+
+/* Улучшаем отображение на мобильных устройствах */
+@media (max-width: 767.98px) {
+  .header_nav {
+    padding: 70px 0 30px;
+    /* Добавляем отступы сверху и снизу */
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    /* Меню начинается сверху */
+  }
+  .header_menu {
+    -webkit-box-flex: 0;
+        -ms-flex-positive: 0;
+            flex-grow: 0;
+    /* Не растягиваем меню */
+    margin-bottom: auto;
+    /* Прижимаем контакты к низу */
+  }
+  .mobile_contact_info {
+    padding: 20px 0;
+    margin-top: auto;
+    /* Прижимаем к низу меню */
+  }
+}
+/* Дополнительные улучшения для iOS */
+@supports (-webkit-touch-callout: none) {
+  .header_nav {
+    height: -webkit-fill-available;
+    /* Используем доступную высоту на iOS */
+  }
+}
