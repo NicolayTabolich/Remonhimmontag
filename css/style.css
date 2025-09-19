@@ -463,13 +463,13 @@ main {
       overscroll-behavior: contain;
   --scrollbar-width: 0px;
   z-index: 6;
-  padding-bottom: 40px;
+  padding-bottom: 20px;
   padding-top: 20px;
   padding-right: var(--scrollbar-width);
   top: 0;
   right: -40%;
   width: 40%;
-  height: 100%;
+  min-height: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -497,7 +497,7 @@ main {
   right: 0;
   height: 100vh;
   overflow-y: auto;
-  height: 100%;
+  min-height: 100%;
 }
 @media (max-width: 767.98px) {
   .header_nav.active {
