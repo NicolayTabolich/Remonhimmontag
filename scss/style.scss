@@ -327,35 +327,34 @@ body {
 // навигация
 .header_nav {
    --scrollbar-width: 0px;
-   position: absolute;
-   z-index: 6;
-   // padding-top: 60px;
- 
+   // position: absolute;
+   z-index: 6; 
+   padding-bottom: 20px;
+   padding-top: 60px;
    padding-right: var(--scrollbar-width);
    top: 0;
    right: -40%;
    width: 40%;
-   // height: 100vh;
+   height: 100vh;
    display: flex;
+   align-items: center;
+   flex-grow: 1;
+   position: fixed;
    background-color: rgba(13, 9, 50, 0.95);
    backdrop-filter: blur(10px);
    flex-direction: column;
    gap: 20px;
    overflow-y: auto;
-   transition: 0.6s ease-in-out;
+   transition: 0.8s all ease-out;
 }
 
 .header_nav.active {
    position: fixed;
-   padding-bottom: 20px;
-   padding-top: 60px;
    right: 0;
-   z-index: 7;
+   // z-index: 7;
    height: 100vh;
    overflow-y: auto;
-   & .header_menu{
-      margin-bottom: 20px;
-   }
+
    @media (max-width: 767.98px) {
       width: 100%;
       font-size: 14px;
@@ -366,6 +365,7 @@ body {
 .header_menu {
    padding: 10px 0px;
    display: flex;
+   flex-grow: 1;
    width: 100%;
    // height: 100%;
    flex-direction: column;
@@ -374,7 +374,7 @@ body {
    align-items: center;
    row-gap: 25px;
    z-index: 6;
-}
+   }
 
 .header_link {
    font-size: 20px;

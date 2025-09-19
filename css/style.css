@@ -453,15 +453,24 @@ main {
 
 .header_nav {
   --scrollbar-width: 0px;
-  position: absolute;
   z-index: 6;
+  padding-bottom: 20px;
+  padding-top: 60px;
   padding-right: var(--scrollbar-width);
   top: 0;
   right: -40%;
   width: 40%;
+  height: 100vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  position: fixed;
   background-color: rgba(13, 9, 50, 0.95);
   backdrop-filter: blur(10px);
   -webkit-box-orient: vertical;
@@ -470,21 +479,15 @@ main {
           flex-direction: column;
   gap: 20px;
   overflow-y: auto;
-  -webkit-transition: 0.6s ease-in-out;
-  transition: 0.6s ease-in-out;
+  -webkit-transition: 0.8s all ease-out;
+  transition: 0.8s all ease-out;
 }
 
 .header_nav.active {
   position: fixed;
-  padding-bottom: 20px;
-  padding-top: 60px;
   right: 0;
-  z-index: 7;
   height: 100vh;
   overflow-y: auto;
-}
-.header_nav.active .header_menu {
-  margin-bottom: 20px;
 }
 @media (max-width: 767.98px) {
   .header_nav.active {
@@ -499,6 +502,9 @@ main {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
   width: 100%;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
