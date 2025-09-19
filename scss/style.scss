@@ -270,6 +270,11 @@ body {
       bottom: 50%;
       transform: rotate(-45deg) translateY(50%);
    }
+   @media (max-width: 991.98px) {
+      &.active {
+         gap: 3px;
+      }
+   }
    @media (max-width: 576px) {
       &.active {
             gap: 1px;
@@ -284,6 +289,9 @@ body {
 }
 .header_burger_clouse {
    display: none;
+   @media (max-width: 991.98px) {
+      font-size: 12px;
+   }
    @media (max-width: 767.98px) {
       font-size: 12px;
    }
@@ -357,6 +365,7 @@ body {
    gap: 20px;
    overflow-y: auto;
    transition: 0.8s all ease-out;
+
 }
 
 .header_nav.active {
@@ -455,6 +464,12 @@ body {
          width: 50%;
       }
    }
+      @media (max-width: 991.98px) {
+         font-size:18px;
+      }
+      @media (max-width: 830px) {
+         font-size:16px;
+      }
       @media (max-width: 567.98px) {
          font-size:16px;
       }
@@ -683,7 +698,7 @@ body {
    max-width: 1440px;
    position: absolute;
    padding: 20px 20px;
-   top: 40%;
+   top: 50%;
    left: 50%;
    transform: translate(-50%, -50%);
    color: white;
@@ -942,7 +957,7 @@ body {
    flex: 1 1 30.333%;
    // max-width: 450px;
    min-width: 300px;
-   box-shadow: 0px -1px 9px rgba(207, 207, 207, 0.5);
+   box-shadow: 0px -1px 9px rgba(155, 156, 240, 0.5);
    display: flex;
    justify-content: space-between;
    align-items: center;
@@ -1010,12 +1025,135 @@ body {
 
 
 
+//О Компании
+.company {
+   background-color: #06041a;
+   color: #fff;
+   padding: 25px 0px;
+}
+
+.company__container {}
+
+.company_block {}
+
+.company_title {}
+
+.company_midle {
+   display: flex;
+   gap: 60px;
+   justify-content: space-between;
+   align-items: center;
+   max-height: 456px;
+   overflow: hidden;
+   flex-wrap: wrap;
+}
+
+
+.company_video {
+   flex: 0 1 50%;
+   position: relative;
+   padding-bottom: 56.25%;
+   /* Соотношение сторон 16:9 */
+   height: 0;
+   overflow: hidden;
+   min-width: 300px;
+}
+
+.company_video iframe {
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   border: none;
+}
+
+
+.company_text {
+   flex: 0 1 50%;
+}
+
+.company_bot {}
+
+.button {}
 
 
 
 
 
 
+
+
+
+
+
+
+
+
+
+.company_bot {
+   display: inline-flex;
+   align-self: center;
+   justify-content: center;
+   align-items: center;
+
+   text-align: center;
+   flex-grow: 1;
+   width: 100%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.button {
+   position: relative;
+   color: #06041a;
+   padding: 20px 50px;
+   border: 2px solid #06041a;
+   overflow: hidden;
+   transition: all 0.3s ease-in-out;
+}
+
+.button:before {
+   content: "";
+   z-index: -1;
+   position: absolute;
+   width: 100%;
+   height: 100%;
+   top: 0;
+   left: -100%;
+   background-color: #06041a;
+   transition: all 0.3s ease-in-out;
+}
+
+.button:hover {
+   color: #ecf0f1;
+}
+
+.button:hover:before {
+   left: 0;
+}
 
 
 
