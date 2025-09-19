@@ -326,6 +326,13 @@ body {
 
 // навигация
 .header_nav {
+   overflow-y: auto;
+   /* Включаем вертикальную прокрутку */
+   max-height: 100vh;
+   /* Ограничиваем максимальную высоту */
+   -webkit-overflow-scrolling: touch;
+   /* Плавный скролл на iOS */
+
    --scrollbar-width: 0px;
    position: absolute;
    z-index: 6;
@@ -335,13 +342,13 @@ body {
    top: 0;
    right: -40%;
    width: 40%;
-   height: 100vh;
+   // height: 100vh;
    display: flex;
    background-color: rgba(13, 9, 50, 0.95);
    backdrop-filter: blur(10px);
    flex-direction: column;
    gap: 20px;
-   overflow-y: auto;
+   // overflow-y: auto;
    transition: 0.6s ease-in-out;
 }
 
@@ -406,7 +413,7 @@ body {
    }
 }
 .mobile_contact_info {
-   padding: 50px 0px 20px 0px;
+   padding: 20px 0px 20px 0px;
    display: none;
    justify-content: center;
    align-self: center;
