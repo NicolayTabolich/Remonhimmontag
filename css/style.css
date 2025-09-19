@@ -469,7 +469,7 @@ main {
   top: 0;
   right: -40%;
   width: 40%;
-  height: 100vh;
+  height: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
