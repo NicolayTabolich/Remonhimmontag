@@ -455,13 +455,10 @@ main {
   --scrollbar-width: 0px;
   position: absolute;
   z-index: 6;
-  padding-top: 60px;
-  padding-bottom: 20px;
   padding-right: var(--scrollbar-width);
   top: 0;
   right: -40%;
   width: 40%;
-  height: 100vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -478,8 +475,16 @@ main {
 }
 
 .header_nav.active {
+  position: fixed;
+  padding-bottom: 20px;
+  padding-top: 60px;
   right: 0;
   z-index: 7;
+  height: 100vh;
+  overflow-y: auto;
+}
+.header_nav.active .header_menu {
+  margin-bottom: 20px;
 }
 @media (max-width: 767.98px) {
   .header_nav.active {
@@ -490,11 +495,11 @@ main {
 }
 
 .header_menu {
+  padding: 10px 0px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   width: 100%;
-  height: 100%;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -552,7 +557,7 @@ main {
 }
 
 .mobile_contact_info {
-  padding: 50px 0px 20px 0px;
+  padding: 20px 0px 20px 0px;
   display: none;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
