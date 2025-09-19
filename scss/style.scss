@@ -362,12 +362,46 @@ body {
 .header_nav.active {
    right: 0;
    overflow-y: auto;
+   height: 100%;
 
    @media (max-width: 767.98px) {
       width: 100%;
       font-size: 14px;
+      overflow-y: auto;
    }
 }
+
+/* Улучшаем отображение на мобильных устройствах */
+@media (max-width: 767.98px) {
+   .header_nav {
+      padding: 70px 0 30px;
+      /* Добавляем отступы сверху и снизу */
+      justify-content: flex-start;
+      /* Меню начинается сверху */
+   }
+
+   .header_menu {
+      flex-grow: 0;
+      /* Не растягиваем меню */
+      margin-bottom: auto;
+      /* Прижимаем контакты к низу */
+   }
+
+   .mobile_contact_info {
+      padding: 20px 0;
+      margin-bottom: auto;
+      /* Прижимаем к низу меню */
+   }
+}
+
+/* Дополнительные улучшения для iOS */
+@supports (-webkit-touch-callout: none) {
+   .header_nav {
+      height: -webkit-fill-available;
+      /* Используем доступную высоту на iOS */
+   }
+}
+
 
 .header_menu {
    padding: 10px 0px ;
@@ -979,36 +1013,6 @@ body {
 
 
 
-/* Улучшаем отображение на мобильных устройствах */
-@media (max-width: 767.98px) {
-   .header_nav {
-      padding: 70px 0 30px;
-      /* Добавляем отступы сверху и снизу */
-      justify-content: flex-start;
-      /* Меню начинается сверху */
-   }
-
-   .header_menu {
-      flex-grow: 0;
-      /* Не растягиваем меню */
-      margin-bottom: auto;
-      /* Прижимаем контакты к низу */
-   }
-
-   .mobile_contact_info {
-      padding: 20px 0;
-      margin-bottom: auto;
-      /* Прижимаем к низу меню */
-   }
-}
-
-/* Дополнительные улучшения для iOS */
-@supports (-webkit-touch-callout: none) {
-   .header_nav {
-      height: -webkit-fill-available;
-      /* Используем доступную высоту на iOS */
-   }
-}
 
 
 
