@@ -460,7 +460,7 @@ main {
   --scrollbar-width: 0px;
   z-index: 6;
   padding-bottom: 20px;
-  padding-top: 60px;
+  padding-top: 20px;
   padding-right: var(--scrollbar-width);
   top: 0;
   right: -40%;
@@ -573,7 +573,7 @@ main {
 }
 
 .mobile_contact_info {
-  padding: 20px 0px 20px 0px;
+  padding: 20px 0px 50px 0px;
   display: none;
   -webkit-box-pack: center;
       -ms-flex-pack: center;

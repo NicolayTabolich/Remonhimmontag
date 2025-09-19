@@ -338,7 +338,7 @@ body {
    // position: absolute;
    z-index: 6; 
    padding-bottom: 20px;
-   padding-top: 60px;
+   padding-top: 20px;
    padding-right: var(--scrollbar-width);
    top: 0;
    right: -40%;
@@ -371,7 +371,7 @@ body {
 }
 
 .header_menu {
-   padding: 10px 0px;
+   padding: 10px 0px ;
    display: flex;
    flex-grow: 1;
    width: 100%;
@@ -427,7 +427,7 @@ body {
       }
 }
 .mobile_contact_info {
-   padding: 20px 0px 20px 0px;
+   padding: 20px 0px 50px 0px;
    display: none;
    justify-content: center;
    align-self: center;
