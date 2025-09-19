@@ -340,7 +340,7 @@ body {
    --scrollbar-width: 0px;
    // position: absolute;
    z-index: 6; 
-   padding-bottom: 20px;
+   padding-bottom: 40px;
    padding-top: 20px;
    padding-right: var(--scrollbar-width);
    top: 0;
@@ -365,6 +365,7 @@ body {
    // z-index: 7;
    height: 100vh;
    overflow-y: auto;
+   height: 100%;
 
    @media (max-width: 767.98px) {
       width: 100%;
