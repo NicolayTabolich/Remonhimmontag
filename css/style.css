@@ -493,17 +493,13 @@ main {
 }
 
 .header_nav.active {
-  position: fixed;
   right: 0;
-  height: 100vh;
   overflow-y: auto;
-  min-height: 100%;
 }
 @media (max-width: 767.98px) {
   .header_nav.active {
     width: 100%;
     font-size: 14px;
-    overflow-y: auto;
   }
 }
 
