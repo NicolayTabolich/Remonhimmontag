@@ -224,10 +224,8 @@ document.addEventListener('DOMContentLoaded', function () {
    window.addEventListener('scroll', function () {
       if (window.scrollY > 30) {
          header.classList.add('scrolled');
-         // placeholder.style.height = headerHeight + 'px';
       } else {
          header.classList.remove('scrolled');
-         placeholder.style.height = '0';
       }
    });
 
