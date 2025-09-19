@@ -498,8 +498,8 @@ main {
           flex-direction: column;
   gap: 20px;
   overflow-y: auto;
-  -webkit-transition: 0.8s all ease-out;
-  transition: 0.8s all ease-out;
+  -webkit-transition: 0.6s all ease-out;
+  transition: 0.6s all ease-out;
 }
 
 .header_nav.active {
