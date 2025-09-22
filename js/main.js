@@ -241,3 +241,33 @@ if (/iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream) {
       }
    }, { passive: false });
 }
+
+
+// О компании
+document.addEventListener('DOMContentLoaded', function () {
+   const videoPlayer = document.getElementById('videoPlayer');
+
+   videoPlayer.addEventListener('click', function () {
+      // Заменяем миниатюру на iframe с видео
+      this.innerHTML = '<iframe class="video-iframe" src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&enablejsapi=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+   });
+
+   // Функция для обрезки текста по высоте видео
+   function adjustContent() {
+      const textContent = document.querySelector('.text-content');
+      const videoContent = document.querySelector('.video-content');
+
+      if (window.innerWidth > 1024) {
+         // На больших экранах устанавливаем высоту текста равной высоте видео
+         textContent.style.maxHeight = videoContent.offsetHeight + 'px';
+      } else {
+         // На мобильных устройствах используем CSS-правила
+         textContent.style.maxHeight = '';
+      }
+   }
+
+   // Вызываем функцию при загрузке и изменении размера окна
+   window.addEventListener('load', adjustContent);
+   window.addEventListener('resize', adjustContent);
+});
+
