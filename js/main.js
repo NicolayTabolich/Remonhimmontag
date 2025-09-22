@@ -207,8 +207,6 @@ dots.forEach((dot, index) => {
 // Запуск слайдера
 startSlideShow();
 
-
-
 document.addEventListener('DOMContentLoaded', function () {
    // Получаем высоту шапки
    const header = document.querySelector('.header');

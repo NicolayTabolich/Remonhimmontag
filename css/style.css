@@ -1426,6 +1426,21 @@ main {
   padding: 40px 0px 20px 0px;
   background-color: #06041a;
 }
+@media (max-width: 991.98px) {
+  .about-section {
+    padding: 30px 0px 20px 0px;
+  }
+}
+@media (max-width: 767.98px) {
+  .about-section {
+    padding: 25px 0px 20px 0px;
+  }
+}
+@media (max-width: 567.98px) {
+  .about-section {
+    padding: 20px 0px 20px 0px;
+  }
+}
 
 .section-title {
   display: -webkit-box;
@@ -1437,10 +1452,25 @@ main {
           justify-content: center;
   line-height: 100%;
   font-size: 36px;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
   color: #ffffff;
   position: relative;
   font-weight: 700;
+}
+@media (max-width: 991.98px) {
+  .section-title {
+    font-size: 30px;
+  }
+}
+@media (max-width: 767.98px) {
+  .section-title {
+    font-size: 24px;
+  }
+}
+@media (max-width: 567.98px) {
+  .section-title {
+    font-size: 20px;
+  }
 }
 
 .content-wrapper {
@@ -1450,11 +1480,22 @@ main {
   -webkit-box-align: stretch;
       -ms-flex-align: stretch;
           align-items: stretch;
-  gap: 40px;
+  gap: 30px;
   margin-bottom: 40px;
   overflow: hidden;
-  padding: 30px;
   position: relative;
+}
+@media (max-width: 767.98px) {
+  .content-wrapper {
+    gap: 20px;
+    margin-bottom: 30px;
+  }
+}
+@media (max-width: 567.98px) {
+  .content-wrapper {
+    gap: 10px;
+    margin-bottom: 15px;
+  }
 }
 
 .video-content {
@@ -1474,14 +1515,13 @@ main {
   max-height: 450px;
   min-height: 300px;
 }
-
 .text-content {
+  width: 100%;
+  text-align: justify;
   -webkit-box-flex: 0;
-      -ms-flex: 0 0 40%;
-          flex: 0 0 40%;
-  padding: 20px;
+      -ms-flex: 0 1 40%;
+          flex: 0 1 40%;
   position: relative;
-  overflow: hidden;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1490,7 +1530,6 @@ main {
       -ms-flex-direction: column;
           flex-direction: column;
 }
-
 .text-content::after {
   content: "";
   position: absolute;
@@ -1656,25 +1695,12 @@ main {
 }
 
 /* Адаптивность */
-@media (max-width: 1200px) {
-  .content-wrapper {
-    gap: 30px;
-    padding: 25px;
-  }
-  .text-content h3 {
-    font-size: 1.6rem;
-  }
-  .text-content p {
-    font-size: 1.05rem;
-  }
-}
-@media (max-width: 1024px) {
+@media (max-width: 991.98px) {
   .content-wrapper {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
-    padding: 20px;
   }
   .text-content,
   .video-content {
@@ -1698,45 +1724,25 @@ main {
     /* Показываем градиент для обрезки текста */
   }
 }
-@media (max-width: 768px) {
+@media (max-width: 767.98px) {
   .section-title {
-    font-size: 2.2rem;
-    margin-bottom: 40px;
-  }
-  .text-content h3 {
-    font-size: 1.5rem;
+    font-size: 24px;
+    margin-bottom: 20px;
   }
   .text-content p {
-    font-size: 1rem;
+    font-size: 14px;
   }
   .play-button {
     width: 70px;
     height: 70px;
-  }
-  .more-btn {
-    padding: 14px 35px;
-    font-size: 1rem;
   }
   .video-content {
     max-height: 350px;
   }
 }
 @media (max-width: 480px) {
-  .section-title {
-    font-size: 1.8rem;
-    padding-bottom: 10px;
-  }
-  .content-wrapper {
-    padding: 15px;
-    border-radius: 10px;
-  }
   .text-content {
-    padding: 10px;
-    max-height: 40vh;
     /* Еще меньше на очень маленьких экранах */
-  }
-  .text-content h3 {
-    font-size: 1.4rem;
   }
   .play-button {
     width: 60px;
@@ -1744,10 +1750,6 @@ main {
   }
   .play-button:before {
     border-width: 12px 0 12px 20px;
-  }
-  .more-btn {
-    padding: 12px 30px;
-    font-size: 0.95rem;
   }
   .video-content {
     max-height: 300px;
