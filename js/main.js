@@ -255,7 +255,7 @@ document.addEventListener('DOMContentLoaded', function () {
       const textContent = document.querySelector('.text-content');
       const videoContent = document.querySelector('.video-content');
 
-      if (window.innerWidth > 1024) {
+      if (window.innerWidth > 991.98) {
          // На больших экранах устанавливаем высоту текста равной высоте видео
          textContent.style.maxHeight = videoContent.offsetHeight + 'px';
       } else {
