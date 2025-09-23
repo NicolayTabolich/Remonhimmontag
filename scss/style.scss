@@ -965,10 +965,14 @@ body {
       }
 }
 
-.service_card:hover {
-   transform: translateY(-5px);
-   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
-   background-color: #06041a27;
+.service_card{
+   @media (any-hover: hover) {
+         &:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+            background-color: #06041a27;
+         }
+      }
 }
 
 .service_icon {
@@ -1026,9 +1030,14 @@ body {
    transform: scale(1.2);
 }
 
-.service_slider_dot:hover {
-   background: #06041a;
-   transform: scale(1.2);
+.service_slider_dot {
+   @media (any-hover: hover) {
+      &:hover {
+         background: #06041a;
+         transform: scale(1.2);
+      }
+   }
+   
 }
 
 
@@ -1097,7 +1106,7 @@ body {
 
 
 .button {
-   text-align: center;
+   cursor: pointer;
    position: relative;
    color: #ffffff;
    line-height: 110%;
@@ -1134,10 +1143,14 @@ body {
    transition: all 0.3s ease-in-out;
 }
 
-.button:hover {
-   color: #06041a;
-   border: 2px solid #06041a;
-   background-color: #ffffff;
+.button {
+   @media (any-hover: hover) {
+      &:hover {
+         color: #06041a;
+         border: 2px solid #06041a;
+         background-color: #ffffff;
+      }
+   }
 }
 
 .button:hover:before {
@@ -1150,11 +1163,15 @@ body {
    border: 2px solid #06041a;
 }
 
-.white:hover {
-   color: #ffffff;
-   border: 2px solid #ffffff;
-   background-color: #06041a;
-}
+.white{
+   @media (any-hover: hover) {
+      &:hover {
+         color: #ffffff;
+         border: 2px solid #ffffff;
+         background-color: #06041a;
+      }
+   }
+   }
 
 
 // О компании

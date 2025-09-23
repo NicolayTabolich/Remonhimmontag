@@ -1249,13 +1249,15 @@ main {
   }
 }
 
-.service_card:hover {
-  -webkit-transform: translateY(-5px);
-      -ms-transform: translateY(-5px);
-          transform: translateY(-5px);
-  -webkit-box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
-          box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
-  background-color: rgba(6, 4, 26, 0.1529411765);
+@media (any-hover: hover) {
+  .service_card:hover {
+    -webkit-transform: translateY(-5px);
+        -ms-transform: translateY(-5px);
+            transform: translateY(-5px);
+    -webkit-box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+    background-color: rgba(6, 4, 26, 0.1529411765);
+  }
 }
 
 .service_icon {
@@ -1332,11 +1334,13 @@ main {
           transform: scale(1.2);
 }
 
-.service_slider_dot:hover {
-  background: #06041a;
-  -webkit-transform: scale(1.2);
-      -ms-transform: scale(1.2);
-          transform: scale(1.2);
+@media (any-hover: hover) {
+  .service_slider_dot:hover {
+    background: #06041a;
+    -webkit-transform: scale(1.2);
+        -ms-transform: scale(1.2);
+            transform: scale(1.2);
+  }
 }
 
 /* Адаптивность */
@@ -1394,7 +1398,7 @@ main {
   }
 }
 .button {
-  text-align: center;
+  cursor: pointer;
   position: relative;
   color: #ffffff;
   line-height: 110%;
@@ -1437,10 +1441,12 @@ main {
   transition: all 0.3s ease-in-out;
 }
 
-.button:hover {
-  color: #06041a;
-  border: 2px solid #06041a;
-  background-color: #ffffff;
+@media (any-hover: hover) {
+  .button:hover {
+    color: #06041a;
+    border: 2px solid #06041a;
+    background-color: #ffffff;
+  }
 }
 
 .button:hover:before {
@@ -1453,10 +1459,12 @@ main {
   border: 2px solid #06041a;
 }
 
-.white:hover {
-  color: #ffffff;
-  border: 2px solid #ffffff;
-  background-color: #06041a;
+@media (any-hover: hover) {
+  .white:hover {
+    color: #ffffff;
+    border: 2px solid #ffffff;
+    background-color: #06041a;
+  }
 }
 
 .about-section {
