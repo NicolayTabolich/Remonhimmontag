@@ -269,3 +269,144 @@ document.addEventListener('DOMContentLoaded', function () {
    window.addEventListener('resize', adjustContent);
 });
 
+// Наши услуги
+document.addEventListener('DOMContentLoaded', function () {
+   const slider = document.getElementById('servicesSlider');
+   const dotsservices__container = document.getElementById('sliderDots');
+   const dots = dotsservices__container.querySelectorAll('.service_slider_dot');
+   const serviceCards = slider.querySelectorAll('.service_card');
+
+   let currentPosition = 0;
+   let currentSlide = 0;
+   let cardsToShow = 3;
+   let autoScrollInterval;
+   let totalSlides = Math.ceil(serviceCards.length / cardsToShow);
+
+   // Переменные для обработки свайпа
+   let touchStartX = 0;
+   let touchEndX = 0;
+   let isDragging = false;
+
+   // Функция для обновления количества отображаемых карточек
+   function updateCardsToShow() {
+      if (window.innerWidth <= 1200 && window.innerWidth > 768) {
+         cardsToShow = 2;
+      } else if (window.innerWidth <= 768) {
+         cardsToShow = 1;
+      } else {
+         cardsToShow = 3;
+      }
+
+      totalSlides = Math.ceil(serviceCards.length / cardsToShow);
+      updateDots();
+      goToSlide(0);
+   }
+
+   // Функция для перемещения слайдера
+   function moveSlider() {
+      const cardWidth = slider.offsetWidth / cardsToShow;
+      currentPosition = -currentSlide * cardWidth * cardsToShow;
+      slider.style.transform = `translateX(${currentPosition}px)`;
+
+      updateDots();
+   }
+
+   // Обновление точек-индикаторов
+   function updateDots() {
+      dots.forEach((dot, index) => {
+         let dotIndex;
+
+         if (currentSlide === 0) {
+            // Первый слайд
+            dotIndex = index === 0 ? totalSlides - 1 : index - 1;
+         } else if (currentSlide === totalSlides - 1) {
+            // Последний слайд
+            dotIndex = index === 2 ? 0 : totalSlides - 2 + index;
+         } else {
+            // Средние слайды
+            dotIndex = currentSlide - 1 + index;
+         }
+
+         dot.setAttribute('data-index', dotIndex);
+
+         if (dotIndex === currentSlide) {
+            dot.classList.add('active');
+         } else {
+            dot.classList.remove('active');
+         }
+      });
+   }
+
+   // Переход к определенному слайду
+   function goToSlide(slideIndex) {
+      if (slideIndex < 0) {
+         currentSlide = totalSlides - 1;
+      } else if (slideIndex >= totalSlides) {
+         currentSlide = 0;
+      } else {
+         currentSlide = slideIndex;
+      }
+      moveSlider();
+   }
+
+   // Сброс таймера автоматической прокрутки
+   function resetAutoScroll() {
+      clearInterval(autoScrollInterval);
+      startAutoScroll();
+   }
+
+   // Обработчики кликов на точки
+   dots.forEach(dot => {
+      dot.addEventListener('click', () => {
+         const slideIndex = parseInt(dot.getAttribute('data-index'));
+         goToSlide(slideIndex);
+         resetAutoScroll(); // Сброс таймера при ручном перелистывании
+      });
+   });
+
+   // Функция для автоматической прокрутки
+   function startAutoScroll() {
+      autoScrollInterval = setInterval(() => {
+         goToSlide(currentSlide + 1);
+      }, 7000); // Меняем слайд каждые 7 секунд
+   }
+
+   // Обработчики для свайпа на мобильных устройствах
+   slider.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+      isDragging = true;
+   });
+
+   slider.addEventListener('touchmove', (e) => {
+      if (!isDragging) return;
+      touchEndX = e.changedTouches[0].screenX;
+   });
+
+   slider.addEventListener('touchend', () => {
+      if (!isDragging) return;
+      isDragging = false;
+
+      const swipeThreshold = 50; // Минимальное расстояние для свайпа
+      const diff = touchStartX - touchEndX;
+
+      if (Math.abs(diff) > swipeThreshold) {
+         if (diff > 0) {
+            // Свайп влево - следующий слайд
+            goToSlide(currentSlide + 1);
+         } else {
+            // Свайп вправо - предыдущий слайд
+            goToSlide(currentSlide - 1);
+         }
+         resetAutoScroll(); // Сброс таймера при ручном перелистывании
+      }
+   });
+
+   // Обработчик изменения размера окна
+   window.addEventListener('resize', function () {
+      updateCardsToShow();
+   });
+
+   // Инициализация
+   updateCardsToShow();
+   startAutoScroll();
+});
