@@ -1185,7 +1185,7 @@ main {
   text-align: center;
   line-height: 100%;
   font-size: 36px;
-  color: #06041a;
+  color: #0d0932;
   position: relative;
   margin-bottom: 40px;
 }
@@ -1225,8 +1225,8 @@ main {
           flex: 0 0 calc(33.333% - 30px);
   margin: 0 15px;
   border-radius: 5px;
-  -webkit-box-shadow: 0 3px 12px rgba(6, 4, 24, 0.245);
-          box-shadow: 0 3px 12px rgba(6, 4, 24, 0.245);
+  -webkit-box-shadow: 0 3px 12px rgba(13, 9, 50, 0.245);
+          box-shadow: 0 3px 12px rgba(13, 9, 50, 0.245);
   min-height: 250px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1330,7 +1330,7 @@ main {
 }
 
 .service_slider_dot.active {
-  background: #06041a;
+  background: #0d0932;
   -webkit-transform: scale(1.2);
       -ms-transform: scale(1.2);
           transform: scale(1.2);
@@ -1338,7 +1338,7 @@ main {
 
 @media (any-hover: hover) {
   .service_slider_dot:hover {
-    background: #06041a;
+    background: #0d0932;
     -webkit-transform: scale(1.2);
         -ms-transform: scale(1.2);
             transform: scale(1.2);
@@ -1408,7 +1408,7 @@ main {
   overflow: hidden;
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
-  background-color: #06041a;
+  background-color: #0d0932;
   font-size: 20px;
   padding: 15px 35px;
 }
@@ -1438,15 +1438,15 @@ main {
   height: 100%;
   top: 0;
   left: -100%;
-  background-color: #06041a;
+  background-color: #0d0932;
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
 
 @media (any-hover: hover) {
   .button:hover {
-    color: #06041a;
-    border: 2px solid #06041a;
+    color: #0d0932;
+    border: 2px solid #0d0932;
     background-color: #ffffff;
   }
 }
@@ -1458,20 +1458,20 @@ main {
 .white {
   color: #06041a;
   background-color: #ffffff;
-  border: 2px solid #06041a;
+  border: 2px solid #0d0932;
 }
 
 @media (any-hover: hover) {
   .white:hover {
     color: #ffffff;
     border: 2px solid #ffffff;
-    background-color: #06041a;
+    background-color: #0d0932;
   }
 }
 
 .about-section {
   padding: 40px 0px 20px 0px;
-  background-color: #06041a;
+  background-color: #0d0932;
 }
 @media (max-width: 991.98px) {
   .about-section {
@@ -1585,8 +1585,8 @@ main {
   left: 0;
   right: 0;
   height: 40px;
-  background: -webkit-gradient(linear, left top, left bottom, from(rgba(6, 4, 26, 0.4)), color-stop(80%, rgba(6, 8, 26, 0.7)), to(rgb(6, 4, 26)));
-  background: linear-gradient(to bottom, rgba(6, 4, 26, 0.4) 0%, rgba(6, 8, 26, 0.7) 80%, rgb(6, 4, 26) 100%);
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(13, 9, 50, 0.4)), color-stop(80%, rgba(13, 9, 50, 0.7)), to(rgb(13, 9, 50)));
+  background: linear-gradient(to bottom, rgba(13, 9, 50, 0.4) 0%, rgba(13, 9, 50, 0.7) 80%, rgb(13, 9, 50) 100%);
   pointer-events: none;
 }
 
@@ -1670,7 +1670,7 @@ main {
   content: "";
   border-style: solid;
   border-width: 15px 0 15px 26px;
-  border-color: transparent transparent transparent #06041a;
+  border-color: transparent transparent transparent #0d0932;
   margin-left: 5px;
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
@@ -1682,7 +1682,7 @@ main {
 }
 
 .video-wrapper:hover .play-button {
-  background: rgba(6, 8, 24, 0.95);
+  background: rgba(13, 9, 50, 0.95);
   -webkit-transform: translate(-50%, -50%) scale(1.1);
       -ms-transform: translate(-50%, -50%) scale(1.1);
           transform: translate(-50%, -50%) scale(1.1);
@@ -1919,7 +1919,7 @@ main {
 }
 
 .vacancies_section {
-  background-color: #06041a;
+  background-color: #0d0932;
 }
 @media (max-width: 767.98px) {
   .vacancies_section {

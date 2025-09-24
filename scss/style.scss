@@ -921,7 +921,7 @@ body {
    text-align: center;
    line-height: 100%;
    font-size: 36px;
-   color: #06041a;
+   color: #0d0932;
    position: relative;
    margin-bottom: 40px;
    @media (max-width: 767.98px) {
@@ -951,7 +951,7 @@ body {
    margin: 0 15px;
    border-radius: 5px;
    // padding: 30px 25px;
-   box-shadow: 0 3px 12px rgba(6, 4, 24, 0.245);
+   box-shadow: 0 3px 12px rgba(13, 9, 50, 0.245);
    min-height: 250px;
    display: flex;
    flex-direction: column;
@@ -1027,14 +1027,14 @@ body {
 }
 
 .service_slider_dot.active {
-   background: #06041a;
+   background: #0d0932;
    transform: scale(1.2);
 }
 
 .service_slider_dot {
    @media (any-hover: hover) {
       &:hover {
-         background: #06041a;
+         background: #0d0932;
          transform: scale(1.2);
       }
    }
@@ -1114,7 +1114,7 @@ body {
    border: 2px solid #ffffff;
    overflow: hidden;
    transition: all 0.3s ease-in-out;
-   background-color: #06041a;
+   background-color: #0d0932;
    font-size: 20px;
    padding: 15px 35px;
    @media (max-width: 991.98px) {
@@ -1140,15 +1140,15 @@ body {
    height: 100%;
    top: 0;
    left: -100%;
-   background-color: #06041a;
+   background-color: #0d0932;
    transition: all 0.3s ease-in-out;
 }
 
 .button {
    @media (any-hover: hover) {
       &:hover {
-         color: #06041a;
-         border: 2px solid #06041a;
+         color: #0d0932;
+         border: 2px solid #0d0932;
          background-color: #ffffff;
       }
    }
@@ -1161,7 +1161,7 @@ body {
 .white {
    color: #06041a;
    background-color: #ffffff;
-   border: 2px solid #06041a;
+   border: 2px solid #0d0932;
 }
 
 .white{
@@ -1169,7 +1169,7 @@ body {
       &:hover {
          color: #ffffff;
          border: 2px solid #ffffff;
-         background-color: #06041a;
+         background-color: #0d0932;
       }
    }
    }
@@ -1181,7 +1181,7 @@ body {
 
 .about-section {
    padding: 40px 0px 20px 0px;
-   background-color: #06041a;
+   background-color: #0d0932;
    @media (max-width: 991.98px){
       padding: 30px 0px 20px 0px;
    }
@@ -1269,7 +1269,7 @@ body {
    left: 0;
    right: 0;
    height: 40px;
-   background: linear-gradient(to bottom, rgba(6, 4, 26, 0.4) 0%, rgba(6, 8, 26, 0.7) 80%, rgb(6, 4, 26) 100%);
+   background: linear-gradient(to bottom, rgba(13, 9, 50, 0.4) 0%, rgba(13, 9, 50, 0.7) 80%, rgb(13, 9, 50) 100%);
    pointer-events: none;
 }
 
@@ -1331,7 +1331,7 @@ body {
    content: '';
    border-style: solid;
    border-width: 15px 0 15px 26px;
-   border-color: transparent transparent transparent #06041a;
+   border-color: transparent transparent transparent #0d0932;
    margin-left: 5px;
    transition: all 0.3s ease;
    @media (max-width: 567.98px) {
@@ -1341,7 +1341,7 @@ body {
 }
 
 .video-wrapper:hover .play-button {
-   background: rgba(6, 8, 24, 0.95);
+   background: rgba(13, 9, 50, 0.95);
    transform: translate(-50%, -50%) scale(1.1);
 }
 
@@ -1537,7 +1537,7 @@ body {
 // Вакансии
 
 .vacancies_section {
-   background-color: #06041a;
+   background-color: #0d0932;
    @media (max-width: 767.98px) {
          padding: 20px 0px;
       }
