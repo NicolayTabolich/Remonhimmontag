@@ -2309,9 +2309,9 @@ main {
 }
 @media (max-width: 991.98px) and (max-width: 567.98px) {
   .footer_midle {
-    font-size: 12px;
+    font-size: 13px;
     text-align: center;
-    gap: 10px;
+    gap: 15px;
     margin-bottom: 15px;
   }
 }
@@ -2330,7 +2330,7 @@ main {
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
-    gap: 10px;
+    gap: 15px;
   }
 }
 
@@ -2387,7 +2387,7 @@ main {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  gap: 10px;
+  gap: 15px;
 }
 @media (max-width: 991.98px) {
   .footer_bot {
@@ -2401,13 +2401,12 @@ main {
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
-    gap: 15px;
   }
 }
 @media (max-width: 567.98px) {
   .footer_bot {
     font-size: 12px;
     text-align: center;
-    gap: 7px;
+    gap: 12px;
   }
 }
