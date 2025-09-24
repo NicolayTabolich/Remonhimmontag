@@ -1448,11 +1448,11 @@ body {
    flex-wrap: wrap;
    margin-bottom: 40px;
    @media (max-width: 767.98px) {
-            gap: 20px;
-      margin-bottom: 30px;
+            gap: 30px;
+         margin-bottom: 30px;
       }
    @media (max-width: 567.98px) {
-      margin-bottom: 20px;
+         margin-bottom: 20px;
    }
 }
 
@@ -1465,8 +1465,8 @@ body {
    min-width: 280px;
 
    @media (max-width: 991.98px) {
-   flex: 1 0 calc(50% - 20px);
-   max-width: 50%;
+      flex: 1 0 calc(50% - 20px);
+      max-width: 50%;
    }
    @media (max-width: 640.98px) {
       flex: 1 1 100%;
@@ -1514,7 +1514,7 @@ body {
    margin-bottom: 10px;
    height: 100%;
    font-size: 24px;
-   font-weight: 700;
+   font-weight: 400;
    line-height: 100%;
    @media (max-width: 1140px) {
          font-size: 20px;
@@ -1539,7 +1539,7 @@ body {
 .vacancies_section {
    background-color: #0d0932;
    @media (max-width: 767.98px) {
-         padding: 20px 0px;
+         padding: 25px 0px;
       }
 }
 
@@ -1727,8 +1727,8 @@ body {
       left: 0;
       bottom: -20px;
       @media (max-width: 767.98px) {
-               bottom: -10px;
-         }
+            bottom: -10px;
+      }
    }
       @media (max-width: 767.98px) {
          margin-bottom: 20px;
