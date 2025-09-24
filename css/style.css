@@ -2160,7 +2160,7 @@ main {
 }
 @media (max-width: 767.98px) {
   .footer_logo {
-    margin-bottom: 20px;
+    margin-bottom: 25px;
   }
 }
 
@@ -2170,7 +2170,7 @@ main {
 }
 @media (max-width: 767.98px) {
   .footer_logo img {
-    max-height: 25px;
+    max-height: 30px;
   }
 }
 
