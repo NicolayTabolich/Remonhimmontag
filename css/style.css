@@ -2103,6 +2103,12 @@ main {
     max-height: 45px;
   }
 }
+@media (max-width: 567.98px) {
+  .other_block a img {
+    max-height: 35px;
+  }
+}
+
 .footer {
   padding: 24px 0px 15px 0px;
   background-color: #0d0932;

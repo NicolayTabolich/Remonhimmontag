@@ -1434,7 +1434,6 @@ body {
    }
 }
 
-.news__container {}
 
 .news_block {
    width: 100%;
@@ -1546,7 +1545,6 @@ body {
       }
 }
 
-.vacancies__container {}
 
 .vacancies_block {
    display: flex;
@@ -1649,8 +1647,6 @@ body {
    padding: 10px 0px;
 }
 
-.other__container {}
-
 .other_block {
    display: flex;
    gap: 10px;
@@ -1671,22 +1667,21 @@ body {
 
 }
 
-.other_block a {
-
-}
 
 .other_block a img {
    max-height: 60px;
    width: auto;
    @media (max-width: 991.98px) {
-   max-height: 50px;
+      max-height: 50px;
    }
    
    @media (max-width: 767.98px) {
-   max-height: 45px;
+    max-height: 45px;
    }
    
-   @media (max-width: 567.98px) {}
+   @media (max-width: 567.98px) {
+     max-height: 35px;
+   }
 
 }
 
@@ -1704,7 +1699,6 @@ body {
    color: #fff;
 }
 
-.footer__container {}
 
 .footer_block {
    display: flex;
@@ -1913,9 +1907,7 @@ body {
    }
 }
 
-.footer_bot_adress {}
 
-.footer_bot_info {}
 
 @media (max-width: 1140px) {}
 
