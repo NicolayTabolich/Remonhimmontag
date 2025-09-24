@@ -1241,7 +1241,7 @@ main {
   text-align: center;
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
-  padding: 10px;
+  padding: 10px 0px;
   margin-bottom: 30px;
 }
 @media (max-width: 567.98px) {
@@ -1294,15 +1294,25 @@ main {
       -ms-flex-positive: 1;
           flex-grow: 1;
 }
+@media (max-width: 567.98px) {
+  .service_card h3 {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+}
 
 .service_card p {
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
-  line-height: 100%;
   font-size: 15px;
   line-height: 130%;
   color: #444444;
+}
+@media (max-width: 567.98px) {
+  .service_card p {
+    font-size: 14px;
+  }
 }
 
 .service_slider_controls {
@@ -1379,7 +1389,7 @@ main {
 }
 @media (max-width: 567.98px) {
   .service_card {
-    padding: 20px 15px;
+    padding: 10px 0px;
     min-height: 220px;
   }
   .service_icon {
@@ -1387,9 +1397,6 @@ main {
     height: 60px;
     font-size: 24px;
     margin-bottom: 15px;
-  }
-  .service_card h3 {
-    font-size: 18px;
   }
   .button white {
     padding: 14px 40px;
