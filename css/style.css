@@ -1807,6 +1807,7 @@ main {
 }
 
 .news_item {
+  overflow: hidden;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1838,6 +1839,16 @@ main {
     max-width: 100%;
   }
 }
+@media (any-hover: hover) {
+  .news_item:hover .news_item_img img {
+    -webkit-transform: scale(1.05);
+        -ms-transform: scale(1.05);
+            transform: scale(1.05);
+  }
+  .news_item:hover .news_item_title {
+    color: #535353;
+  }
+}
 
 .news_item_img {
   display: -webkit-box;
@@ -1853,6 +1864,10 @@ main {
 }
 
 .news_item_img img {
+  -webkit-transition: -webkit-transform 0.3s ease;
+  transition: -webkit-transform 0.3s ease;
+  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, -webkit-transform 0.3s ease;
   width: 100%;
   height: auto;
 }
@@ -1901,4 +1916,145 @@ main {
   .news_item_description {
     font-size: 15px;
   }
+}
+
+.vacancies_section {
+  background-color: #06041a;
+}
+@media (max-width: 767.98px) {
+  .vacancies_section {
+    padding: 20px 0px;
+  }
+}
+
+.vacancies_block {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+  gap: 10px;
+}
+
+.vacancies_left {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+@media (max-width: 767.98px) {
+  .vacancies_left {
+    width: 100%;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -ms-flex-item-align: center;
+        align-self: center;
+  }
+}
+
+.vacancies_text {
+  color: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 40px;
+}
+@media (max-width: 767.98px) {
+  .vacancies_text {
+    gap: 30px;
+  }
+}
+
+.vacancies_text_title {
+  font-size: 32px;
+  line-height: 100%;
+  position: relative;
+}
+.vacancies_text_title::after {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 40%;
+  height: 1px;
+  background-color: #fff;
+  margin-top: 20px;
+}
+@media (max-width: 767.98px) {
+  .vacancies_text_title::after {
+    width: 100%;
+    margin-top: 15px;
+  }
+}
+@media (max-width: 1140px) {
+  .vacancies_text_title {
+    font-size: 28px;
+  }
+}
+@media (max-width: 991.98px) {
+  .vacancies_text_title {
+    font-size: 24px;
+  }
+}
+@media (max-width: 767.98px) {
+  .vacancies_text_title {
+    font-size: 18px;
+    text-align: center;
+  }
+}
+
+.vacancies_text_subtitle {
+  font-size: 20px;
+  line-height: 130%;
+  margin-bottom: 10px;
+}
+@media (max-width: 1140px) {
+  .vacancies_text_subtitle {
+    font-size: 18px;
+  }
+}
+@media (max-width: 991.98px) {
+  .vacancies_text_subtitle {
+    font-size: 16px;
+  }
+}
+@media (max-width: 767.98px) {
+  .vacancies_text_subtitle {
+    font-size: 15px;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+}
+
+.vacancies_right {
+  max-height: 480px;
+  width: 50%;
+  overflow: hidden;
+}
+@media (max-width: 767.98px) {
+  .vacancies_right {
+    display: none;
+  }
+}
+
+.vacancies_right img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  display: block;
+  height: auto;
+  width: 100%;
 }
