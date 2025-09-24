@@ -1911,6 +1911,7 @@ main {
 .news_item_description {
   text-align: justify;
   line-height: 130%;
+  font-weight: 200;
 }
 @media (max-width: 767.98px) {
   .news_item_description {
