@@ -2309,9 +2309,8 @@ main {
 }
 @media (max-width: 991.98px) and (max-width: 567.98px) {
   .footer_midle {
-    font-size: 13px;
+    font-size: 14px;
     text-align: center;
-    gap: 15px;
     margin-bottom: 15px;
   }
 }
@@ -2381,6 +2380,7 @@ main {
 }
 
 .footer_bot {
+  line-height: 130%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2405,8 +2405,8 @@ main {
 }
 @media (max-width: 567.98px) {
   .footer_bot {
-    font-size: 12px;
+    font-size: 14px;
     text-align: center;
-    gap: 12px;
+    gap: 15px;
   }
 }
