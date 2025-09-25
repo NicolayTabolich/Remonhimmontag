@@ -2093,6 +2093,15 @@ main {
 .other_block a img {
   max-height: 60px;
   width: auto;
+  -webkit-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+}
+@media (any-hover: hover) {
+  .other_block a img:hover {
+    -webkit-transform: scale(0.95);
+        -ms-transform: scale(0.95);
+            transform: scale(0.95);
+  }
 }
 @media (max-width: 991.98px) {
   .other_block a img {
@@ -2415,6 +2424,16 @@ main {
     font-size: 14px;
     text-align: center;
     gap: 15px;
+  }
+}
+
+.footer_bot_adress {
+  -webkit-transition: 0.25s all ease-in-out;
+  transition: 0.25s all ease-in-out;
+}
+@media (any-hover: hover) {
+  .footer_bot_adress:hover {
+    color: #999;
   }
 }
 
