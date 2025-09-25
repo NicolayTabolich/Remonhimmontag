@@ -1944,15 +1944,15 @@ body {
       position: absolute;
       background-image: url(../icons/arrow_next.svg);
       background-size: 12px 12px;
-      right: -35%;
+      right: -34%;
       bottom: 0;
       top: 50%;
       transform: translateY(-50%);
       fill: #fff;
       @media (max-width: 567.98px) {
-         width: 10px;
-         height: 10px;
-         background-size: 10px 10px;
+         width: 9px;
+         height: 9px;
+         background-size: 9px 9px;
       }
    }
 
@@ -2059,22 +2059,24 @@ body {
       padding: 30px 0px 15px 0px;
    }
    
-   @media (max-width: 767.98px) {}
 
-   @media (max-width: 567.98px) {}
+   @media (max-width: 567.98px) {
+      padding: 20px 0px 15px 0px;
+   }
 }
 
 .services_page__container {
+
 }
 
 .services_page_items {
    display: flex;
    gap: 20px;
    justify-content: space-between;
+   // align-items: stretch;
    @media (max-width: 690px) {
    flex-wrap: wrap;
    justify-content: flex-start;
-   height: 100%;
    }
 }
 
@@ -2098,15 +2100,15 @@ body {
    }
 
    @media (max-width: 690px) {
-   flex: 1 1 100%;
-   min-height: 255px;
+      flex: 1 1 100%;
+      min-height: 255px;
    }
 
    @media (max-width: 536.98px) {
-   min-height: 269px;
-}
+      min-height: 269px;
+   }  
    @media (max-width: 400px) {
-      min-height: 302px;
+      min-height: 302px;     //Ориентироваться на максимальную высоту карточки и заменить везде 
    }
    @media (any-hover: hover) {
       &:hover {
@@ -2211,7 +2213,10 @@ body {
 }
 
 
-
+.block_flex_grow {
+   display: flex;
+   flex-grow: 1;
+}
 
 
 
