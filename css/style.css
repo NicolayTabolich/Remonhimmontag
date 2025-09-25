@@ -2617,11 +2617,12 @@ main {
     -webkit-box-pack: start;
         -ms-flex-pack: start;
             justify-content: flex-start;
+    height: 100%;
   }
 }
 
 .services_page_item {
-  padding: 40px 15px 10px;
+  padding: 40px 10px 10px;
   text-align: center;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -2638,6 +2639,8 @@ main {
       -ms-flex: 0 1 33.33%;
           flex: 0 1 33.33%;
   min-width: 210px;
+  -webkit-transition: 0.3s all ease-in-out;
+  transition: 0.3s all ease-in-out;
 }
 @media (max-width: 991.98px) {
   .services_page_item {
@@ -2654,8 +2657,29 @@ main {
     -webkit-box-flex: 1;
         -ms-flex: 1 1 100%;
             flex: 1 1 100%;
+    min-height: 255px;
   }
 }
+@media (max-width: 536.98px) {
+  .services_page_item {
+    min-height: 269px;
+  }
+}
+@media (max-width: 400px) {
+  .services_page_item {
+    min-height: 302px;
+  }
+}
+@media (any-hover: hover) {
+  .services_page_item:hover {
+    background-color: #0d0932;
+    color: #fff;
+  }
+  .services_page_item:hover .services_page_svg {
+    fill: #fff;
+  }
+}
+
 .services_page_svg {
   fill: #0d0932;
   max-height: 82px;
@@ -2663,6 +2687,8 @@ main {
   margin-bottom: 40px;
   -ms-flex-item-align: center;
       align-self: center;
+  -webkit-transition: 0.3s all ease-in-out;
+  transition: 0.3s all ease-in-out;
 }
 @media (max-width: 991.98px) {
   .services_page_svg {
@@ -2676,6 +2702,7 @@ main {
     margin-bottom: 15px;
   }
 }
+
 .services_page_title {
   font-size: 20px;
   line-height: 120%;
@@ -2696,11 +2723,24 @@ main {
   }
 }
 .services_page_text {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   text-align: start;
   margin-bottom: 10px;
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
+  padding-left: 10px;
+}
+@media (max-width: 690px) {
+  .services_page_text {
+    padding-left: 0;
+  }
 }
 
 .services_page_text li {
@@ -2717,6 +2757,11 @@ main {
 @media (max-width: 767.98px) {
   .services_page_text li {
     font-size: 12px;
+  }
+}
+@media (max-width: 690px) {
+  .services_page_text li {
+    text-align: center;
   }
 }
 .services_page_link a {
