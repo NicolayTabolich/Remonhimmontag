@@ -1906,6 +1906,8 @@ body {
 
 .main_margin{
    margin-top: 65px;
+   display: flex;
+   flex-direction: column;
    @media (max-width: 767.98px) {
    margin-top: 50px;
    }
@@ -2046,6 +2048,7 @@ body {
 }
 
 .services_page {
+   flex-grow: 1;
    padding: 40px 0px 20px 0px ;
    @media (max-width: 991.98px) {
       padding: 30px 0px 15px 0px;
@@ -2191,7 +2194,7 @@ body {
    position: relative;
    @media (any-hover: hover) {
       &:hover {
-         color: #fc6a6a;
+         color: #a00000;
          }
       }
    &::after{
@@ -2207,7 +2210,7 @@ body {
 
    @media (any-hover: hover) {
       &:hover::after {
-         background-color: #fc6a6a;
+         background-color: #a00000;
    }
 }
    @media (max-width: 767.98px) {

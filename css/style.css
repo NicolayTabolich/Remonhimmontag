@@ -2425,6 +2425,13 @@ main {
 
 .main_margin {
   margin-top: 65px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 @media (max-width: 767.98px) {
   .main_margin {
@@ -2585,6 +2592,9 @@ main {
 }
 
 .services_page {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
   padding: 40px 0px 20px 0px;
 }
 @media (max-width: 991.98px) {
@@ -2768,7 +2778,7 @@ main {
 }
 @media (any-hover: hover) {
   .services_page_link a:hover {
-    color: #fc6a6a;
+    color: #a00000;
   }
 }
 .services_page_link a::after {
@@ -2783,7 +2793,7 @@ main {
 }
 @media (any-hover: hover) {
   .services_page_link a:hover::after {
-    background-color: #fc6a6a;
+    background-color: #a00000;
   }
 }
 @media (max-width: 767.98px) {
