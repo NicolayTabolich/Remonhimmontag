@@ -586,8 +586,8 @@ main {
   background-color: #fff;
   bottom: 0;
   right: -30%;
-  -webkit-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
 }
 .header_link::after {
   content: "";
@@ -597,8 +597,8 @@ main {
   background-color: #fff;
   bottom: 0;
   left: -30%;
-  -webkit-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
 }
 @media (any-hover: hover) {
   .header_link:hover::after {
@@ -2252,50 +2252,36 @@ main {
   font-size: 14px;
   position: relative;
 }
-.footer_li_a::after {
-  content: "";
-  width: 0;
-  height: 1px;
-  background-color: #fff;
-  display: block;
-  position: absolute;
-  left: -30%;
-  bottom: 0;
-  -webkit-transition: 0.3s all ease-in-out;
-  transition: 0.3s all ease-in-out;
-}
 .footer_li_a::before {
   content: "";
+  position: absolute;
+  width: 0%;
+  height: 1px;
+  background-color: #fff;
+  bottom: 0;
+  right: -30%;
+  -webkit-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+}
+.footer_li_a::after {
+  content: "";
+  position: absolute;
   width: 0;
   height: 1px;
   background-color: #fff;
-  display: block;
-  position: absolute;
-  right: -30%;
   bottom: 0;
-  -webkit-transition: 0.3s all ease-in-out;
-  transition: 0.3s all ease-in-out;
+  left: -30%;
+  -webkit-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
 }
 @media (any-hover: hover) {
   .footer_li_a:hover::after {
-    content: "";
+    left: 50%;
     width: 50%;
-    height: 1px;
-    background-color: #fff;
-    display: block;
-    position: absolute;
-    left: 0;
-    bottom: 0;
   }
   .footer_li_a:hover::before {
-    content: "";
+    right: 50%;
     width: 50%;
-    height: 1px;
-    background-color: #fff;
-    display: block;
-    position: absolute;
-    right: 0;
-    bottom: 0;
   }
 }
 
@@ -2522,50 +2508,36 @@ main {
     font-size: 10px;
   }
 }
-.bread_crumbs_link::after {
-  content: "";
-  width: 0;
-  height: 1px;
-  background-color: #fff;
-  display: block;
-  position: absolute;
-  left: -20%;
-  bottom: 0;
-  -webkit-transition: 0.2s all ease-in-out;
-  transition: 0.2s all ease-in-out;
-}
 .bread_crumbs_link::before {
   content: "";
+  position: absolute;
+  width: 0%;
+  height: 1px;
+  background-color: #fff;
+  bottom: 0;
+  right: -30%;
+  -webkit-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+}
+.bread_crumbs_link::after {
+  content: "";
+  position: absolute;
   width: 0;
   height: 1px;
   background-color: #fff;
-  display: block;
-  position: absolute;
-  right: -20%;
   bottom: 0;
-  -webkit-transition: 0.3s all ease-in-out;
-  transition: 0.3s all ease-in-out;
+  left: -30%;
+  -webkit-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
 }
 @media (any-hover: hover) {
   .bread_crumbs_link:hover::after {
-    content: "";
+    left: 50%;
     width: 50%;
-    height: 1px;
-    background-color: #fff;
-    display: block;
-    position: absolute;
-    left: 0;
-    bottom: 0;
   }
   .bread_crumbs_link:hover::before {
-    content: "";
+    right: 50%;
     width: 50%;
-    height: 1px;
-    background-color: #fff;
-    display: block;
-    position: absolute;
-    right: 0;
-    bottom: 0;
   }
 }
 
@@ -2794,6 +2766,11 @@ main {
   font-size: 14px;
   position: relative;
 }
+@media (any-hover: hover) {
+  .services_page_link a:hover {
+    color: #fc6a6a;
+  }
+}
 .services_page_link a::after {
   position: absolute;
   content: "";
@@ -2803,6 +2780,11 @@ main {
   background-color: #f50101;
   bottom: -3px;
   left: 0;
+}
+@media (any-hover: hover) {
+  .services_page_link a:hover::after {
+    background-color: #fc6a6a;
+  }
 }
 @media (max-width: 767.98px) {
   .services_page_link a {

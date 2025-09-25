@@ -442,7 +442,7 @@ body {
       background-color: #fff;
       bottom: 0;
       right: -30%;
-      transition: all 0.3s ease-in-out;
+      transition: all 0.5s ease-in-out;
    }
    &::after {
       content: "";
@@ -452,7 +452,7 @@ body {
       background-color: #fff;
       bottom: 0;
       left: -30%;
-      transition: all 0.3s ease-in-out;
+      transition: all 0.5s ease-in-out;
    }
    @media (any-hover: hover) {
       &:hover::after {
@@ -1779,50 +1779,39 @@ body {
    font-size: 14px;
    position: relative;
    // transition: 0.3s all ease-in-out;
-   &::after{
+   &::before {
          content: "";
+         position: absolute;
+         width: 0%;
+         height: 1px;
+         background-color: #fff;
+         bottom: 0;
+         right: -30%;
+         transition: all 0.5s ease-in-out;
+      }
+   
+      &::after {
+         content: "";
+         position: absolute;
          width: 0;
          height: 1px;
          background-color: #fff;
-         display: block;
-         position: absolute;
+         bottom: 0;
          left: -30%;
-         bottom: 0;
-         transition: 0.3s all ease-in-out;
-   }
-   &::before {
-      content: "";
-      width: 0;
-      height: 1px;
-      background-color: #fff;
-      display: block;
-      position: absolute;
-      right: -30%;
-      bottom: 0;
-      transition: 0.3s all ease-in-out;
-   }
-   @media (any-hover: hover) {
-      &:hover::after {
-         content: "";
-         width: 50%;
-         height: 1px;
-         background-color: #fff;
-         display: block;
-         position: absolute;
-         left: 0;
-         bottom: 0;
+         transition: all 0.5s ease-in-out;
       }
-      &:hover::before {
-         content: "";
-         width: 50%;
-         height: 1px;
-         background-color: #fff;
-         display: block;
-         position: absolute;
-         right: -0;
-         bottom: 0;
+   
+      @media (any-hover: hover) {
+         &:hover::after {
+            left: 50%;
+            width: 50%;
+         }
+   
+         &:hover::before {
+            right: 50%;
+            width: 50%;
+         }
       }
-}
 }
 
 .footer_midle {
@@ -1983,51 +1972,37 @@ body {
    @media (max-width: 567.98px) {
             font-size: 10px;
       }
-   &::after {
-         content: "";
-         width: 0;
-         height: 1px;
-         background-color: #fff;
-         display: block;
-         position: absolute;
-         left: -20%;
-         bottom: 0;
-         transition: 0.2s all ease-in-out;
-      }
-   
       &::before {
          content: "";
+         position: absolute;
+         width: 0%;
+         height: 1px;
+         background-color: #fff;
+         bottom: 0;
+         right: -30%;
+         transition: all 0.5s ease-in-out;
+      }
+   
+      &::after {
+         content: "";
+         position: absolute;
          width: 0;
          height: 1px;
          background-color: #fff;
-         display: block;
-         position: absolute;
-         right: -20%;
          bottom: 0;
-         transition: 0.3s all ease-in-out;
+         left: -30%;
+         transition: all 0.5s ease-in-out;
       }
    
       @media (any-hover: hover) {
          &:hover::after {
-            content: "";
+            left: 50%;
             width: 50%;
-            height: 1px;
-            background-color: #fff;
-            display: block;
-            position: absolute;
-            left: 0;
-            bottom: 0;
          }
    
          &:hover::before {
-            content: "";
+            right: 50%;
             width: 50%;
-            height: 1px;
-            background-color: #fff;
-            display: block;
-            position: absolute;
-            right: -0;
-            bottom: 0;
          }
       }
 
@@ -2214,6 +2189,11 @@ body {
    line-height: 100%;
    font-size: 14px;
    position: relative;
+   @media (any-hover: hover) {
+      &:hover {
+         color: #fc6a6a;
+         }
+      }
    &::after{
       position: absolute;
       content: "";
@@ -2224,9 +2204,15 @@ body {
       bottom: -3px;
       left: 0;
    }
-      @media (max-width: 767.98px) {
-         font-size: 12px;
-      }
+
+   @media (any-hover: hover) {
+      &:hover::after {
+         background-color: #fc6a6a;
+   }
+}
+   @media (max-width: 767.98px) {
+      font-size: 12px;
+   }
 }
 
 
