@@ -68,7 +68,7 @@
                <li class="header_li"><a class="header_link" href="#" data-lang="about">О компании</a></li>
                <li class="header_li"><a class="header_link" href="services.html" data-lang="services">Услуги</a></li>
                <li class="header_li"><a class="header_link" href="#" data-lang="projects">Контакты</a></li>
-               <li class="header_li"><a class="header_link" href="#" data-lang="news">Новости</a></li>
+               <li class="header_li"><a class="header_link" href="neuws.html" data-lang="news">Новости</a></li>
                <li class="header_li"><a class="header_link" href="#" data-lang="contacts">Вакансии</a></li>
                <li class="header_li"><a class="header_link" href="#" data-lang="contacts">Опрос</a></li>
             </ul>
@@ -294,7 +294,104 @@
                </div>
             </div>
          </section>
-         <section class="news_section">
+
+
+
+         <section class="news__container">
+            <!-- Блок последних новостей -->
+            <section class="latest-news">
+               <div class="services__title">Последние новости</div>
+               <div class="latest-news-grid" id="latest-news-container">
+                  <!-- Последние новости будут загружены через JavaScript -->
+               </div>
+            </section>
+
+            <!-- Остальная часть страницы -->
+            <section class="all-news __news_none">
+               <h2>Все новости</h2>
+               <div class="filters">
+                  <div class="filter-group">
+                     <label for="year-filter">Год:</label>
+                     <select id="year-filter">
+                        <option value="all">Все годы</option>
+                        <option value="2023">2023</option>
+                        <option value="2024">2024</option>
+                     </select>
+                  </div>
+
+                  <div class="filter-group">
+                     <label for="month-filter">Месяц:</label>
+                     <select id="month-filter">
+                        <option value="all">Все месяцы</option>
+                        <option value="1">Январь</option>
+                        <option value="2">Февраль</option>
+                        <option value="3">Март</option>
+                        <option value="4">Апрель</option>
+                        <option value="5">Май</option>
+                        <option value="6">Июнь</option>
+                        <option value="7">Июль</option>
+                        <option value="8">Август</option>
+                        <option value="9">Сентябрь</option>
+                        <option value="10">Октябрь</option>
+                        <option value="11">Ноябрь</option>
+                        <option value="12">Декабрь</option>
+                     </select>
+                  </div>
+               </div>
+
+               <div class="news-grid" id="news-container">
+                  <!-- Все новости будут загружены через JavaScript -->
+               </div>
+
+               <div class="pagination" id="pagination">
+                  <!-- Пагинация будет создана через JavaScript -->
+               </div>
+            </section>
+         </section>
+
+
+         <!-- Модальное окно для новости -->
+         <div class="modal" id="news-modal">
+            <div class="modal-content">
+               <span class="close-modal" id="close-modal">&times;</span>
+               <h2 class="modal-title" id="modal-title">Заголовок новости</h2>
+               <div class="modal-date" id="modal-date">Дата публикации</div>
+               <div class="modal-main-image">
+                  <img id="modal-main-image" src="" alt="Главное изображение новости">
+               </div>
+               <div class="modal-text" id="modal-text">
+                  Полный текст новости...
+               </div>
+               <div class="modal-gallery">
+                  <div class="news_news_news_slider_container">
+                     <div class="news_news_slider" id="news_news_slider">
+                        <!-- Слайды будут добавлены через JavaScript -->
+                     </div>
+                     <button class="news_news_slider-arrow prev" id="prev-btn">&#10094;</button>
+                     <button class="news_news_slider-arrow next" id="next-btn">&#10095;</button>
+                  </div>
+                  <div class="news_news_slider-controls">
+                     <div class="news_news_slider-news_dots" id="news_news_slider-news_dots">
+                        <!-- Точки будут добавлены через JavaScript -->
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+
+         <!-- Полноэкранный просмотр изображения -->
+         <div class="fullscreen-image" id="fullscreen-image">
+            <span class="close-fullscreen">&times;</span>
+            <div class="fullscreen-container">
+               <button class="fullscreen-arrow prev" id="fullscreen-prev">&#10094;</button>
+               <img src="" alt="Полноэкранное изображение">
+               <button class="fullscreen-arrow next" id="fullscreen-next">&#10095;</button>
+            </div>
+            <div class="fullscreen-caption" id="fullscreen-caption"></div>
+         </div>
+         </section>
+
+         <!-- <section class="news_section">
             <div class="news__container">
                <div class="news_block">
                   <div class="services__title">Новости</div>
@@ -343,11 +440,11 @@
                      </a>
                   </div>
                   <div class="news_button btn-container">
-                     <a class="button white" href="">Все Новости</a>
+                     <a class="button white" href="neuws.html">Все Новости</a>
                   </div>
                </div>
             </div>
-         </section>
+         </section> -->
          <section class="vacancies_section">
             <div class="vacancies__container">
                <div class="vacancies_block">
@@ -395,7 +492,7 @@
                      <li class="footer_li"><a class="footer_li_a" href="">О компании</a></li>
                      <li class="footer_li"><a class="footer_li_a" href="services.html">Услуги</a></li>
                      <li class="footer_li"><a class="footer_li_a" href="">Контакты</a></li>
-                     <li class="footer_li"><a class="footer_li_a" href="">Новости</a></li>
+                     <li class="footer_li"><a class="footer_li_a" href="neuws.html">Новости</a></li>
                      <li class="footer_li"><a class="footer_li_a" href="">Вакансии</a></li>
                      <li class="footer_li"><a class="footer_li_a" href="">Опрос</a></li>
                   </ul>
@@ -406,7 +503,7 @@
                      <li class="footer_li"><a class="footer_li_a" href="">Контакты</a></li>
                   </ul>
                   <ul class="footer_ul nav_twu">
-                     <li class="footer_li"><a class="footer_li_a" href="">Новости</a></li>
+                     <li class="footer_li"><a class="footer_li_a" href="neuws.html">Новости</a></li>
                      <li class="footer_li"><a class="footer_li_a" href="">Вакансии</a></li>
                      <li class="footer_li"><a class="footer_li_a" href="">Опрос</a></li>
                   </ul>
@@ -438,7 +535,9 @@
          </div>
       </footer>
    </div>
-   <script src="js/main.js" defer></script>
+   <script src="js/main.js"></script>
+   <script src="js/news.js" defer></script>
+
 </body>
 
 </html>

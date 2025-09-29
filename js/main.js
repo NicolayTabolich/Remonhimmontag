@@ -410,3 +410,6 @@ document.addEventListener('DOMContentLoaded', function () {
    updateCardsToShow();
    startAutoScroll();
 });
+
+
+
