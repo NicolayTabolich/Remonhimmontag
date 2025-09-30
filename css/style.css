@@ -1779,6 +1779,7 @@ main {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: 20px;
+  padding: 0px 10px;
 }
 
 .latest-news-card {
@@ -1843,10 +1844,15 @@ main {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  gap: 20px;
+  gap: 15px;
   margin-bottom: 30px;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+}
+@media (max-width: 567.98px) {
+  .filters {
+    margin-bottom: 15px;
+  }
 }
 
 .filter-group {
@@ -1868,19 +1874,51 @@ select {
   border: 1px solid #ddd;
   border-radius: 4px;
   background-color: white;
-  font-size: 1rem;
+  font-size: 14px;
+}
+@media (max-width: 567.98px) {
+  select {
+    font-size: 12px;
+    padding: 0px 10px;
+  }
+}
+
+.news__container {
+  padding: 40px 0px 20px;
+}
+@media (max-width: 567.98px) {
+  .news__container {
+    padding: 20px 0px;
+  }
+}
+
+@media (max-width: 567.98px) {
+  .filter-group {
+    font-size: 12px;
+    padding: 0px 10px;
+  }
+}
+
+.__news_none {
+  display: none;
 }
 
 .news-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
   gap: 25px;
-  margin-bottom: 40px;
+  margin-bottom: 10px;
+  padding: 0px 10px;
+}
+@media (max-width: 567.98px) {
+  .news-grid {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
 }
 
 .news-card {
   background-color: white;
-  border-radius: 8px;
+  border-radius: 3px;
   overflow: hidden;
   -webkit-box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
           box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -1906,7 +1944,7 @@ select {
 }
 
 .news-content {
-  padding: 20px;
+  padding: 15px 5px;
 }
 
 .news-date {
@@ -1916,14 +1954,28 @@ select {
 }
 
 .news-title {
-  font-size: 1.8rem;
+  font-size: 22px;
   margin-bottom: 10px;
-  color: #2c3e50;
+  color: #0d0932;
+  line-height: 120%;
+  font-weight: 600;
+}
+@media (max-width: 567.98px) {
+  .news-title {
+    font-size: 18px;
+  }
 }
 
 .news-summary {
   color: #555;
   margin-bottom: 15px;
+  font-size: 16px;
+  line-height: 100%;
+}
+@media (max-width: 567.98px) {
+  .news-summary {
+    font-size: 14px;
+  }
 }
 
 /* Убираем ссылку "Читать далее" для обычных новостей */
@@ -2292,10 +2344,6 @@ select {
     right: 10px;
   }
 }
-.__news_none {
-  display: none;
-}
-
 .vacancies_section {
   background-color: #0d0932;
 }
@@ -3175,4 +3223,8 @@ select {
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
+}
+
+.__news_laset_none {
+  display: none;
 }
