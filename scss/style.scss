@@ -2801,6 +2801,9 @@ select {
    border-radius: 8px;
    overflow: hidden;
    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+   @media (max-width: 638.98px) {
+      height: 250px;
+   }
 }
 
 .map-container iframe {
@@ -2868,7 +2871,6 @@ select {
    .contacts__container {
       flex-direction: column;
    }
-
    .contacts__info,
    .contacts__map {
       width: 100%;

@@ -3312,6 +3312,11 @@ select {
   -webkit-box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
           box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
+@media (max-width: 638.98px) {
+  .map-container {
+    height: 250px;
+  }
+}
 
 .map-container iframe {
   width: 100%;
