@@ -2827,6 +2827,9 @@ select {
    flex-direction: column;
    gap: 5px;
    position: relative;
+   @media (max-width: 567.98px) {
+            gap: 4px;
+      }
    &:not(:last-child):after {
       position: absolute;
       content: "";
@@ -2848,6 +2851,9 @@ select {
    font-size: 16px;
    font-weight: bold;
    line-height: 120%;
+   @media (max-width: 567.98px) {
+      font-size: 14px;
+   }
 }
 
 .contact__block a {
