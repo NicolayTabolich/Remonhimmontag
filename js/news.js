@@ -540,7 +540,7 @@ function changeFullscreennews_slide(direction) {
 
 function updateFullscreenImage() {
    fullscreenImg.src = currentNewsImages[fullscreencurrentnews_slide_2];
-   fullscreenCaption.textContent = `Изображение ${fullscreencurrentnews_slide_2 + 1} из ${currentNewsImages.length}`;
+   // fullscreenCaption.textContent = `Изображение ${fullscreencurrentnews_slide_2 + 1} из ${currentNewsImages.length}`;
 }
 
 // Запуск приложения
