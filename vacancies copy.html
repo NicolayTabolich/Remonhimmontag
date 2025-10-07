@@ -13,6 +13,10 @@
          font-family: 'Arial', sans-serif;
       }
 
+      body {
+         background-color: #f5f7fa;
+      }
+
       .container {
          max-width: 1200px;
          margin: 0 auto;
@@ -80,7 +84,7 @@
          margin-bottom: 20px;
       }
 
-      .file-select-btn {
+      .file-input-wrapper {
          display: block;
          width: 100%;
          padding: 12px;
@@ -93,38 +97,20 @@
          margin-bottom: 15px;
       }
 
-      .file-select-btn:hover {
+      .file-input-wrapper:hover {
          background-color: #dfe6e9;
          border-color: #95a5a6;
       }
 
-      .file-info {
+      .file-input {
          display: none;
-         align-items: center;
-         justify-content: space-between;
-         background-color: #f1f8ff;
-         padding: 10px 15px;
-         border-radius: 6px;
-         margin-top: 10px;
       }
 
       .file-name {
          font-size: 14px;
          color: #2c3e50;
-      }
-
-      .remove-file {
-         background: none;
-         border: none;
-         color: #e74c3c;
-         font-size: 18px;
-         cursor: pointer;
-         padding: 0;
-         width: 20px;
-         height: 20px;
-         display: flex;
-         align-items: center;
-         justify-content: center;
+         margin-top: 10px;
+         display: none;
       }
 
       .checkbox-label {
@@ -158,17 +144,8 @@
          transition: background-color 0.3s;
       }
 
-      .submit-btn:disabled {
-         background-color: #bdc3c7;
-         cursor: not-allowed;
-      }
-
-      .submit-btn:not(:disabled):hover {
+      .submit-btn:hover {
          background-color: #27ae60;
-      }
-
-      .file-input {
-         display: none;
       }
 
       .message {
@@ -188,12 +165,6 @@
          background-color: #f8d7da;
          color: #721c24;
          border: 1px solid #f5c6cb;
-      }
-
-      .loading {
-         display: none;
-         text-align: center;
-         margin: 10px 0;
       }
 
       @media (max-width: 768px) {
@@ -217,28 +188,25 @@
             <p>Скачайте, заполните и отправьте нам ваше резюме и наши специалисты обязательно Вам перезвонят.</p>
          </div>
          <div class="form-side">
-            <!-- Замените путь на ваш файл резюме -->
+            <!-- Замените "резюме.docx" на путь к вашему файлу -->
             <a href="resume.docx" class="download-btn" download>СКАЧАТЬ РЕЗЮМЕ</a>
 
-            <form id="resume-form">
+            <form action="send_email.php" method="POST" enctype="multipart/form-data" id="resume-form">
                <div class="file-section">
-                  <button type="button" class="file-select-btn" id="file-select-btn">ВЫБРАТЬ ФАЙЛ</button>
-                  <input type="file" id="file-input" class="file-input" name="resume" accept=".doc,.docx,.pdf">
-
-                  <div class="file-info" id="file-info">
-                     <span class="file-name" id="file-name"></span>
-                     <button type="button" class="remove-file" id="remove-file">&times;</button>
-                  </div>
+                  <label class="file-input-wrapper">
+                     ВЫБРАТЬ ФАЙЛ
+                     <input type="file" class="file-input" id="resume-file" name="resume" accept=".doc,.docx,.pdf"
+                        required onchange="updateFileName(this)">
+                  </label>
+                  <div class="file-name" id="file-name-display"></div>
                </div>
 
                <label class="checkbox-label">
-                  <input type="checkbox" id="agree-checkbox" name="agree">
+                  <input type="checkbox" id="agree-check" name="agree" required>
                   <span>Согласен на обработку персональных данных</span>
                </label>
 
-               <div class="loading" id="loading">Отправка...</div>
-
-               <button type="submit" class="submit-btn" id="submit-btn" disabled>ОТПРАВИТЬ</button>
+               <button type="submit" class="submit-btn">ОТПРАВИТЬ</button>
             </form>
 
             <div class="message" id="message"></div>
@@ -247,122 +215,53 @@
    </div>
 
    <script>
-      document.addEventListener('DOMContentLoaded', function () {
-         const form = document.getElementById('resume-form');
-         const fileSelectBtn = document.getElementById('file-select-btn');
-         const fileInput = document.getElementById('file-input');
-         const fileInfo = document.getElementById('file-info');
-         const fileName = document.getElementById('file-name');
-         const removeFileBtn = document.getElementById('remove-file');
-         const agreeCheckbox = document.getElementById('agree-checkbox');
-         const submitBtn = document.getElementById('submit-btn');
+      function updateFileName(input) {
+         const fileNameDisplay = document.getElementById('file-name-display');
+         if (input.files.length > 0) {
+            fileNameDisplay.textContent = 'Выбран файл: ' + input.files[0].name;
+            fileNameDisplay.style.display = 'block';
+         } else {
+            fileNameDisplay.style.display = 'none';
+         }
+      }
+
+      // Обработка отправки формы
+      document.getElementById('resume-form').addEventListener('submit', function (e) {
+         const fileInput = document.getElementById('resume-file');
+         const agreeCheck = document.getElementById('agree-check');
          const message = document.getElementById('message');
-         const loading = document.getElementById('loading');
 
-         // Открываем диалог выбора файла
-         fileSelectBtn.addEventListener('click', function () {
-            fileInput.click();
-         });
-
-         // Обработка выбранного файла
-         fileInput.addEventListener('change', function () {
-            if (this.files && this.files[0]) {
-               const file = this.files[0];
-               fileName.textContent = file.name;
-               fileInfo.style.display = 'flex';
-               updateSubmitButtonState();
-            }
-         });
-
-         // Удаление выбранного файла
-         removeFileBtn.addEventListener('click', function () {
-            fileInput.value = '';
-            fileInfo.style.display = 'none';
-            updateSubmitButtonState();
-         });
-
-         // Обновление состояния кнопки отправки
-         function updateSubmitButtonState() {
-            const fileSelected = fileInput.files && fileInput.files[0];
-            const agreementChecked = agreeCheckbox.checked;
-
-            submitBtn.disabled = !(fileSelected && agreementChecked);
-         }
-
-         // Отслеживание изменений в чекбоксе
-         agreeCheckbox.addEventListener('change', updateSubmitButtonState);
-
-         // Отправка формы
-         form.addEventListener('submit', function (e) {
+         // Проверка файла
+         if (!fileInput.files[0]) {
             e.preventDefault();
-
-            if (submitBtn.disabled) return;
-
-            // Показываем индикатор загрузки
-            submitBtn.style.display = 'none';
-            loading.style.display = 'block';
-            message.style.display = 'none';
-
-            // Создаем FormData для отправки файла
-            const formData = new FormData();
-            formData.append('resume', fileInput.files[0]);
-            formData.append('agree', agreeCheckbox.checked ? 'on' : '');
-
-            // Отправляем на сервер
-            fetch('send_email.php', {
-               method: 'POST',
-               body: formData
-            })
-               .then(response => {
-                  // Проверяем статус ответа
-                  if (!response.ok) {
-                     throw new Error(`HTTP error! status: ${response.status}`);
-                  }
-                  return response.text();
-               })
-               .then(text => {
-                  try {
-                     // Пытаемся распарсить JSON
-                     const data = JSON.parse(text);
-                     if (data.success) {
-                        showMessage(data.message, 'success');
-                        // Сброс формы
-                        form.reset();
-                        fileInput.value = '';
-                        fileInfo.style.display = 'none';
-                        updateSubmitButtonState();
-                     } else {
-                        showMessage(data.message, 'error');
-                     }
-                  } catch (e) {
-                     // Если не удалось распарсить JSON, показываем сырой текст
-                     console.error('Invalid JSON:', text);
-                     showMessage('Ошибка сервера: ' + text.substring(0, 100), 'error');
-                  }
-               })
-               .catch(error => {
-                  console.error('Fetch error:', error);
-                  showMessage('Ошибка отправки: ' + error.message, 'error');
-               })
-               .finally(() => {
-                  // Восстанавливаем кнопку
-                  submitBtn.style.display = 'block';
-                  loading.style.display = 'none';
-                  updateSubmitButtonState();
-               });
-         });
-
-         // Функция показа сообщений
-         function showMessage(text, type) {
-            message.textContent = text;
-            message.className = 'message ' + type;
+            message.textContent = 'Пожалуйста, выберите файл';
+            message.className = 'message error';
             message.style.display = 'block';
-
-            // Скрываем сообщение через 5 секунд
-            setTimeout(() => {
-               message.style.display = 'none';
-            }, 5000);
+            return;
          }
+
+         // Проверка согласия
+         if (!agreeCheck.checked) {
+            e.preventDefault();
+            message.textContent = 'Необходимо согласие на обработку данных';
+            message.className = 'message error';
+            message.style.display = 'block';
+            return;
+         }
+
+         // Проверка размера файла (максимум 5MB)
+         if (fileInput.files[0].size > 5 * 1024 * 1024) {
+            e.preventDefault();
+            message.textContent = 'Файл слишком большой. Максимальный размер - 5MB';
+            message.className = 'message error';
+            message.style.display = 'block';
+            return;
+         }
+
+         // Если все проверки пройдены, форма будет отправлена
+         message.textContent = 'Отправка файла...';
+         message.className = 'message';
+         message.style.display = 'block';
       });
    </script>
 </body>
