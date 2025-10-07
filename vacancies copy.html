@@ -65,8 +65,10 @@
          border-radius: 5px;
          text-decoration: none;
          font-weight: bold;
-         margin-bottom: 30px;
+         margin-bottom: 20px;
          transition: background-color 0.3s;
+         width: 100%;
+         text-align: center;
       }
 
       .download-btn:hover {
@@ -87,6 +89,8 @@
          font-weight: bold;
          border: 1px solid #ddd;
          transition: background-color 0.3s;
+         width: 100%;
+         text-align: center;
       }
 
       .file-label:hover {
@@ -193,13 +197,11 @@
          <div class="text-side">
             <h1>Мы ждем Вас в нашей большой и дружной команде</h1>
             <p>Скачайте, заполните и отправьте нам ваше резюме и наши специалисты обязательно Вам перезвонят.</p>
-            <a href="resume.docx" class="download-btn" id="download-btn">СКАЧАТЬ РЕЗЮМЕ</a>
-
-            <!-- Информация о скачивании файла -->
-            <div id="download-message" class="message"></div>
          </div>
 
          <div class="form-side">
+            <a href="resume.docx" class="download-btn">СКАЧАТЬ РЕЗЮМЕ</a>
+
             <form id="resume-form" enctype="multipart/form-data">
                <div class="form-group">
                   <label for="file-input" class="file-label">ВЫБРАТЬ ФАЙЛ</label>
@@ -236,22 +238,13 @@
          const submitBtn = document.getElementById('submit-btn');
          const form = document.getElementById('resume-form');
          const formMessage = document.getElementById('form-message');
-         const downloadBtn = document.getElementById('download-btn');
-         const downloadMessage = document.getElementById('download-message');
-
-         // Показываем сообщение о готовности скачать файл
-         downloadMessage.textContent = 'Файл резюме готов к скачиванию';
-         downloadMessage.className = 'message success';
-         downloadMessage.style.display = 'block';
 
          // Обработчик выбора файла
          fileInput.addEventListener('change', function () {
             if (this.files && this.files[0]) {
                // Проверяем размер файла (максимум 5MB)
                if (this.files[0].size > 5 * 1024 * 1024) {
-                  formMessage.textContent = 'Файл слишком большой. Максимальный размер - 5MB.';
-                  formMessage.className = 'message error';
-                  formMessage.style.display = 'block';
+                  showMessage('Файл слишком большой. Максимальный размер - 5MB.', 'error');
                   this.value = '';
                   return;
                }
@@ -283,72 +276,71 @@
             submitBtn.disabled = !(isFileSelected && isAgreementChecked);
          }
 
+         // Функция показа сообщений
+         function showMessage(text, type) {
+            formMessage.textContent = text;
+            formMessage.className = `message ${type}`;
+            formMessage.style.display = 'block';
+         }
+
          // Обработчик отправки формы
-         form.addEventListener('submit', function (e) {
+         form.addEventListener('submit', async function (e) {
             e.preventDefault();
 
             // Показываем пользователю, что идет отправка
             submitBtn.disabled = true;
             submitBtn.textContent = 'Отправка...';
 
-            // Собираем данные формы
-            const formData = new FormData(this);
+            try {
+               // Собираем данные формы
+               const formData = new FormData(this);
 
-            // Отправляем данные на сервер
-            fetch('send_resume.php', {
-               method: 'POST',
-               body: formData
-            })
-               .then(response => {
-                  if (!response.ok) {
-                     throw new Error('Ошибка сети');
-                  }
-                  return response.text();
-               })
-               .then(data => {
-                  // Пытаемся разобрать ответ как JSON
-                  try {
-                     const jsonData = JSON.parse(data);
-                     if (jsonData.success) {
-                        formMessage.textContent = jsonData.message;
-                        formMessage.className = 'message success';
-
-                        // Сброс формы
-                        form.reset();
-                        fileInfo.style.display = 'none';
-                     } else {
-                        formMessage.textContent = jsonData.message;
-                        formMessage.className = 'message error';
-                     }
-                  } catch (e) {
-                     // Если ответ не JSON, показываем как есть
-                     if (data.includes('успешно')) {
-                        formMessage.textContent = 'Ваше резюме успешно отправлено! Мы свяжемся с Вами в ближайшее время.';
-                        formMessage.className = 'message success';
-
-                        // Сброс формы
-                        form.reset();
-                        fileInfo.style.display = 'none';
-                     } else {
-                        formMessage.textContent = 'Произошла ошибка при отправке. Пожалуйста, попробуйте еще раз.';
-                        formMessage.className = 'message error';
-                     }
-                  }
-
-                  formMessage.style.display = 'block';
-               })
-               .catch(error => {
-                  formMessage.textContent = 'Произошла ошибка при отправке. Пожалуйста, попробуйте еще раз.';
-                  formMessage.className = 'message error';
-                  formMessage.style.display = 'block';
-                  console.error('Error:', error);
-               })
-               .finally(() => {
-                  // Восстанавливаем кнопку
-                  submitBtn.disabled = false;
-                  submitBtn.textContent = 'ОТПРАВИТЬ';
-                  checkFormValidity();
+               // Отправляем данные на сервер
+               const response = await fetch('send_resume.php', {
+                  method: 'POST',
+                  body: formData
                });
+
+               if (!response.ok) {
+                  throw new Error(`HTTP error! status: ${response.status}`);
+               }
+
+               const data = await response.text();
+
+               // Пытаемся разобрать ответ как JSON
+               try {
+                  const jsonData = JSON.parse(data);
+                  if (jsonData.success) {
+                     showMessage(jsonData.message, 'success');
+                     // Сброс формы
+                     form.reset();
+                     fileInfo.style.display = 'none';
+                  } else {
+                     showMessage(jsonData.message, 'error');
+                  }
+               } catch (e) {
+                  // Если ответ не JSON, показываем как есть
+                  if (data.includes('успешно')) {
+                     showMessage('Ваше резюме успешно отправлено! Мы свяжемся с Вами в ближайшее время.', 'success');
+                     // Сброс формы
+                     form.reset();
+                     fileInfo.style.display = 'none';
+                  } else {
+                     showMessage('Получен неожиданный ответ от сервера: ' + data, 'error');
+                  }
+               }
+            } catch (error) {
+               console.error('Ошибка:', error);
+               showMessage(`Ошибка сети: ${error.message}. Проверьте: 
+                    1. Существует ли файл send_resume.php
+                    2. Поддерживает ли хостинг PHP
+                    3. Нет ли ошибок в PHP коде`, 'error');
+            } finally {
+               // Восстанавливаем кнопку
+               submitBtn.disabled = false;
+               submitBtn.textContent = 'ОТПРАВИТЬ';
+               checkFormValidity();
+            }
          });
       });
    </script>

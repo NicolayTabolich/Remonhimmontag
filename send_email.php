@@ -1,10 +1,6 @@
 <?php
 // Файл: send_resume.php
 
-// Включаем вывод ошибок для отладки (убрать в продакшене)
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-
 // Устанавливаем кодировку
 header('Content-Type: application/json; charset=utf-8');
 
@@ -16,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 
 // Проверяем наличие файла
 if (!isset($_FILES['resume']) || $_FILES['resume']['error'] !== UPLOAD_ERR_OK) {
-    echo json_encode(['success' => false, 'message' => 'Ошибка загрузки файла. Код ошибки: ' . $_FILES['resume']['error']]);
+    echo json_encode(['success' => false, 'message' => 'Ошибка загрузки файла.']);
     exit;
 }
 
@@ -31,7 +27,6 @@ $file = $_FILES['resume'];
 $fileName = $file['name'];
 $fileTmpName = $file['tmp_name'];
 $fileSize = $file['size'];
-$fileError = $file['error'];
 
 // Проверяем размер файла (максимум 5MB)
 if ($fileSize > 5 * 1024 * 1024) {
@@ -54,16 +49,7 @@ $message = "
 
 Дата отправки: " . date('d.m.Y H:i:s') . "
 IP отправителя: " . ($_SERVER['REMOTE_ADDR'] ?? 'неизвестен') . "
-User-Agent: " . ($_SERVER['HTTP_USER_AGENT'] ?? 'неизвестен') . "
 ";
-
-// Заголовки письма
-$headers = [
-    'From: ' . $from,
-    'Reply-To: ' . $from,
-    'Content-Type: text/plain; charset=utf-8',
-    'X-Mailer: PHP/' . phpversion()
-];
 
 // Подготовка вложения
 $fileContent = file_get_contents($fileTmpName);
@@ -75,9 +61,11 @@ if ($fileContent === false) {
 $fileContent = chunk_split(base64_encode($fileContent));
 $boundary = md5(time());
 
-$headers = implode("\r\n", $headers);
-$headers .= "\r\nMIME-Version: 1.0";
-$headers .= "\r\nContent-Type: multipart/mixed; boundary=\"$boundary\"";
+// Заголовки письма
+$headers = "From: $from\r\n";
+$headers .= "Reply-To: $from\r\n";
+$headers .= "MIME-Version: 1.0\r\n";
+$headers .= "Content-Type: multipart/mixed; boundary=\"$boundary\"\r\n";
 
 // Формируем тело письма с вложением
 $body = "--$boundary\r\n";
@@ -99,16 +87,6 @@ if (mail($to, '=?UTF-8?B?' . base64_encode($subject) . '?=', $body, $headers)) {
         'message' => 'Ваше резюме успешно отправлено! Мы свяжемся с Вами в ближайшее время.'
     ]);
 } else {
-    // Дополнительная диагностика ошибки
-    $lastError = error_get_last();
-    $errorMsg = 'Произошла ошибка при отправке. ';
-    
-    if ($lastError && strpos($lastError['message'], 'mail') !== false) {
-        $errorMsg .= 'Проблема с отправкой почты. ';
-    }
-    
-    $errorMsg .= 'Пожалуйста, попробуйте еще раз или свяжитесь с нами другим способом.';
-    
-    echo json_encode(['success' => false, 'message' => $errorMsg]);
+    echo json_encode(['success' => false, 'message' => 'Произошла ошибка при отправке. Пожалуйста, попробуйте еще раз.']);
 }
 ?>
