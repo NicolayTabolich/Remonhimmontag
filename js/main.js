@@ -413,3 +413,65 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
+// ВАкансии
+document.addEventListener('DOMContentLoaded', function () {
+   // Весь предыдущий код остается без изменений
+   // ...
+
+   // Аккордеон для вакансий
+   const vacancyItems = document.querySelectorAll('.vacancy_page_item');
+
+   vacancyItems.forEach(item => {
+      const header = item.querySelector('.vacancy_page_header');
+
+      header.addEventListener('click', function () {
+         // Убрали автоматическое закрытие других вакансий
+         // Теперь пользователь сам управляет каждой вакансией
+
+         // Переключаем текущий элемент
+         item.classList.toggle('active');
+
+         // Если вакансия закрывается, сбрасываем состояние телефона
+         if (!item.classList.contains('active')) {
+            resetPhoneState(item);
+         }
+      });
+   });
+
+   // Функционал показа телефона
+   const showPhoneBtns = document.querySelectorAll('.show_phone_btn');
+
+   showPhoneBtns.forEach(btn => {
+      btn.addEventListener('click', function (e) {
+         e.stopPropagation(); // Предотвращаем срабатывание клика на родительский элемент
+
+         const phoneContainer = this.nextElementSibling;
+
+         // Показываем/скрываем контейнер с телефоном
+         if (phoneContainer && phoneContainer.classList.contains('phone_container')) {
+            phoneContainer.classList.toggle('active');
+
+            // Меняем текст кнопки
+            if (phoneContainer.classList.contains('active')) {
+               this.textContent = 'Скрыть телефон';
+            } else {
+               this.textContent = 'Показать телефон';
+            }
+         }
+      });
+   });
+
+   // Функция для сброса состояния телефона
+   function resetPhoneState(vacancyItem) {
+      const phoneContainer = vacancyItem.querySelector('.phone_container');
+      const showPhoneBtn = vacancyItem.querySelector('.show_phone_btn');
+
+      if (phoneContainer) {
+         phoneContainer.classList.remove('active');
+      }
+
+      if (showPhoneBtn) {
+         showPhoneBtn.textContent = 'Показать телефон';
+      }
+   }
+});

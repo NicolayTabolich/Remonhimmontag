@@ -198,7 +198,7 @@ const fullscreenNext = document.getElementById('fullscreen-next');
 
 // Переменные состояния
 let currentPage = 1;
-const newsPerPage = 6;
+const newsPerPage = 12;
 let filteredNews = [...newsData];
 let currentnews_slide_2 = 0;
 let currentNewsImages = [];
