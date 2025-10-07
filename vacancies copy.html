@@ -4,7 +4,7 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Вакансии - Отправка резюме</title>
+   <title>Вакансии</title>
    <style>
       * {
          margin: 0;
@@ -14,254 +14,342 @@
       }
 
       body {
-         background-color: #f5f7fa;
+         background-color: #f5f5f5;
+         padding: 20px;
       }
 
-      .container {
+      .vacancy-container {
          max-width: 1200px;
          margin: 0 auto;
-         padding: 40px 20px;
+         background: white;
+         border-radius: 10px;
+         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+         overflow: hidden;
       }
 
-      .vacancy-block {
+      .vacancy-content {
          display: flex;
          flex-wrap: wrap;
-         gap: 40px;
-         background-color: #f8f9fa;
-         border-radius: 12px;
-         padding: 40px;
-         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
       }
 
       .text-side {
          flex: 1;
          min-width: 300px;
-         display: flex;
-         flex-direction: column;
-         justify-content: center;
-      }
-
-      .text-side h2 {
-         font-size: 28px;
-         color: #2c3e50;
-         margin-bottom: 20px;
-         line-height: 1.3;
-      }
-
-      .text-side p {
-         font-size: 16px;
-         color: #555;
-         line-height: 1.6;
+         padding: 40px;
+         background-color: #f9f9f9;
       }
 
       .form-side {
          flex: 1;
          min-width: 300px;
-         background-color: white;
-         border-radius: 8px;
-         padding: 30px;
-         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+         padding: 40px;
+      }
+
+      h1 {
+         color: #333;
+         margin-bottom: 20px;
+         font-size: 28px;
+      }
+
+      p {
+         color: #555;
+         line-height: 1.6;
+         margin-bottom: 20px;
       }
 
       .download-btn {
          display: inline-block;
-         background-color: #3498db;
+         background-color: #2c5aa0;
          color: white;
-         text-decoration: none;
          padding: 12px 24px;
-         border-radius: 6px;
+         border-radius: 5px;
+         text-decoration: none;
          font-weight: bold;
-         text-align: center;
-         margin-bottom: 25px;
+         margin-bottom: 30px;
          transition: background-color 0.3s;
       }
 
       .download-btn:hover {
-         background-color: #2980b9;
+         background-color: #1e3d72;
       }
 
-      .file-section {
+      .form-group {
          margin-bottom: 20px;
       }
 
-      .file-input-wrapper {
-         display: block;
-         width: 100%;
-         padding: 12px;
-         background-color: #ecf0f1;
-         border: 2px dashed #bdc3c7;
-         border-radius: 6px;
-         text-align: center;
+      .file-label {
+         display: inline-block;
+         background-color: #f0f0f0;
+         color: #333;
+         padding: 12px 24px;
+         border-radius: 5px;
          cursor: pointer;
-         transition: all 0.3s;
-         margin-bottom: 15px;
+         font-weight: bold;
+         border: 1px solid #ddd;
+         transition: background-color 0.3s;
       }
 
-      .file-input-wrapper:hover {
-         background-color: #dfe6e9;
-         border-color: #95a5a6;
+      .file-label:hover {
+         background-color: #e0e0e0;
       }
 
-      .file-input {
+      #file-input {
          display: none;
+      }
+
+      .file-info {
+         margin-top: 10px;
+         display: none;
+         align-items: center;
+         background-color: #f9f9f9;
+         padding: 10px 15px;
+         border-radius: 5px;
+         border: 1px solid #ddd;
       }
 
       .file-name {
-         font-size: 14px;
-         color: #2c3e50;
-         margin-top: 10px;
-         display: none;
+         flex: 1;
+         color: #333;
+      }
+
+      .remove-file {
+         color: #ff4d4d;
+         cursor: pointer;
+         font-weight: bold;
+         font-size: 18px;
+      }
+
+      .checkbox-group {
+         margin: 25px 0;
       }
 
       .checkbox-label {
          display: flex;
-         align-items: flex-start;
-         margin-bottom: 25px;
+         align-items: center;
          cursor: pointer;
       }
 
       .checkbox-label input {
          margin-right: 10px;
-         margin-top: 3px;
-      }
-
-      .checkbox-label span {
-         font-size: 14px;
-         color: #2c3e50;
-         line-height: 1.4;
       }
 
       .submit-btn {
-         width: 100%;
-         padding: 14px;
-         background-color: #2ecc71;
+         background-color: #2c5aa0;
          color: white;
          border: none;
-         border-radius: 6px;
+         padding: 12px 30px;
+         border-radius: 5px;
          font-weight: bold;
-         font-size: 16px;
          cursor: pointer;
          transition: background-color 0.3s;
+         width: 100%;
       }
 
       .submit-btn:hover {
-         background-color: #27ae60;
+         background-color: #1e3d72;
+      }
+
+      .submit-btn:disabled {
+         background-color: #cccccc;
+         cursor: not-allowed;
       }
 
       .message {
-         margin-top: 15px;
          padding: 10px;
-         border-radius: 4px;
+         margin-top: 15px;
+         border-radius: 5px;
+         text-align: center;
          display: none;
       }
 
-      .message.success {
+      .success {
          background-color: #d4edda;
          color: #155724;
          border: 1px solid #c3e6cb;
       }
 
-      .message.error {
+      .error {
          background-color: #f8d7da;
          color: #721c24;
          border: 1px solid #f5c6cb;
       }
 
       @media (max-width: 768px) {
-         .vacancy-block {
+         .vacancy-content {
             flex-direction: column;
-            padding: 20px;
          }
 
+         .text-side,
          .form-side {
-            padding: 20px;
+            padding: 25px;
          }
       }
    </style>
 </head>
 
 <body>
-   <div class="container">
-      <div class="vacancy-block">
+   <div class="vacancy-container">
+      <div class="vacancy-content">
          <div class="text-side">
-            <h2>Мы ждем Вас в нашей большой и дружной команде.</h2>
+            <h1>Мы ждем Вас в нашей большой и дружной команде</h1>
             <p>Скачайте, заполните и отправьте нам ваше резюме и наши специалисты обязательно Вам перезвонят.</p>
-         </div>
-         <div class="form-side">
-            <!-- Замените "резюме.docx" на путь к вашему файлу -->
-            <a href="resume.docx" class="download-btn" download>СКАЧАТЬ РЕЗЮМЕ</a>
+            <a href="resume.docx" class="download-btn" id="download-btn">СКАЧАТЬ РЕЗЮМЕ</a>
 
-            <form action="send_email.php" method="POST" enctype="multipart/form-data" id="resume-form">
-               <div class="file-section">
-                  <label class="file-input-wrapper">
-                     ВЫБРАТЬ ФАЙЛ
-                     <input type="file" class="file-input" id="resume-file" name="resume" accept=".doc,.docx,.pdf"
-                        required onchange="updateFileName(this)">
-                  </label>
-                  <div class="file-name" id="file-name-display"></div>
+            <!-- Информация о скачивании файла -->
+            <div id="download-message" class="message"></div>
+         </div>
+
+         <div class="form-side">
+            <form id="resume-form" enctype="multipart/form-data">
+               <div class="form-group">
+                  <label for="file-input" class="file-label">ВЫБРАТЬ ФАЙЛ</label>
+                  <input type="file" id="file-input" name="resume" accept=".doc,.docx,.pdf,.txt,.rtf" required>
+                  <div class="file-info" id="file-info">
+                     <span class="file-name" id="file-name"></span>
+                     <span class="remove-file" id="remove-file">×</span>
+                  </div>
                </div>
 
-               <label class="checkbox-label">
-                  <input type="checkbox" id="agree-check" name="agree" required>
-                  <span>Согласен на обработку персональных данных</span>
-               </label>
+               <div class="checkbox-group">
+                  <label class="checkbox-label">
+                     <input type="checkbox" id="agreement" name="agreement" required>
+                     <span>Я даю согласие на обработку персональных данных</span>
+                  </label>
+               </div>
 
-               <button type="submit" class="submit-btn">ОТПРАВИТЬ</button>
+               <button type="submit" class="submit-btn" id="submit-btn" disabled>ОТПРАВИТЬ</button>
+
+               <!-- Сообщения об отправке формы -->
+               <div id="form-message" class="message"></div>
             </form>
-
-            <div class="message" id="message"></div>
          </div>
       </div>
    </div>
 
    <script>
-      function updateFileName(input) {
-         const fileNameDisplay = document.getElementById('file-name-display');
-         if (input.files.length > 0) {
-            fileNameDisplay.textContent = 'Выбран файл: ' + input.files[0].name;
-            fileNameDisplay.style.display = 'block';
-         } else {
-            fileNameDisplay.style.display = 'none';
+      document.addEventListener('DOMContentLoaded', function () {
+         const fileInput = document.getElementById('file-input');
+         const fileInfo = document.getElementById('file-info');
+         const fileName = document.getElementById('file-name');
+         const removeFile = document.getElementById('remove-file');
+         const agreement = document.getElementById('agreement');
+         const submitBtn = document.getElementById('submit-btn');
+         const form = document.getElementById('resume-form');
+         const formMessage = document.getElementById('form-message');
+         const downloadBtn = document.getElementById('download-btn');
+         const downloadMessage = document.getElementById('download-message');
+
+         // Показываем сообщение о готовности скачать файл
+         downloadMessage.textContent = 'Файл резюме готов к скачиванию';
+         downloadMessage.className = 'message success';
+         downloadMessage.style.display = 'block';
+
+         // Обработчик выбора файла
+         fileInput.addEventListener('change', function () {
+            if (this.files && this.files[0]) {
+               // Проверяем размер файла (максимум 5MB)
+               if (this.files[0].size > 5 * 1024 * 1024) {
+                  formMessage.textContent = 'Файл слишком большой. Максимальный размер - 5MB.';
+                  formMessage.className = 'message error';
+                  formMessage.style.display = 'block';
+                  this.value = '';
+                  return;
+               }
+
+               fileName.textContent = this.files[0].name;
+               fileInfo.style.display = 'flex';
+               checkFormValidity();
+
+               // Скрываем сообщения об ошибках при успешном выборе файла
+               formMessage.style.display = 'none';
+            }
+         });
+
+         // Обработчик удаления файла
+         removeFile.addEventListener('click', function () {
+            fileInput.value = '';
+            fileInfo.style.display = 'none';
+            checkFormValidity();
+         });
+
+         // Обработчик изменения состояния чекбокса
+         agreement.addEventListener('change', checkFormValidity);
+
+         // Проверка валидности формы
+         function checkFormValidity() {
+            const isFileSelected = fileInput.files.length > 0;
+            const isAgreementChecked = agreement.checked;
+
+            submitBtn.disabled = !(isFileSelected && isAgreementChecked);
          }
-      }
 
-      // Обработка отправки формы
-      document.getElementById('resume-form').addEventListener('submit', function (e) {
-         const fileInput = document.getElementById('resume-file');
-         const agreeCheck = document.getElementById('agree-check');
-         const message = document.getElementById('message');
-
-         // Проверка файла
-         if (!fileInput.files[0]) {
+         // Обработчик отправки формы
+         form.addEventListener('submit', function (e) {
             e.preventDefault();
-            message.textContent = 'Пожалуйста, выберите файл';
-            message.className = 'message error';
-            message.style.display = 'block';
-            return;
-         }
 
-         // Проверка согласия
-         if (!agreeCheck.checked) {
-            e.preventDefault();
-            message.textContent = 'Необходимо согласие на обработку данных';
-            message.className = 'message error';
-            message.style.display = 'block';
-            return;
-         }
+            // Показываем пользователю, что идет отправка
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Отправка...';
 
-         // Проверка размера файла (максимум 5MB)
-         if (fileInput.files[0].size > 5 * 1024 * 1024) {
-            e.preventDefault();
-            message.textContent = 'Файл слишком большой. Максимальный размер - 5MB';
-            message.className = 'message error';
-            message.style.display = 'block';
-            return;
-         }
+            // Собираем данные формы
+            const formData = new FormData(this);
 
-         // Если все проверки пройдены, форма будет отправлена
-         message.textContent = 'Отправка файла...';
-         message.className = 'message';
-         message.style.display = 'block';
+            // Отправляем данные на сервер
+            fetch('send_resume.php', {
+               method: 'POST',
+               body: formData
+            })
+               .then(response => {
+                  if (!response.ok) {
+                     throw new Error('Ошибка сети');
+                  }
+                  return response.text();
+               })
+               .then(data => {
+                  // Пытаемся разобрать ответ как JSON
+                  try {
+                     const jsonData = JSON.parse(data);
+                     if (jsonData.success) {
+                        formMessage.textContent = jsonData.message;
+                        formMessage.className = 'message success';
+
+                        // Сброс формы
+                        form.reset();
+                        fileInfo.style.display = 'none';
+                     } else {
+                        formMessage.textContent = jsonData.message;
+                        formMessage.className = 'message error';
+                     }
+                  } catch (e) {
+                     // Если ответ не JSON, показываем как есть
+                     if (data.includes('успешно')) {
+                        formMessage.textContent = 'Ваше резюме успешно отправлено! Мы свяжемся с Вами в ближайшее время.';
+                        formMessage.className = 'message success';
+
+                        // Сброс формы
+                        form.reset();
+                        fileInfo.style.display = 'none';
+                     } else {
+                        formMessage.textContent = 'Произошла ошибка при отправке. Пожалуйста, попробуйте еще раз.';
+                        formMessage.className = 'message error';
+                     }
+                  }
+
+                  formMessage.style.display = 'block';
+               })
+               .catch(error => {
+                  formMessage.textContent = 'Произошла ошибка при отправке. Пожалуйста, попробуйте еще раз.';
+                  formMessage.className = 'message error';
+                  formMessage.style.display = 'block';
+                  console.error('Error:', error);
+               })
+               .finally(() => {
+                  // Восстанавливаем кнопку
+                  submitBtn.disabled = false;
+                  submitBtn.textContent = 'ОТПРАВИТЬ';
+                  checkFormValidity();
+               });
+         });
       });
    </script>
 </body>
