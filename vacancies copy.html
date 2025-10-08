@@ -65,7 +65,7 @@
          border-radius: 5px;
          text-decoration: none;
          font-weight: bold;
-         margin-bottom: 20px;
+         margin-bottom: 15px;
          transition: background-color 0.3s;
          width: 100%;
          text-align: center;
@@ -200,9 +200,9 @@
          </div>
 
          <div class="form-side">
-            <a href="resume.docx" class="download-btn">СКАЧАТЬ РЕЗЮМЕ</a>
+            <form id="resume-form" action="send_resume.php" method="POST" enctype="multipart/form-data">
+               <a href="resume.docx" class="download-btn">СКАЧАТЬ РЕЗЮМЕ</a>
 
-            <form id="resume-form" enctype="multipart/form-data">
                <div class="form-group">
                   <label for="file-input" class="file-label">ВЫБРАТЬ ФАЙЛ</label>
                   <input type="file" id="file-input" name="resume" accept=".doc,.docx,.pdf,.txt,.rtf" required>
@@ -252,9 +252,7 @@
                fileName.textContent = this.files[0].name;
                fileInfo.style.display = 'flex';
                checkFormValidity();
-
-               // Скрываем сообщения об ошибках при успешном выборе файла
-               formMessage.style.display = 'none';
+               hideMessage();
             }
          });
 
@@ -272,75 +270,27 @@
          function checkFormValidity() {
             const isFileSelected = fileInput.files.length > 0;
             const isAgreementChecked = agreement.checked;
-
             submitBtn.disabled = !(isFileSelected && isAgreementChecked);
          }
 
-         // Функция показа сообщений
+         // Функции для работы с сообщениями
          function showMessage(text, type) {
             formMessage.textContent = text;
             formMessage.className = `message ${type}`;
             formMessage.style.display = 'block';
          }
 
-         // Обработчик отправки формы
-         form.addEventListener('submit', async function (e) {
-            e.preventDefault();
+         function hideMessage() {
+            formMessage.style.display = 'none';
+         }
 
-            // Показываем пользователю, что идет отправка
+         // Обработчик отправки формы
+         form.addEventListener('submit', function (e) {
+            // Не отменяем стандартную отправку формы
+            // Просто показываем сообщение о загрузке
             submitBtn.disabled = true;
             submitBtn.textContent = 'Отправка...';
-
-            try {
-               // Собираем данные формы
-               const formData = new FormData(this);
-
-               // Отправляем данные на сервер
-               const response = await fetch('send_resume.php', {
-                  method: 'POST',
-                  body: formData
-               });
-
-               if (!response.ok) {
-                  throw new Error(`HTTP error! status: ${response.status}`);
-               }
-
-               const data = await response.text();
-
-               // Пытаемся разобрать ответ как JSON
-               try {
-                  const jsonData = JSON.parse(data);
-                  if (jsonData.success) {
-                     showMessage(jsonData.message, 'success');
-                     // Сброс формы
-                     form.reset();
-                     fileInfo.style.display = 'none';
-                  } else {
-                     showMessage(jsonData.message, 'error');
-                  }
-               } catch (e) {
-                  // Если ответ не JSON, показываем как есть
-                  if (data.includes('успешно')) {
-                     showMessage('Ваше резюме успешно отправлено! Мы свяжемся с Вами в ближайшее время.', 'success');
-                     // Сброс формы
-                     form.reset();
-                     fileInfo.style.display = 'none';
-                  } else {
-                     showMessage('Получен неожиданный ответ от сервера: ' + data, 'error');
-                  }
-               }
-            } catch (error) {
-               console.error('Ошибка:', error);
-               showMessage(`Ошибка сети: ${error.message}. Проверьте: 
-                    1. Существует ли файл send_resume.php
-                    2. Поддерживает ли хостинг PHP
-                    3. Нет ли ошибок в PHP коде`, 'error');
-            } finally {
-               // Восстанавливаем кнопку
-               submitBtn.disabled = false;
-               submitBtn.textContent = 'ОТПРАВИТЬ';
-               checkFormValidity();
-            }
+            showMessage('Идет отправка резюме...', 'success');
          });
       });
    </script>
