@@ -495,14 +495,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
    // Данные для слайдера
    const slideData1 = [
-      { src: '../img/bg_1.jpg', alt: 'photo' },
-      { src: '../img/bg_2.jpg', alt: 'photo 2' },
-      { src: '../img/bg_3.jpg', alt: 'photo 3' },
-      { src: '../img/bg_1.jpg', alt: 'photo 4' },
-      { src: '../img/bg_2.jpg', alt: 'photo 5' },
-      { src: '../img/bg_3.jpg', alt: 'photo 6' },
-      { src: '../img/bg_1.jpg', alt: 'photo 7' },
-      { src: '../img/bg_2.jpg', alt: 'photo 8' }
+      { src: 'img/bg_1.jpg', alt: 'photo' },
+      { src: 'img/bg_2.jpg', alt: 'photo 2' },
+      { src: 'img/bg_3.jpg', alt: 'photo 3' },
+      { src: 'img/bg_1.jpg', alt: 'photo 4' },
+      { src: 'img/bg_2.jpg', alt: 'photo 5' },
+      { src: 'img/bg_3.jpg', alt: 'photo 6' },
+      { src: 'img/bg_1.jpg', alt: 'photo 7' },
+      { src: 'img/bg_2.jpg', alt: 'photo 8' }
    ];
 
    let currentSlide = 0;
