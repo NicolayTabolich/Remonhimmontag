@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>О компании</title>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+   <style>
+      * {
+         margin: 0;
+         padding: 0;
+         box-sizing: border-box;
+         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      body {
+         color: #333;
+         line-height: 1.6;
+      }
+
+      .container {
+         max-width: 1440px;
+         margin: 0 auto;
+         padding: 0 20px;
+      }
+
+      /* Верхнее подменю */
+      .submenu {
+         background-color: #f8f9fa;
+         padding: 12px 0;
+         border-bottom: 1px solid #e9ecef;
+      }
+
+      .submenu ul {
+         display: flex;
+         list-style: none;
+         justify-content: space-between;
+      }
+
+      .submenu a {
+         text-decoration: none;
+         color: #495057;
+         font-weight: 500;
+         font-size: 16px;
+         transition: color 0.3s;
+      }
+
+      .submenu a:hover {
+         color: #007bff;
+      }
+
+      /* Видео компании - исправленная версия */
+      .company-video {
+         width: 100%;
+         height: 80vh;
+         /* Используем высоту окна просмотра */
+         min-height: 500px;
+         /* Минимальная высота */
+         background-color: #000;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         margin: 20px 0;
+         border-radius: 8px;
+         overflow: hidden;
+         position: relative;
+      }
+
+      .video-container {
+         position: relative;
+         width: 100%;
+         height: 100%;
+         overflow: hidden;
+      }
+
+      .video-wrapper {
+         position: absolute;
+         top: 50%;
+         left: 50%;
+         transform: translate(-50%, -50%);
+         min-width: 100%;
+         min-height: 100%;
+         width: auto;
+         height: auto;
+      }
+
+      .video-wrapper iframe {
+         position: absolute;
+         top: 50%;
+         left: 50%;
+         transform: translate(-50%, -50%);
+         min-width: 100%;
+         min-height: 100%;
+         width: auto;
+         height: auto;
+      }
+
+      /* Адаптация соотношения сторон */
+      @media (max-width: 992px) {
+         .company-video {
+            height: 60vh;
+         }
+      }
+
+      @media (max-width: 768px) {
+         .company-video {
+            height: 50vh;
+            min-height: 300px;
+         }
+      }
+
+      /* Текстовые блоки с изображениями */
+      .content-section {
+         display: flex;
+         margin: 60px 0;
+         align-items: center;
+         gap: 40px;
+      }
+
+      .content-section.reverse {
+         flex-direction: row-reverse;
+      }
+
+      .content-text {
+         flex: 1;
+      }
+
+      .content-image {
+         flex: 1;
+         height: 350px;
+         background-color: #e9ecef;
+         border-radius: 8px;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         overflow: hidden;
+      }
+
+      .content-image img {
+         width: 100%;
+         height: 100%;
+         object-fit: cover;
+      }
+
+      h2 {
+         font-size: 28px;
+         margin-bottom: 20px;
+         color: #2c3e50;
+      }
+
+      p {
+         margin-bottom: 15px;
+         font-size: 16px;
+      }
+
+      /* Обновленный слайдер с несколькими изображениями */
+      .slider-container {
+         width: 100vw;
+         margin-left: calc(-50vw + 50%);
+         background-color: #f8f9fa;
+         padding: 40px 0;
+         margin-top: 40px;
+         position: relative;
+      }
+
+      .slider {
+         max-width: 1440px;
+         margin: 0 auto;
+         padding: 0 20px;
+      }
+
+      .slider-wrapper {
+         position: relative;
+         overflow: hidden;
+         border-radius: 8px;
+      }
+
+      .slider-track {
+         display: flex;
+         transition: transform 0.5s ease;
+      }
+
+      .slider-item {
+         flex: 0 0 25%;
+         /* Показываем 4 изображения одновременно */
+         height: 250px;
+         position: relative;
+         overflow: hidden;
+         padding: 0 10px;
+      }
+
+      .slider-item img {
+         width: 100%;
+         height: 100%;
+         object-fit: cover;
+         border-radius: 8px;
+         transition: transform 0.3s ease;
+         cursor: pointer;
+      }
+
+      .slider-item:hover img {
+         transform: scale(1.05);
+      }
+
+      .slider-btn {
+         position: absolute;
+         top: 50%;
+         transform: translateY(-50%);
+         background-color: rgba(255, 255, 255, 0.7);
+         border: none;
+         width: 50px;
+         height: 50px;
+         border-radius: 50%;
+         font-size: 20px;
+         cursor: pointer;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         transition: background-color 0.3s;
+         z-index: 10;
+      }
+
+      .slider-btn:hover {
+         background-color: rgba(255, 255, 255, 0.9);
+      }
+
+      .slider-btn.prev {
+         left: 20px;
+      }
+
+      .slider-btn.next {
+         right: 20px;
+      }
+
+      /* Модальное окно для полноэкранного просмотра */
+      .modal {
+         display: none;
+         position: fixed;
+         top: 0;
+         left: 0;
+         width: 100%;
+         height: 100%;
+         background-color: rgba(0, 0, 0, 0.9);
+         z-index: 1000;
+         justify-content: center;
+         align-items: center;
+      }
+
+      .modal-content {
+         max-width: 90%;
+         max-height: 90%;
+         position: relative;
+      }
+
+      .modal-content img {
+         width: 100%;
+         height: auto;
+         max-height: 90vh;
+         object-fit: contain;
+      }
+
+      .modal-close {
+         position: absolute;
+         top: 15px;
+         right: 15px;
+         color: white;
+         font-size: 30px;
+         cursor: pointer;
+         background: none;
+         border: none;
+         z-index: 1001;
+      }
+
+      .modal-nav {
+         position: absolute;
+         top: 50%;
+         transform: translateY(-50%);
+         background-color: rgba(255, 255, 255, 0.2);
+         border: none;
+         width: 50px;
+         height: 50px;
+         border-radius: 50%;
+         font-size: 20px;
+         color: white;
+         cursor: pointer;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         transition: background-color 0.3s;
+         z-index: 1001;
+      }
+
+      .modal-nav:hover {
+         background-color: rgba(255, 255, 255, 0.4);
+      }
+
+      .modal-nav.prev {
+         left: 20px;
+      }
+
+      .modal-nav.next {
+         right: 20px;
+      }
+
+      .modal-counter {
+         position: absolute;
+         bottom: 20px;
+         left: 0;
+         right: 0;
+         text-align: center;
+         color: white;
+         font-size: 18px;
+      }
+
+      /* Адаптивность */
+      @media (max-width: 1200px) {
+         .slider-item {
+            flex: 0 0 33.333%;
+            /* 3 изображения на экране */
+         }
+      }
+
+      @media (max-width: 992px) {
+
+         .content-section,
+         .content-section.reverse {
+            flex-direction: column;
+         }
+
+         .content-image {
+            width: 100%;
+         }
+
+         .slider-item {
+            flex: 0 0 50%;
+            /* 2 изображения на экране */
+            height: 200px;
+         }
+      }
+
+      @media (max-width: 768px) {
+         .submenu ul {
+            flex-wrap: wrap;
+            gap: 10px;
+         }
+
+         .content-image {
+            height: 250px;
+         }
+
+         .slider-item {
+            flex: 0 0 100%;
+            /* 1 изображение на экране */
+            height: 250px;
+         }
+
+         .slider-btn {
+            width: 40px;
+            height: 40px;
+            font-size: 16px;
+         }
+      }
+   </style>
+</head>
+
+<body>
+   <!-- Верхнее подменю -->
+   <div class="submenu">
+      <div class="container">
+         <ul>
+            <li><a href="#">О компании</a></li>
+            <li><a href="#">Документация</a></li>
+            <li><a href="#">Сертификаты</a></li>
+            <li><a href="#">Противодействие коррупции</a></li>
+            <li><a href="#">Фотогалерея</a></li>
+            <li><a href="#">Опрос</a></li>
+         </ul>
+      </div>
+   </div>
+
+   <!-- Основной контент -->
+   <div class="container">
+      <!-- Видео компании -->
+      <div class="company-video">
+         <div class="video-container">
+            <div class="video-wrapper">
+               <iframe
+                  src="https://www.youtube.com/embed/T9oVJQvlXBQ?rel=0&autoplay=1&mute=1&controls=1&modestbranding=1"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen>
+               </iframe>
+            </div>
+         </div>
+      </div>
+
+      <!-- Текст с картинкой справа -->
+      <div class="content-section">
+         <div class="content-text">
+            <h2>О нашей компании</h2>
+            <p>Мы вынуждены отталкиваться от того, что внедрение современных методик не даёт нам иного выбора, кроме
+               определения позиций, занимаемых участником в отношении постановленных задач. Лишь замеченная
+               политического процесса по его фазе остаются храмом либералов, которые жаждут быть снешним с не уникальным
+               данным до степени совершенной неузнаваемости, из-за чего возрастают их статус бесполезности!</p>
+            <p>А ещё стремящаяся вытеснить предиземное производство, нанотехнологию своевременно верифицированы.
+               Приятно, вращение, наблюдать, как представляется современная социальная поддержка будут рассмотрены
+               исключительно в разрезе нормативовых и финансовых программ.</p>
+         </div>
+         <div class="content-image">
+            <img
+               src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+               alt="Офис компании">
+         </div>
+      </div>
+
+      <!-- Текст с картинкой слева -->
+      <div class="content-section reverse">
+         <div class="content-text">
+            <h2>Наши достижения</h2>
+            <p>На постоянный комплектующий рост и сферо нашей активности предоставлены широкие возможности для
+               направления профессиональной развитии. Высокий уровень населения представителей целевой аудитории
+               является четким, доказательством простого факта: постоянное информационно-производственное обеспечение
+               нашей деятельности обеспечивает широкую кругу (специалисты) участия в формировании мостовых данных.</p>
+            <p>А также регистрированные с зарубежных источников, современные исследования, вне зависимости от их уровня,
+               должны быть ограничены коммуникацией целевой аудитории.</p>
+         </div>
+         <div class="content-image">
+            <img
+               src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+               alt="Наши достижения">
+         </div>
+      </div>
+
+      <!-- Еще один блок текста с картинкой справа -->
+      <div class="content-section">
+         <div class="content-text">
+            <h2>Наша команда</h2>
+            <p>Высокий уровень населения представителей целевой аудитории является четким, доказательством простого
+               факта: основные реальные результаты развития различных форм деятельности, используя зависимость от первой
+               группы, включая различные изменения, а значительная эффективность интегрального контроля, связанные с
+               процессом реализации.</p>
+            <p>Картинальное освоение не допускает ситуации, при которой явно возникла особое мнение, которое можно было
+               бы найти в виде технических проблем, которые могут быть изменены в соответствии с правилами правопорядка.
+            </p>
+         </div>
+         <div class="content-image">
+            <img
+               src="https://images.unsplash.com/photo-1552581234-26160f608093?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+               alt="Наша команда">
+         </div>
+      </div>
+   </div>
+
+   <!-- Бесконечный слайдер с плавной циклической прокруткой -->
+   <div class="slider-container">
+      <div class="slider">
+         <div class="slider-wrapper">
+            <div class="slider-track" id="sliderTrack">
+               <!-- Слайды будут добавлены динамически -->
+            </div>
+
+            <!-- Кнопки навигации -->
+            <button class="slider-btn prev">
+               <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="slider-btn next">
+               <i class="fas fa-chevron-right"></i>
+            </button>
+         </div>
+      </div>
+   </div>
+
+   <!-- Модальное окно для полноэкранного просмотра -->
+   <div class="modal" id="imageModal">
+      <button class="modal-close" id="modalClose">
+         <i class="fas fa-times"></i>
+      </button>
+      <button class="modal-nav prev" id="modalPrev">
+         <i class="fas fa-chevron-left"></i>
+      </button>
+      <button class="modal-nav next" id="modalNext">
+         <i class="fas fa-chevron-right"></i>
+      </button>
+      <div class="modal-content">
+         <img src="" alt="" id="modalImage">
+      </div>
+      <div class="modal-counter" id="modalCounter"></div>
+   </div>
+
+   <script>
+      document.addEventListener('DOMContentLoaded', function () {
+         // Элементы слайдера
+         const sliderTrack = document.getElementById('sliderTrack');
+         const prevBtn = document.querySelector('.slider-btn.prev');
+         const nextBtn = document.querySelector('.slider-btn.next');
+
+         // Элементы модального окна
+         const modal = document.getElementById('imageModal');
+         const modalImage = document.getElementById('modalImage');
+         const modalClose = document.getElementById('modalClose');
+         const modalPrev = document.getElementById('modalPrev');
+         const modalNext = document.getElementById('modalNext');
+         const modalCounter = document.getElementById('modalCounter');
+
+         // Данные для слайдера - ЗАМЕНИТЕ ЭТИ ПУТИ НА ПУТИ К ВАШИМ ИЗОБРАЖЕНИЯМ
+         const slideData = [
+            { src: 'https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80', alt: 'Проект 1' },
+            { src: 'https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80', alt: 'Проект 2' },
+            { src: 'https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80', alt: 'Проект 3' },
+            { src: 'https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80', alt: 'Проект 4' },
+            { src: 'https://images.unsplash.com/photo-1497366412874-3415097a27e7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80', alt: 'Проект 5' },
+            { src: 'https://images.unsplash.com/photo-1497366548340-f43e9a101d5a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80', alt: 'Проект 6' },
+            { src: 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80', alt: 'Проект 7' },
+            { src: 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80', alt: 'Проект 8' }
+         ];
+
+         let currentSlide = 0;
+         let slideInterval;
+         const slideCount = slideData.length;
+         const slideDelay = 7000; // 7 секунд
+
+         // Определяем количество видимых слайдов
+         function getSlidesToShow() {
+            const width = window.innerWidth;
+            if (width < 768) return 1;
+            if (width < 992) return 2;
+            if (width < 1200) return 3;
+            return 4;
+         }
+
+         let slidesToShow = getSlidesToShow();
+
+         // Создаем слайды
+         function createSlides() {
+            sliderTrack.innerHTML = '';
+
+            // Для бесконечной прокрутки добавляем копии слайдов в начало и конец
+            const totalSlides = slideCount + 2 * slidesToShow;
+
+            for (let i = 0; i < totalSlides; i++) {
+               const slideIndex = (i - slidesToShow + slideCount) % slideCount;
+               const slide = document.createElement('div');
+               slide.className = 'slider-item';
+
+               const img = document.createElement('img');
+               img.src = slideData[slideIndex].src;
+               img.alt = slideData[slideIndex].alt;
+
+               slide.appendChild(img);
+               sliderTrack.appendChild(slide);
+            }
+
+            // Устанавливаем начальную позицию
+            sliderTrack.style.transform = `translateX(-${slidesToShow * 100 / slidesToShow}%)`;
+         }
+
+         // Функция для перехода к конкретному слайду
+         function goToSlide(index, instant = false) {
+            if (instant) {
+               sliderTrack.style.transition = 'none';
+            } else {
+               sliderTrack.style.transition = 'transform 0.5s ease';
+            }
+
+            currentSlide = index;
+            const translateX = -currentSlide * (100 / slidesToShow);
+            sliderTrack.style.transform = `translateX(${translateX}%)`;
+
+            // Сброс интервала
+            if (!instant) {
+               resetInterval();
+            }
+         }
+
+         // Функция для перехода к следующей группе слайдов
+         function nextSlide() {
+            currentSlide++;
+
+            // Если достигли конца, незаметно переходим к началу
+            if (currentSlide >= slideCount + slidesToShow) {
+               // Мгновенно переходим к началу без анимации
+               goToSlide(slidesToShow, true);
+               // Затем анимируем переход к следующему слайду
+               setTimeout(() => {
+                  currentSlide = slidesToShow + 1;
+                  goToSlide(currentSlide);
+               }, 50);
+            } else {
+               goToSlide(currentSlide);
+            }
+         }
+
+         // Функция для перехода к предыдущей группе слайдов
+         function prevSlide() {
+            currentSlide--;
+
+            // Если достигли начала, незаметно переходим к концу
+            if (currentSlide < 0) {
+               // Мгновенно переходим к концу без анимации
+               goToSlide(slideCount + slidesToShow - 1, true);
+               // Затем анимируем переход к предыдущему слайду
+               setTimeout(() => {
+                  currentSlide = slideCount + slidesToShow - 2;
+                  goToSlide(currentSlide);
+               }, 50);
+            } else {
+               goToSlide(currentSlide);
+            }
+         }
+
+         // Функция для сброса интервала автоматической смены слайдов
+         function resetInterval() {
+            clearInterval(slideInterval);
+            slideInterval = setInterval(nextSlide, slideDelay);
+         }
+
+         // Открытие модального окна с изображением
+         function openModal(index) {
+            // Корректируем индекс для оригинальных слайдов
+            const originalIndex = (index - slidesToShow + slideCount) % slideCount;
+            currentSlide = originalIndex;
+            updateModal();
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden'; // Блокировка прокрутки фона
+         }
+
+         // Закрытие модального окна
+         function closeModal() {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto'; // Восстановление прокрутки
+         }
+
+         // Обновление содержимого модального окна
+         function updateModal() {
+            const imgSrc = slideData[currentSlide].src;
+            const imgAlt = slideData[currentSlide].alt;
+
+            modalImage.src = imgSrc;
+            modalImage.alt = imgAlt;
+            modalCounter.textContent = `${currentSlide + 1} / ${slideCount}`;
+         }
+
+         // Переход к следующему изображению в модальном окне
+         function modalNextSlide() {
+            currentSlide = (currentSlide + 1) % slideCount;
+            updateModal();
+         }
+
+         // Переход к предыдущему изображению в модальном окне
+         function modalPrevSlide() {
+            currentSlide = (currentSlide - 1 + slideCount) % slideCount;
+            updateModal();
+         }
+
+         // Обработчики событий для слайдера
+         prevBtn.addEventListener('click', prevSlide);
+         nextBtn.addEventListener('click', nextSlide);
+
+         // Обработчики событий для модального окна
+         modalClose.addEventListener('click', closeModal);
+         modalPrev.addEventListener('click', modalPrevSlide);
+         modalNext.addEventListener('click', modalNextSlide);
+
+         // Закрытие модального окна при клике на фон
+         modal.addEventListener('click', function (e) {
+            if (e.target === modal) {
+               closeModal();
+            }
+         });
+
+         // Открытие модального окна при клике на изображение в слайдере
+         sliderTrack.addEventListener('click', function (e) {
+            if (e.target.tagName === 'IMG') {
+               const sliderItems = document.querySelectorAll('.slider-item');
+               const index = Array.from(sliderItems).indexOf(e.target.parentElement);
+               openModal(index);
+            }
+         });
+
+         // Обработчики клавиатуры для навигации
+         document.addEventListener('keydown', function (e) {
+            if (modal.style.display === 'flex') {
+               if (e.key === 'Escape') {
+                  closeModal();
+               } else if (e.key === 'ArrowLeft') {
+                  modalPrevSlide();
+               } else if (e.key === 'ArrowRight') {
+                  modalNextSlide();
+               }
+            }
+         });
+
+         // Адаптация при изменении размера окна
+         window.addEventListener('resize', function () {
+            const newSlidesToShow = getSlidesToShow();
+            if (newSlidesToShow !== slidesToShow) {
+               slidesToShow = newSlidesToShow;
+               createSlides();
+               resetInterval();
+            }
+         });
+
+         // Инициализация
+         createSlides();
+         resetInterval();
+
+         // Пауза автоматической смены при наведении на слайдер
+         const sliderWrapper = document.querySelector('.slider-wrapper');
+         sliderWrapper.addEventListener('mouseenter', function () {
+            clearInterval(slideInterval);
+         });
+
+         sliderWrapper.addEventListener('mouseleave', function () {
+            resetInterval();
+         });
+      });
+   </script>
+</body>
+
+</html>

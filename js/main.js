@@ -248,6 +248,7 @@ document.addEventListener('DOMContentLoaded', function () {
    videoPlayer.addEventListener('click', function () {
       // Заменяем миниатюру на iframe с видео
       this.innerHTML = '<iframe class="video-iframe" src="https://www.youtube.com/embed/T9oVJQvlXBQ?si=Dk1veWe5huZH4TgQ?rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+      this.innerHTML = '<iframe class="company_video-iframe" src="https://www.youtube.com/embed/T9oVJQvlXBQ?si=Dk1veWe5huZH4TgQ?rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
    });
 
    // Функция для обрезки текста по высоте видео
@@ -271,10 +272,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // Наши услуги
 document.addEventListener('DOMContentLoaded', function () {
-   const slider = document.getElementById('servicesSlider');
+   const company_slider = document.getElementById('servicesSlider');
    const dotsservices__container = document.getElementById('sliderDots');
    const dots = dotsservices__container.querySelectorAll('.service_slider_dot');
-   const serviceCards = slider.querySelectorAll('.service_card');
+   const serviceCards = company_slider.querySelectorAll('.service_card');
 
    let currentPosition = 0;
    let currentSlide = 0;
@@ -304,9 +305,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
    // Функция для перемещения слайдера
    function moveSlider() {
-      const cardWidth = slider.offsetWidth / cardsToShow;
+      const cardWidth = company_slider.offsetWidth / cardsToShow;
       currentPosition = -currentSlide * cardWidth * cardsToShow;
-      slider.style.transform = `translateX(${currentPosition}px)`;
+      company_slider.style.transform = `translateX(${currentPosition}px)`;
 
       updateDots();
    }
@@ -372,17 +373,17 @@ document.addEventListener('DOMContentLoaded', function () {
    }
 
    // Обработчики для свайпа на мобильных устройствах
-   slider.addEventListener('touchstart', (e) => {
+   company_slider.addEventListener('touchstart', (e) => {
       touchStartX = e.changedTouches[0].screenX;
       isDragging = true;
    });
 
-   slider.addEventListener('touchmove', (e) => {
+   company_slider.addEventListener('touchmove', (e) => {
       if (!isDragging) return;
       touchEndX = e.changedTouches[0].screenX;
    });
 
-   slider.addEventListener('touchend', () => {
+   company_slider.addEventListener('touchend', () => {
       if (!isDragging) return;
       isDragging = false;
 
@@ -474,4 +475,233 @@ document.addEventListener('DOMContentLoaded', function () {
          showPhoneBtn.textContent = 'Показать телефон';
       }
    }
+});
+
+
+// О компании
+document.addEventListener('DOMContentLoaded', function () {
+   // Элементы слайдера
+   const sliderTrack = document.getElementById('sliderTrack');
+   const prevBtn = document.querySelector('.company_slider-btn.prev');
+   const nextBtn = document.querySelector('.company_slider-btn.next');
+
+   // Элементы модального окна
+   const company_modal = document.getElementById('imageModal');
+   const modalImage = document.getElementById('modalImage');
+   const modalClose = document.getElementById('modalClose');
+   const modalPrev = document.getElementById('modalPrev');
+   const modalNext = document.getElementById('modalNext');
+   const modalCounter = document.getElementById('modalCounter');
+
+   // Данные для слайдера
+   const slideData1 = [
+      { src: '../img/bg_1.jpg', alt: 'photo' },
+      { src: '../img/bg_2.jpg', alt: 'photo 2' },
+      { src: '../img/bg_3.jpg', alt: 'photo 3' },
+      { src: '../img/bg_1.jpg', alt: 'photo 4' },
+      { src: '../img/bg_2.jpg', alt: 'photo 5' },
+      { src: '../img/bg_3.jpg', alt: 'photo 6' },
+      { src: '../img/bg_1.jpg', alt: 'photo 7' },
+      { src: '../img/bg_2.jpg', alt: 'photo 8' }
+   ];
+
+   let currentSlide = 0;
+   let slideInterval;
+   const slideCount = slideData1.length;
+   const slideDelay = 7000; // 7 секунд
+
+   // Определяем количество видимых слайдов
+   function getSlidesToShow() {
+      const width = window.innerWidth;
+      if (width < 768) return 1;
+      if (width < 992) return 2;
+      if (width < 1200) return 3;
+      return 4;
+   }
+
+   let slidesToShow = getSlidesToShow();
+
+   // Создаем слайды
+   function createSlides() {
+      sliderTrack.innerHTML = '';
+
+      // Для бесконечной прокрутки добавляем копии слайдов в начало и конец
+      const totalSlides = slideCount + 2 * slidesToShow;
+
+      for (let i = 0; i < totalSlides; i++) {
+         const slideIndex = (i - slidesToShow + slideCount) % slideCount;
+         const slide = document.createElement('div');
+         slide.className = 'company_slider-item';
+
+         const img = document.createElement('img');
+         img.src = slideData1[slideIndex].src;
+         img.alt = slideData1[slideIndex].alt;
+
+         slide.appendChild(img);
+         sliderTrack.appendChild(slide);
+      }
+
+      // Устанавливаем начальную позицию
+      sliderTrack.style.transform = `translateX(-${slidesToShow * 100 / slidesToShow}%)`;
+   }
+
+   // Функция для перехода к конкретному слайду
+   function goToSlide(index, instant = false) {
+      if (instant) {
+         sliderTrack.style.transition = 'none';
+      } else {
+         sliderTrack.style.transition = 'transform 0.5s ease';
+      }
+
+      currentSlide = index;
+      const translateX = -currentSlide * (100 / slidesToShow);
+      sliderTrack.style.transform = `translateX(${translateX}%)`;
+
+      // Сброс интервала
+      if (!instant) {
+         resetInterval();
+      }
+   }
+
+   // Функция для перехода к следующей группе слайдов
+   function nextSlide() {
+      currentSlide++;
+
+      // Если достигли конца, незаметно переходим к началу
+      if (currentSlide >= slideCount + slidesToShow) {
+         // Мгновенно переходим к началу без анимации
+         goToSlide(slidesToShow, true);
+         // Затем анимируем переход к следующему слайду
+         setTimeout(() => {
+            currentSlide = slidesToShow + 1;
+            goToSlide(currentSlide);
+         }, 50);
+      } else {
+         goToSlide(currentSlide);
+      }
+   }
+
+   // Функция для перехода к предыдущей группе слайдов
+   function prevSlide() {
+      currentSlide--;
+
+      // Если достигли начала, незаметно переходим к концу
+      if (currentSlide < 0) {
+         // Мгновенно переходим к концу без анимации
+         goToSlide(slideCount + slidesToShow - 1, true);
+         // Затем анимируем переход к предыдущему слайду
+         setTimeout(() => {
+            currentSlide = slideCount + slidesToShow - 2;
+            goToSlide(currentSlide);
+         }, 50);
+      } else {
+         goToSlide(currentSlide);
+      }
+   }
+
+   // Функция для сброса интервала автоматической смены слайдов
+   function resetInterval() {
+      clearInterval(slideInterval);
+      slideInterval = setInterval(nextSlide, slideDelay);
+   }
+
+   // Открытие модального окна с изображением
+   function openModal(index) {
+      // Корректируем индекс для оригинальных слайдов
+      const originalIndex = (index - slidesToShow + slideCount) % slideCount;
+      currentSlide = originalIndex;
+      updateModal();
+      company_modal.style.display = 'flex';
+      document.body.style.overflow = 'hidden'; // Блокировка прокрутки фона
+   }
+
+   // Закрытие модального окна
+   function closeModal() {
+      company_modal.style.display = 'none';
+      document.body.style.overflow = 'auto'; // Восстановление прокрутки
+   }
+
+   // Обновление содержимого модального окна
+   function updateModal() {
+      const imgSrc = slideData1[currentSlide].src;
+      const imgAlt = slideData1[currentSlide].alt;
+
+      modalImage.src = imgSrc;
+      modalImage.alt = imgAlt;
+      modalCounter.textContent = `${currentSlide + 1} / ${slideCount}`;
+   }
+
+   // Переход к следующему изображению в модальном окне
+   function modalNextSlide() {
+      currentSlide = (currentSlide + 1) % slideCount;
+      updateModal();
+   }
+
+   // Переход к предыдущему изображению в модальном окне
+   function modalPrevSlide() {
+      currentSlide = (currentSlide - 1 + slideCount) % slideCount;
+      updateModal();
+   }
+
+   // Обработчики событий для слайдера
+   prevBtn.addEventListener('click', prevSlide);
+   nextBtn.addEventListener('click', nextSlide);
+
+   // Обработчики событий для модального окна
+   modalClose.addEventListener('click', closeModal);
+   modalPrev.addEventListener('click', modalPrevSlide);
+   modalNext.addEventListener('click', modalNextSlide);
+
+   // Закрытие модального окна при клике на фон
+   company_modal.addEventListener('click', function (e) {
+      if (e.target === company_modal) {
+         closeModal();
+      }
+   });
+
+   // Открытие модального окна при клике на изображение в слайдере
+   sliderTrack.addEventListener('click', function (e) {
+      if (e.target.tagName === 'IMG') {
+         const sliderItems = document.querySelectorAll('.company_slider-item');
+         const index = Array.from(sliderItems).indexOf(e.target.parentElement);
+         openModal(index);
+      }
+   });
+
+   // Обработчики клавиатуры для навигации
+   document.addEventListener('keydown', function (e) {
+      if (company_modal.style.display === 'flex') {
+         if (e.key === 'Escape') {
+            closeModal();
+         } else if (e.key === 'ArrowLeft') {
+            modalPrevSlide();
+         } else if (e.key === 'ArrowRight') {
+            modalNextSlide();
+         }
+      }
+   });
+
+   // Адаптация при изменении размера окна
+   window.addEventListener('resize', function () {
+      const newSlidesToShow = getSlidesToShow();
+      if (newSlidesToShow !== slidesToShow) {
+         slidesToShow = newSlidesToShow;
+         createSlides();
+         resetInterval();
+      }
+   });
+
+   // Инициализация
+   createSlides();
+   resetInterval();
+
+   // Пауза автоматической смены при наведении на слайдер
+   const sliderWrapper = document.querySelector('.company_slider-wrapper');
+   sliderWrapper.addEventListener('mouseenter', function () {
+      clearInterval(slideInterval);
+   });
+
+   sliderWrapper.addEventListener('mouseleave', function () {
+      resetInterval();
+   });
 });
