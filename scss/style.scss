@@ -3454,9 +3454,17 @@ select {
    cursor: pointer;
 }
 
-.company_slider-item:hover img {
-   transform: scale(1.05);
+.company_slider-item img {
+   @media (any-hover: hover) {
+         &:hover {
+            transform: scale(1.05);
+         }
+      }
 }
+
+// .company_slider-item:hover img {
+//    transform: scale(1.05);
+// }
 
 .company_slider-btn {
    position: absolute;

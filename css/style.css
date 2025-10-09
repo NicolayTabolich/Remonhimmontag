@@ -4087,10 +4087,12 @@ select {
   cursor: pointer;
 }
 
-.company_slider-item:hover img {
-  -webkit-transform: scale(1.05);
-      -ms-transform: scale(1.05);
-          transform: scale(1.05);
+@media (any-hover: hover) {
+  .company_slider-item img:hover {
+    -webkit-transform: scale(1.05);
+        -ms-transform: scale(1.05);
+            transform: scale(1.05);
+  }
 }
 
 .company_slider-btn {
