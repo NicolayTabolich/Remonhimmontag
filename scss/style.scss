@@ -3473,7 +3473,7 @@ select {
    align-items: center;
    justify-content: center;
    transition: background-color 0.3s;
-   z-index: 10;
+   z-index: 2;
 }
 
 .company_slider-btn:hover {
@@ -3604,7 +3604,7 @@ select {
       flex: 0 0 100%;
       /* 1 изображение на экране */
       height: 250px;
-      
+
    }
 
    .company_slider-btn {
