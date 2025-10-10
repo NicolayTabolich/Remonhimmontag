@@ -1198,7 +1198,7 @@ main {
 @media (max-width: 567.98px) {
   .services__title {
     margin-bottom: 18px;
-    font-size: 22px;
+    font-size: 20px;
   }
 }
 
@@ -3619,6 +3619,11 @@ select {
       -ms-flex-positive: 1;
           flex-grow: 1;
 }
+@media (max-width: 567.98px) {
+  .vacancy_page {
+    padding: 15px 0 5px 0;
+  }
+}
 
 .vacancies_page_block {
   display: -webkit-box;
@@ -3634,16 +3639,16 @@ select {
   background: white;
   border-radius: 3px;
   margin-bottom: 15px;
-  -webkit-box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  -webkit-box-shadow: 0 2px 10px rgba(28, 7, 78, 0.15);
+          box-shadow: 0 2px 10px rgba(28, 7, 78, 0.15);
   overflow: hidden;
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
 }
 
 .vacancy_page_item.active {
-  -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 0 5px 15px rgba(28, 7, 78, 0.3);
+          box-shadow: 0 5px 15px rgba(28, 7, 78, 0.3);
 }
 
 .vacancy_page_header {
@@ -3662,6 +3667,11 @@ select {
   -webkit-transition: background-color 0.3s ease;
   transition: background-color 0.3s ease;
   position: relative;
+}
+@media (max-width: 567.98px) {
+  .vacancy_page_header {
+    padding: 10px;
+  }
 }
 @media (any-hover: hover) {
   .vacancy_page_header:hover {
@@ -3709,6 +3719,12 @@ select {
       -ms-flex-align: center;
           align-items: center;
   gap: 5px;
+}
+
+@media (max-width: 567.98px) {
+  .vacancy_page_meta_item span {
+    font-size: 12px;
+  }
 }
 
 .vacancy_page_toggle {
@@ -3765,7 +3781,7 @@ select {
 
 .vacancy_page_item.active .vacancy_page_content {
   max-height: 1000px;
-  padding: 0 25px 25px;
+  padding: 10px 25px 25px;
 }
 
 .vacancy_page_description {
@@ -4604,7 +4620,4 @@ select {
   .photogalery_slider-main {
     height: 50vh;
   }
-}
-._none_arroy::after {
-  opacity: 0;
 }

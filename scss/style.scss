@@ -931,7 +931,7 @@ body {
    }
    @media (max-width: 567.98px) {
       margin-bottom: 18px;
-   font-size: 22px;
+      font-size: 20px;
    }
 }
 
@@ -2931,6 +2931,9 @@ select {
 .vacancy_page {
    padding: 30px 0;
    flex-grow: 1;
+   @media (max-width: 567.98px) {
+         padding: 15px 0 5px 0 ;
+      }
 }
 
 .vacancies_page_block {
@@ -2942,13 +2945,13 @@ select {
    background: white;
    border-radius: 3px;
    margin-bottom: 15px;
-   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+   box-shadow: 0 2px 10px rgba(28, 7, 78, 0.15);
    overflow: hidden;
    transition: all 0.3s ease;
 }
 
 .vacancy_page_item.active {
-   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+   box-shadow: 0 5px 15px rgba(28, 7, 78, 0.3);
 }
 
 .vacancy_page_header {
@@ -2960,6 +2963,9 @@ select {
    background-color: #fff;
    transition: background-color 0.3s ease;
    position: relative;
+   @media (max-width: 567.98px) {
+         padding: 10px;
+   }
    @media (any-hover: hover) {
       &:hover {
          background-color: #0d0932;
@@ -3006,6 +3012,12 @@ select {
    gap: 5px;
 }
 
+.vacancy_page_meta_item span{
+   @media (max-width: 567.98px) {
+         font-size: 12px;
+      }
+}
+
 .vacancy_page_toggle {
    width: 20px;
    height: 20px;
@@ -3049,7 +3061,7 @@ select {
 
 .vacancy_page_item.active .vacancy_page_content {
    max-height: 1000px;
-   padding: 0 25px 25px;
+   padding: 10px 25px 25px;
 }
 
 .vacancy_page_description {
@@ -3792,13 +3804,6 @@ display: flex;
    }
 }
 
-
-
-._none_arroy{
-   &::after{
-      opacity: 0;
-   }
-}
 
 @media (max-width: 1140px) {}
 
