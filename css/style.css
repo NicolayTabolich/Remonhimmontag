@@ -1646,18 +1646,12 @@ main {
   max-height: 500px;
   -o-object-fit: cover;
      object-fit: cover;
-  margin-bottom: 20px;
-}
-@media (max-width: 567.98px) {
-  .company_video-thumbnail {
-    margin-bottom: 5px;
-  }
 }
 
 .video-wrapper:hover .video-thumbnail {
-  -webkit-transform: scale(1.03);
-      -ms-transform: scale(1.03);
-          transform: scale(1.03);
+  -webkit-transform: scale(1.01);
+      -ms-transform: scale(1.01);
+          transform: scale(1.01);
 }
 
 .play-button {
@@ -4060,6 +4054,15 @@ select {
   }
 }
 
+._p1 {
+  margin-top: 20px;
+}
+@media (max-width: 567.98px) {
+  ._p1 {
+    margin-top: 5px;
+  }
+}
+
 /* Обновленный слайдер с несколькими изображениями */
 .company_slider-container_company {
   width: 100vw;
@@ -4112,7 +4115,7 @@ select {
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
-  border-radius: 8px;
+  border-radius: 3px;
   -webkit-transition: -webkit-transform 0.3s ease;
   transition: -webkit-transform 0.3s ease;
   transition: transform 0.3s ease;
@@ -4601,4 +4604,7 @@ select {
   .photogalery_slider-main {
     height: 50vh;
   }
+}
+._none_arroy::after {
+  opacity: 0;
 }

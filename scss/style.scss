@@ -1315,14 +1315,11 @@ body {
 .company_video-thumbnail{
    max-height: 500px;
    object-fit: cover;
-   margin-bottom: 20px;
-   @media (max-width: 567.98px) {
-   margin-bottom: 5px;
-      }
+  
 }
 
 .video-wrapper:hover .video-thumbnail {
-   transform: scale(1.03);
+   transform: scale(1.01);
 }
 
 .play-button {
@@ -3312,6 +3309,13 @@ select {
    font-size: 14px;
    }
 }
+._p1 {
+   margin-top: 20px;
+   @media (max-width: 567.98px) {
+            margin-top: 5px;
+      }
+}
+
 
 /* Обновленный слайдер с несколькими изображениями */
 .company_slider-container_company {
@@ -3356,7 +3360,7 @@ select {
    width: 100%;
    height: 100%;
    object-fit: cover;
-   border-radius: 8px;
+   border-radius: 3px;
    transition: transform 0.3s ease;
    cursor: pointer;
 }
@@ -3790,7 +3794,11 @@ display: flex;
 
 
 
-
+._none_arroy{
+   &::after{
+      opacity: 0;
+   }
+}
 
 @media (max-width: 1140px) {}
 
