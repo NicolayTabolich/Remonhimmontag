@@ -1646,6 +1646,12 @@ main {
   max-height: 500px;
   -o-object-fit: cover;
      object-fit: cover;
+  margin-bottom: 20px;
+}
+@media (max-width: 567.98px) {
+  .company_video-thumbnail {
+    margin-bottom: 5px;
+  }
 }
 
 .video-wrapper:hover .video-thumbnail {
@@ -2946,6 +2952,29 @@ select {
     background-size: 9px 9px;
   }
 }
+.bread_crumbs_li:nth-child(2)::after {
+  content: "";
+  display: block;
+  width: 12px;
+  height: 12px;
+  position: absolute;
+  background-image: url(../icons/arrow_next.svg);
+  background-size: 12px 12px;
+  right: -25%;
+  bottom: 0;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+          transform: translateY(-50%);
+  fill: #fff;
+}
+@media (max-width: 567.98px) {
+  .bread_crumbs_li:nth-child(2)::after {
+    width: 9px;
+    height: 9px;
+    background-size: 9px 9px;
+  }
+}
 
 .bread_crumbs_link {
   font-size: 12px;
@@ -3958,15 +3987,20 @@ select {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  margin: 40px 0;
+  margin: 0px 0;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
   gap: 40px;
 }
+@media (max-width: 991.98px) {
+  .company_content_section {
+    margin-bottom: 15px;
+    gap: 20px;
+  }
+}
 @media (max-width: 767.98px) {
   .company_content_section {
-    margin: 20px 0;
     gap: 20px;
   }
 }
@@ -4010,12 +4044,6 @@ select {
      object-fit: cover;
 }
 
-@media (max-width: 991.98px) {
-  .company_content_image_none {
-    display: none;
-  }
-}
-
 .company_content_text_p {
   font-weight: 500;
   font-size: 16px;
@@ -4036,10 +4064,15 @@ select {
 .company_slider-container_company {
   width: 100vw;
   margin-left: calc(-50vw + 50%);
-  background-color: #0d0932;
+  background-color: rgba(12, 16, 71, 0.05);
   padding: 20px 0;
   margin-top: 40px;
   position: relative;
+}
+@media (max-width: 567.98px) {
+  .company_slider-container_company {
+    margin-top: 5px;
+  }
 }
 
 .company_slider {
@@ -4269,5 +4302,303 @@ select {
     width: 30px;
     height: 30px;
     font-size: 14px;
+  }
+}
+.photo__container {
+  padding: 20px 0px;
+}
+
+.photo_years_container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+.photo_year_card {
+  background: white;
+  border-radius: 3px;
+  -webkit-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  width: 280px;
+  cursor: pointer;
+  -webkit-transition: -webkit-transform 0.3s, -webkit-box-shadow 0.3s;
+  transition: -webkit-transform 0.3s, -webkit-box-shadow 0.3s;
+  transition: transform 0.3s, box-shadow 0.3s;
+  transition: transform 0.3s, box-shadow 0.3s, -webkit-transform 0.3s, -webkit-box-shadow 0.3s;
+}
+@media (any-hover: hover) {
+  .photo_year_card:hover {
+    -webkit-transform: translateY(-3px);
+        -ms-transform: translateY(-3px);
+            transform: translateY(-3px);
+    -webkit-box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  }
+}
+
+.photo_year_header {
+  background: #0d0932;
+  color: white;
+  padding: 15px;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.photo_year_preview {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5px;
+  padding: 5px;
+}
+
+.photo_year_preview img {
+  width: 100%;
+  height: 100px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 4px;
+}
+
+/* Слайдер */
+.photogalery_slider {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.95);
+  display: none;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  z-index: 1000;
+  -ms-touch-action: pan-y pinch-zoom;
+      touch-action: pan-y pinch-zoom;
+}
+
+.photogalery_slider.active {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.photogalery_slider-header {
+  color: white;
+  font-size: 1.8rem;
+  text-align: center;
+  padding: 15px 0;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+}
+
+.photogalery_slider-close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+  background: none;
+  border: none;
+  z-index: 1001;
+}
+
+.photogalery_slider-main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  min-height: 0;
+  /* Важно для flex-элементов с overflow */
+  padding: 0 10px;
+  -ms-touch-action: pan-y pinch-zoom;
+      touch-action: pan-y pinch-zoom;
+}
+
+.photogalery_slider-image-container {
+  position: relative;
+  overflow: hidden;
+  border-radius: 3px;
+  -ms-touch-action: pan-y pinch-zoom;
+      touch-action: pan-y pinch-zoom;
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background-color: #000;
+}
+
+.photogalery_slider-image {
+  max-width: 100%;
+  max-height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+  display: block;
+  -webkit-transition: -webkit-transform 0.3s ease;
+  transition: -webkit-transform 0.3s ease;
+  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, -webkit-transform 0.3s ease;
+  -webkit-transform: scale(1.05);
+      -ms-transform: scale(1.05);
+          transform: scale(1.05);
+  /* Легкое увеличение изображения */
+}
+
+.photogalery_slider-nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 20px 0;
+}
+
+.photogalery_slider-nav button {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: white;
+  font-size: 2rem;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin: 0 15px;
+  cursor: pointer;
+  -webkit-transition: background 0.3s;
+  transition: background 0.3s;
+}
+
+.photogalery_slider-nav button:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.photogalery_slider-thumbnails {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+  padding: 10px;
+  max-width: 100%;
+  overflow-x: auto;
+  -ms-touch-action: pan-x pinch-zoom;
+      touch-action: pan-x pinch-zoom;
+}
+
+.photogalery_slider-thumbnail {
+  width: 80px;
+  height: 60px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 4px;
+  cursor: pointer;
+  opacity: 0.6;
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+}
+
+.photogalery_slider-thumbnail.active {
+  opacity: 1;
+  border: 2px solid white;
+}
+
+.photogalery_slider-thumbnail:hover {
+  opacity: 0.8;
+}
+
+.swipe-hint {
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9rem;
+  display: none;
+}
+
+.photogalery_slider-counter {
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+  .photo_year_card {
+    width: 100%;
+    max-width: 350px;
+  }
+  .photogalery_slider-nav button {
+    font-size: 1.5rem;
+    width: 40px;
+    height: 40px;
+    margin: 0 10px;
+  }
+  .photogalery_slider-thumbnail {
+    width: 60px;
+    height: 45px;
+  }
+  .swipe-hint {
+    display: block;
+  }
+  .photogalery_slider-main {
+    height: 60vh;
+  }
+  .slider-header {
+    font-size: 1.5rem;
+    padding: 10px 0;
+  }
+  .slider-close {
+    top: 10px;
+    right: 15px;
+    font-size: 1.8rem;
+  }
+  .slider-main {
+    padding: 0 5px;
+  }
+}
+@media (max-width: 480px) {
+  .slider-header {
+    font-size: 1.3rem;
+  }
+}
+@media (max-width: 480px) {
+  .photogalery_slider-main {
+    height: 50vh;
   }
 }
