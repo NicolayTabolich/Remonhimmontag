@@ -974,7 +974,6 @@ body {
          &:hover {
             transform: translateY(-5px);
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
-            background-color: #06041a27;
          }
       }
 }
@@ -3067,7 +3066,12 @@ select {
 .vacancy_page_description {
    margin-bottom: 20px;
    line-height: 1.6;
-   color: #333;
+   color: #000000;
+   & p{
+      @media (max-width: 567.98px) {
+         font-size: 14px;
+      }
+   }
 }
 
 .vacancy_page_requirements,
@@ -3080,11 +3084,17 @@ select {
    font-weight: 600;
    margin-bottom: 10px;
    color: #0D0932;
+   @media (max-width: 567.98px) {
+         font-size: 14px;
+      }
 }
 
 .vacancy_page_list {
    padding-left: 20px;
    margin-bottom: 15px;
+   @media (max-width: 567.98px) {
+         font-size: 14px;
+      }
 }
 
 .vacancy_page_list li {
@@ -3110,7 +3120,12 @@ select {
    font-weight: 600;
    transition: background-color 0.3s ease;
    margin-bottom: 15px;
+   @media (max-width: 567.98px) {
+         font-size: 14px;
+      }
 }
+
+
 
 .show_phone_btn:hover {
    background-color: #2e2679;
@@ -3128,6 +3143,10 @@ select {
 .phone_container.active {
    display: block;
 }
+
+
+
+
 
 .contact_phone {
    font-size: 18px;
