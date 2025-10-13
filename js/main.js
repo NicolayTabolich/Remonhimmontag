@@ -483,6 +483,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
+
 // Фотогалерея
 
 // Данные для галереи (обычно загружаются с сервера)
