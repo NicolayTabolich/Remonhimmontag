@@ -1828,7 +1828,6 @@ main {
   height: 250px;
   -o-object-fit: cover;
      object-fit: cover;
-  background-position: top;
 }
 
 .latest-news-content {
