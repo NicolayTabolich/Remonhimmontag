@@ -3177,7 +3177,7 @@ select {
 // О компании
 
 .company_section{
-   flex-grow: 1;
+   // flex-grow: 1;
    padding: 10px 0px;
 }
 
@@ -3554,7 +3554,12 @@ select {
 
 
 // Фотогалерея
-      
+
+.photo_company{
+   flex-grow: 1;
+}
+
+
 .photo__container{
    padding: 20px 0px;
 
@@ -3815,7 +3820,236 @@ display: flex;
    }
 }
 
+// Документация
 
+.documents {
+   flex-grow: 1;
+   margin-bottom: 5px;
+}
+
+.documents__container {
+   
+}
+
+
+
+.documents_list {
+   display: flex;
+   flex-direction: column;
+   gap: 15px;
+}
+
+.document_item {
+   display: flex;
+   align-items: flex-start;
+   background: white;
+   border-radius: 3px;
+   padding: 15px;
+   box-shadow: 0 2px 8px rgba(17, 6, 80, 0.05);
+   transition: all 0.3s ease;
+   border: 1px solid #eaeaea;
+   @media (any-hover: hover) {
+         &:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+           background-color: #f8f9fa;
+         }
+      }
+}
+
+
+.doc_icon {
+   font-size: clamp(24px, 5vw, 32px);
+   margin-right: 15px;
+   color: #0d0932;
+   flex-shrink: 0;
+   margin-top: 15px;
+}
+
+.doc_content {
+   display: flex;
+   flex-grow: 1;
+   justify-content: space-between;
+   align-items: flex-start;
+   min-width: 0;
+   /* Для корректной работы с overflow */
+}
+
+.doc_text {
+   flex: 1;
+   min-width: 0;
+   /* Для корректной работы с overflow */
+   margin-right: 20px;
+}
+
+.doc_title {
+   font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+   font-weight: 600;
+   color: #000;
+   word-break: break-word;
+   line-height: 1.2;
+   margin-bottom: 8px;
+}
+
+.doc_details {
+   display: flex;
+   gap: 15px;
+   font-size: 0.9rem;
+   color: #5c6464;
+   flex-wrap: wrap;
+}
+
+.detail_item {
+   display: flex;
+   align-items: center;
+   white-space: nowrap;
+}
+
+.detail_label {
+   margin-right: 5px;
+}
+
+.doc_actions {
+   display: flex;
+   gap: 10px;
+   flex-shrink: 0;
+   width: 300px;
+   /* Фиксированная ширина для кнопок */
+}
+
+.doc_btn {
+   padding: 10px 30px;
+   border: none;
+   border-radius: 3px;
+   font-weight: 600;
+   cursor: pointer;
+   transition: all 0.3s ease;
+   text-align: center;
+   text-decoration: none;
+   font-size: 0.9rem;
+   display: flex;
+   align-items: center;
+   gap: 6px;
+   min-width: 110px;
+   justify-content: center;
+   white-space: nowrap;
+   flex: 1;
+}
+
+.btn-watch {
+   background-color: #0D0932;
+   color: white;
+   @media (any-hover: hover) {
+      &:hover {
+         background-color: #1c4d6e;
+      }
+   }
+}
+
+
+.btn-download {
+   background-color: #f1f2f6;
+   color: #0D0932;
+   border: 1px solid #ddd;
+   @media (any-hover: hover) {
+         &:hover {
+               background-color: #e4e5e9;
+         }
+      }
+}
+
+.btn-icon {
+   font-size: 1rem;
+}
+
+
+/* Медиа-запросы для адаптации */
+@media (max-width: 1024px) {
+ 
+
+   .doc_details {
+      gap: 10px;
+   }
+}
+
+@media (max-width: 768px) {
+  
+   .document_item {
+      flex-direction: column;
+      gap: 15px;
+      padding: 15px;
+   }
+
+   .doc_icon {
+      margin-right: 0;
+      align-self: center;
+   }
+
+   .doc_content {
+      flex-direction: column;
+      width: 100%;
+   }
+
+   .doc_text {
+      margin-right: 0;
+      margin-bottom: 15px;
+      width: 100%;
+   }
+
+   .doc_title {
+      margin-right: 0;
+      font-size: 1rem;
+   }
+
+   .doc_details {
+      width: 100%;
+      justify-content: space-between;
+   }
+
+   .doc_actions {
+      width: 100%;
+      justify-content: stretch;
+   }
+
+   .doc_btn {
+      flex: 1;
+      padding: 12px;
+   }
+  
+  
+}
+
+@media (max-width: 480px) {
+   
+   .document_item {
+      padding: 12px;
+   }
+
+   .doc_details {
+      flex-direction: column;
+      gap: 5px;
+   }
+
+   .detail_item {
+      white-space: normal;
+   }
+
+   .doc_btn {
+      min-width: auto;
+      font-size: 0.85rem;
+      padding: 10px;
+   }
+
+}
+
+@media (max-width: 360px) {
+   .doc_actions {
+      flex-direction: column;
+   }
+
+   .doc_btn {
+      width: 100%;
+   }
+}
 
 
 @media (max-width: 1140px) {}

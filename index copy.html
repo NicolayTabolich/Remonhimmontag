@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Документация</title>
+   <style>
+      * {
+         box-sizing: border-box;
+         margin: 0;
+         padding: 0;
+      }
+
+      body {
+         font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+         line-height: 1.6;
+         background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
+         color: #333;
+         padding: 20px;
+         min-height: 100vh;
+      }
+
+      .container {
+         max-width: 1440px;
+         margin: 0 auto;
+         background-color: #fff;
+         border-radius: 12px;
+         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+         padding: 30px;
+         overflow: hidden;
+      }
+
+      header {
+         text-align: center;
+         margin-bottom: 30px;
+         padding-bottom: 20px;
+         border-bottom: 1px solid #eaeaea;
+      }
+
+      h1 {
+         font-size: clamp(1.8rem, 4vw, 2.5rem);
+         color: #2c3e50;
+         margin-bottom: 10px;
+         font-weight: 700;
+         word-wrap: break-word;
+      }
+
+      .subtitle {
+         font-size: clamp(1rem, 2vw, 1.2rem);
+         color: #7f8c8d;
+         max-width: 800px;
+         margin: 0 auto;
+         line-height: 1.5;
+      }
+
+      .documents_list {
+         display: flex;
+         flex-direction: column;
+         gap: 15px;
+      }
+
+      .document_item {
+         display: flex;
+         align-items: flex-start;
+         background: white;
+         border-radius: 8px;
+         padding: 15px;
+         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+         transition: all 0.3s ease;
+         border: 1px solid #eaeaea;
+      }
+
+      .document_item:hover {
+         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+         background-color: #f8f9fa;
+      }
+
+      .doc_icon {
+         font-size: clamp(24px, 5vw, 32px);
+         margin-right: 15px;
+         color: #2c3e50;
+         flex-shrink: 0;
+         margin-top: 5px;
+      }
+
+      .doc_content {
+         display: flex;
+         flex-grow: 1;
+         justify-content: space-between;
+         align-items: flex-start;
+         min-width: 0;
+         /* Для корректной работы с overflow */
+      }
+
+      .doc_text {
+         flex: 1;
+         min-width: 0;
+         /* Для корректной работы с overflow */
+         margin-right: 20px;
+      }
+
+      .doc_title {
+         font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+         font-weight: 600;
+         color: #2c3e50;
+         word-break: break-word;
+         line-height: 1.4;
+         margin-bottom: 8px;
+      }
+
+      .doc_details {
+         display: flex;
+         gap: 15px;
+         font-size: 0.9rem;
+         color: #7f8c8d;
+         flex-wrap: wrap;
+      }
+
+      .detail_item {
+         display: flex;
+         align-items: center;
+         white-space: nowrap;
+      }
+
+      .detail_label {
+         margin-right: 5px;
+      }
+
+      .doc_actions {
+         display: flex;
+         gap: 10px;
+         flex-shrink: 0;
+         width: 250px;
+         /* Фиксированная ширина для кнопок */
+      }
+
+      .btn {
+         padding: 10px 15px;
+         border: none;
+         border-radius: 6px;
+         font-weight: 600;
+         cursor: pointer;
+         transition: all 0.3s ease;
+         text-align: center;
+         text-decoration: none;
+         font-size: 0.9rem;
+         display: flex;
+         align-items: center;
+         gap: 6px;
+         min-width: 110px;
+         justify-content: center;
+         white-space: nowrap;
+         flex: 1;
+      }
+
+      .btn-watch {
+         background-color: #3498db;
+         color: white;
+      }
+
+      .btn-watch:hover {
+         background-color: #2980b9;
+      }
+
+      .btn-download {
+         background-color: #f1f2f6;
+         color: #2c3e50;
+         border: 1px solid #ddd;
+      }
+
+      .btn-download:hover {
+         background-color: #e4e5e9;
+      }
+
+      .btn-icon {
+         font-size: 1rem;
+      }
+
+      footer {
+         text-align: center;
+         margin-top: 40px;
+         padding-top: 20px;
+         border-top: 1px solid #eaeaea;
+         color: #7f8c8d;
+         font-size: 0.9rem;
+      }
+
+      /* Медиа-запросы для адаптации */
+      @media (max-width: 1024px) {
+         .container {
+            padding: 25px;
+         }
+
+         .doc_details {
+            gap: 10px;
+         }
+      }
+
+      @media (max-width: 768px) {
+         body {
+            padding: 15px;
+         }
+
+         .container {
+            padding: 20px;
+            border-radius: 10px;
+         }
+
+         .document_item {
+            flex-direction: column;
+            gap: 15px;
+            padding: 15px;
+         }
+
+         .doc_icon {
+            margin-right: 0;
+            align-self: center;
+         }
+
+         .doc_content {
+            flex-direction: column;
+            width: 100%;
+         }
+
+         .doc_text {
+            margin-right: 0;
+            margin-bottom: 15px;
+            width: 100%;
+         }
+
+         .doc_title {
+            margin-right: 0;
+            font-size: 1rem;
+         }
+
+         .doc_details {
+            width: 100%;
+            justify-content: space-between;
+         }
+
+         .doc_actions {
+            width: 100%;
+            justify-content: stretch;
+         }
+
+         .btn {
+            flex: 1;
+            padding: 12px;
+         }
+
+         h1 {
+            font-size: 1.8rem;
+         }
+
+         .subtitle {
+            font-size: 1rem;
+         }
+      }
+
+      @media (max-width: 480px) {
+         body {
+            padding: 10px;
+         }
+
+         .container {
+            padding: 15px;
+         }
+
+         .document_item {
+            padding: 12px;
+         }
+
+         .doc_details {
+            flex-direction: column;
+            gap: 5px;
+         }
+
+         .detail_item {
+            white-space: normal;
+         }
+
+         .btn {
+            min-width: auto;
+            font-size: 0.85rem;
+            padding: 10px;
+         }
+
+         h1 {
+            font-size: 1.6rem;
+         }
+      }
+
+      @media (max-width: 360px) {
+         .doc_actions {
+            flex-direction: column;
+         }
+
+         .btn {
+            width: 100%;
+         }
+      }
+   </style>
+</head>
+
+<body>
+   <div class="container">
+      <header>
+         <h1>Документация</h1>
+         <p class="subtitle">В этом разделе представлены документы в формате .docx. Вы можете просмотреть их прямо в
+            браузере или скачать на свой компьютер.</p>
+      </header>
+
+      <main>
+         <div class="documents_list">
+            <!-- Документ 1 с длинным названием -->
+            <div class="document_item">
+               <div class="doc_icon">📄</div>
+               <div class="doc_content">
+                  <div class="doc_text">
+                     <div class="doc_title">Документация для переговоров по выбору субподрядной организации на
+                        выполнение ремонтно-строительных работ по устройству вентиляции по объекту: «Модернизация здания
+                        импортного оборудования и бытовых помещений (инвентарный номер 350/С-96418) ТУП «Химтранс»,
+                        расположенного по адресу г. Гомель, ул. Химзаводская, 5.</div>
+                     <div class="doc_details">
+                        <div class="detail_item">
+                           <span class="detail_label">Формат:</span>
+                           <span>DOCX</span>
+                        </div>
+                        <div class="detail_item">
+                           <span class="detail_label">Размер:</span>
+                           <span>2.4 МБ</span>
+                        </div>
+                        <div class="detail_item">
+                           <span class="detail_label">Обновлен:</span>
+                           <span>15.05.2023</span>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="doc_actions">
+                     <a href="https://docs.google.com/gview?url=https://ваш-сайт.ru/documents/negotiations.docx"
+                        class="btn btn-watch" target="_blank">
+                        <span class="btn-icon">👁️</span>
+                        Смотреть
+                     </a>
+                     <a href="documents/negotiations.docx" class="btn btn-download" download>
+                        <span class="btn-icon">⤓</span>
+                        Скачать
+                     </a>
+                  </div>
+               </div>
+            </div>
+
+            <!-- Документ 2 -->
+            <div class="document_item">
+               <div class="doc_icon">📄</div>
+               <div class="doc_content">
+                  <div class="doc_text">
+                     <div class="doc_title">dogovor.docx</div>
+                     <div class="doc_details">
+                        <div class="detail_item">
+                           <span class="detail_label">Формат:</span>
+                           <span>DOCX</span>
+                        </div>
+                        <div class="detail_item">
+                           <span class="detail_label">Размер:</span>
+                           <span>312 КБ</span>
+                        </div>
+                        <div class="detail_item">
+                           <span class="detail_label">Обновлен:</span>
+                           <span>22.08.2023</span>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="doc_actions">
+                     <a href="https://docs.google.com/gview?url=https://ваш-сайт.ru/documents/dogovor.docx"
+                        class="btn btn-watch" target="_blank">
+                        <span class="btn-icon">👁️</span>
+                        Смотреть
+                     </a>
+                     <a href="documents/dogovor.docx" class="btn btn-download" download>
+                        <span class="btn-icon">⤓</span>
+                        Скачать
+                     </a>
+                  </div>
+               </div>
+            </div>
+
+            <!-- Документ 3 -->
+            <div class="document_item">
+               <div class="doc_icon">📄</div>
+               <div class="doc_content">
+                  <div class="doc_text">
+                     <div class="doc_title">instrukciya.docx</div>
+                     <div class="doc_details">
+                        <div class="detail_item">
+                           <span class="detail_label">Формат:</span>
+                           <span>DOCX</span>
+                        </div>
+                        <div class="detail_item">
+                           <span class="detail_label">Размер:</span>
+                           <span>528 КБ</span>
+                        </div>
+                        <div class="detail_item">
+                           <span class="detail_label">Обновлен:</span>
+                           <span>10.11.2023</span>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="doc_actions">
+                     <a href="https://docs.google.com/gview?url=https://ваш-сайт.ru/documents/instrukciya.docx"
+                        class="btn btn-watch" target="_blank">
+                        <span class="btn-icon">👁️</span>
+                        Смотреть
+                     </a>
+                     <a href="documents/instrukciya.docx" class="btn btn-download" download>
+                        <span class="btn-icon">⤓</span>
+                        Скачать
+                     </a>
+                  </div>
+               </div>
+            </div>
+
+            <!-- Документ 4 -->
+            <div class="document_item">
+               <div class="doc_icon">📄</div>
+               <div class="doc_content">
+                  <div class="doc_text">
+                     <div class="doc_title">otchet.docx</div>
+                     <div class="doc_details">
+                        <div class="detail_item">
+                           <span class="detail_label">Формат:</span>
+                           <span>DOCX</span>
+                        </div>
+                        <div class="detail_item">
+                           <span class="detail_label">Размер:</span>
+                           <span>420 КБ</span>
+                        </div>
+                        <div class="detail_item">
+                           <span class="detail_label">Обновлен:</span>
+                           <span>05.12.2023</span>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="doc_actions">
+                     <a href="https://docs.google.com/gview?url=https://ваш-сайт.ru/documents/otchet.docx"
+                        class="btn btn-watch" target="_blank">
+                        <span class="btn-icon">👁️</span>
+                        Смотреть
+                     </a>
+                     <a href="documents/otchet.docx" class="btn btn-download" download>
+                        <span class="btn-icon">⤓</span>
+                        Скачать
+                     </a>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </main>
+
+      <footer>
+         <p>© 2023 Документация компании. Все права защищены.</p>
+      </footer>
+   </div>
+</body>
+
+</html>
