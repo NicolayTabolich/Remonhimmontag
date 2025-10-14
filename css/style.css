@@ -1469,7 +1469,7 @@ main {
 }
 
 .about-section {
-  padding: 40px 0px 20px 0px;
+  padding: 40px 0px 30px 0px;
   background-color: #0d0932;
 }
 @media (max-width: 991.98px) {
@@ -1903,7 +1903,7 @@ select {
 }
 
 .news__container {
-  padding: 40px 0px 20px;
+  padding: 35px 0px 30px;
 }
 @media (max-width: 567.98px) {
   .news__container {
@@ -2910,62 +2910,36 @@ select {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  gap: 27px;
+  gap: 26px;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
   margin-bottom: 10px;
+}
+.bread_crumbs_links:not(:last-child) {
+  white-space: nowrap;
 }
 @media (max-width: 567.98px) {
   .bread_crumbs_links {
-    gap: 20px;
+    gap: 10px;
   }
 }
 
 .bread_crumbs_li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.bread_crumbs_li span {
   position: relative;
-}
-.bread_crumbs_li:nth-child(1)::after {
-  content: "";
   display: block;
-  width: 12px;
-  height: 12px;
-  position: absolute;
-  background-image: url(../icons/arrow_next.svg);
-  background-size: 12px 12px;
-  right: -34%;
-  bottom: 0;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-      -ms-transform: translateY(-50%);
-          transform: translateY(-50%);
-  fill: #fff;
+  font-size: 12px;
+  top: 3px;
+  right: -13px;
 }
 @media (max-width: 567.98px) {
-  .bread_crumbs_li:nth-child(1)::after {
-    width: 9px;
-    height: 9px;
-    background-size: 9px 9px;
-  }
-}
-.bread_crumbs_li:nth-child(2)::after {
-  content: "";
-  display: block;
-  width: 12px;
-  height: 12px;
-  position: absolute;
-  background-image: url(../icons/arrow_next.svg);
-  background-size: 12px 12px;
-  right: -25%;
-  bottom: 0;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-      -ms-transform: translateY(-50%);
-          transform: translateY(-50%);
-  fill: #fff;
-}
-@media (max-width: 567.98px) {
-  .bread_crumbs_li:nth-child(2)::after {
-    width: 9px;
-    height: 9px;
-    background-size: 9px 9px;
+  .bread_crumbs_li span {
+    right: -5px;
   }
 }
 
@@ -3037,7 +3011,7 @@ select {
 }
 @media (max-width: 767.98px) {
   .bread_crumbs_text {
-    font-size: 20px;
+    font-size: 18px;
   }
 }
 .bread_crumbs_text::after {
@@ -3102,6 +3076,8 @@ select {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  text-decoration: none;
+  color: #000;
   gap: 10px;
   border: 0.5px solid #ebebeb;
   -webkit-box-shadow: 0 2px 10px rgba(4, 6, 28, 0.3);
@@ -3149,6 +3125,12 @@ select {
   .services_page_item:hover .services_page_svg {
     fill: #fff;
   }
+  .services_page_item:hover .services_page_link div {
+    color: #a00000;
+  }
+  .services_page_item:hover .services_page_link div::after {
+    background-color: #a00000;
+  }
 }
 
 .services_page_svg {
@@ -3176,7 +3158,7 @@ select {
 
 .services_page_title {
   font-size: 20px;
-  line-height: 120%;
+  line-height: 130%;
   font-weight: 600;
   text-transform: uppercase;
   margin-bottom: 20px;
@@ -3235,7 +3217,8 @@ select {
     text-align: center;
   }
 }
-.services_page_link a {
+.services_page_link div {
+  display: inline-block;
   color: #f50101;
   line-height: 100%;
   font-size: 14px;
@@ -3243,12 +3226,7 @@ select {
   -webkit-transition: 0.3s all ease;
   transition: 0.3s all ease;
 }
-@media (any-hover: hover) {
-  .services_page_link a:hover {
-    color: #a00000;
-  }
-}
-.services_page_link a::after {
+.services_page_link div::after {
   position: absolute;
   content: "";
   display: block;
@@ -3258,13 +3236,8 @@ select {
   bottom: -3px;
   left: 0;
 }
-@media (any-hover: hover) {
-  .services_page_link a:hover::after {
-    background-color: #a00000;
-  }
-}
 @media (max-width: 767.98px) {
-  .services_page_link a {
+  .services_page_link div {
     font-size: 12px;
   }
 }
@@ -3882,6 +3855,11 @@ select {
           align-items: center;
   gap: 10px;
 }
+@media (max-width: 567.98px) {
+  .contact_phone {
+    font-size: 14px;
+  }
+}
 
 .contact_phone:hover {
   color: #2e2679;
@@ -4355,8 +4333,13 @@ select {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  gap: 30px;
-  margin-bottom: 40px;
+  gap: 60px;
+  margin-bottom: 5px;
+}
+@media (max-width: 567.98px) {
+  .photo_years_container {
+    gap: 30px;
+  }
 }
 
 .photo_year_card {

@@ -1177,7 +1177,7 @@ body {
 
 
 .about-section {
-   padding: 40px 0px 20px 0px;
+   padding: 40px 0px 30px 0px;
    background-color: #0d0932;
    @media (max-width: 991.98px){
       padding: 30px 0px 20px 0px;
@@ -1543,7 +1543,7 @@ select {
 }
 
 .news__container{
-   padding: 40px 0px 20px;
+   padding: 35px 0px 30px;
    @media (max-width: 567.98px) {
       padding: 20px 0px;
    }
@@ -2358,64 +2358,42 @@ select {
 
 .bread_crumbs_links {
    display: flex;
-   gap: 27px;
+   gap: 26px;
+   flex-wrap: nowrap;
    margin-bottom: 10px;
+   &:not(:last-child) {
+         white-space: nowrap;
+      }
    @media (max-width: 567.98px) {
-            gap: 20px;
+            gap: 10px;
    }
 }
 
-.bread_crumbs_li {
+.bread_crumbs_li{
+   display: flex;
+}
+
+
+ 
+.bread_crumbs_li span{
+
    position: relative;
-   &:nth-child(1)::after{
-      content: "";
-      display: block;
-      width: 12px;
-      height: 12px;
-      position: absolute;
-      background-image: url(../icons/arrow_next.svg);
-      background-size: 12px 12px;
-      right: -34%;
-      bottom: 0;
-      top: 50%;
-      transform: translateY(-50%);
-      fill: #fff;
-      @media (max-width: 567.98px) {
-         width: 9px;
-         height: 9px;
-         background-size: 9px 9px;
-      }
+   display: block;
+   font-size: 12px;
+   top: 3px;
+   right: -13px;
+   @media (max-width: 567.98px) {
+         right: -5px;
    }
-
-       &:nth-child(2)::after {
-          content: "";
-          display: block;
-          width: 12px;
-          height: 12px;
-          position: absolute;
-          background-image: url(../icons/arrow_next.svg);
-          background-size: 12px 12px;
-          right: -25%;
-          bottom: 0;
-          top: 50%;
-          transform: translateY(-50%);
-          fill: #fff;
-   
-          @media (max-width: 567.98px) {
-             width: 9px;
-             height: 9px;
-             background-size: 9px 9px;
-          }
-       }
-
-
 }
 
 .bread_crumbs_link {
+  
    font-size: 12px;
    color: #fff;
    text-transform: uppercase;
    position: relative;
+   
    @media (max-width: 567.98px) {
             font-size: 10px;
       }
@@ -2452,6 +2430,9 @@ select {
             width: 50%;
          }
       }
+      // @media (max-width: 567.98px) {
+      //    font-size: 10px;
+      // }
 
 }
 
@@ -2473,7 +2454,7 @@ select {
       font-size: 24px;
    }
    @media (max-width: 767.98px) {
-      font-size: 20px;
+      font-size: 18px;
    }
 
    &::after{
@@ -2510,6 +2491,7 @@ select {
 }
 
 .services_page_items {
+   
    display: flex;
    gap: 20px;
    justify-content: space-between;
@@ -2525,6 +2507,8 @@ select {
    text-align: center;
    display: flex;
    flex-direction: column;
+   text-decoration: none;
+   color: #000;
    gap: 10px;
    border: 0.5px solid #ebebeb; 
    box-shadow: 0 2px 10px rgba(4, 6, 28, 0.3);
@@ -2558,6 +2542,13 @@ select {
       &:hover .services_page_svg{
          fill: #fff;
       }
+
+      &:hover .services_page_link div {
+      color: #a00000;
+   }
+        &:hover .services_page_link div::after {
+           background-color: #a00000;
+        }
    }
 }
 
@@ -2582,7 +2573,7 @@ select {
 
 .services_page_title {
    font-size: 20px;
-   line-height: 120%;
+   line-height: 130%;
    font-weight: 600;
    text-transform: uppercase;
    margin-bottom: 20px;
@@ -2597,6 +2588,8 @@ select {
    }
 
    @media (max-width: 567.98px) {}
+  
+   
 }
 
 .services_page_text {
@@ -2632,17 +2625,14 @@ select {
    @media (max-width: 567.98px) {}
 }
 
-.services_page_link a{
+.services_page_link div{
+   display: inline-block;
    color: #f50101;
    line-height: 100%;
    font-size: 14px;
    position: relative;
    transition: 0.3s all ease;
-   @media (any-hover: hover) {
-      &:hover {
-         color: #a00000;
-         }
-      }
+
    &::after{
       position: absolute;
       content: "";
@@ -2654,11 +2644,7 @@ select {
       left: 0;
    }
 
-   @media (any-hover: hover) {
-      &:hover::after {
-         background-color: #a00000;
-   }
-}
+
    @media (max-width: 767.98px) {
       font-size: 12px;
    }
@@ -3156,6 +3142,9 @@ select {
    display: flex;
    align-items: center;
    gap: 10px;
+   @media (max-width: 567.98px) {
+         font-size: 14px;
+      }
 }
 
 .contact_phone:hover {
@@ -3576,8 +3565,11 @@ select {
    display: flex;
    flex-wrap: wrap;
    justify-content: center;
-   gap: 30px;
-   margin-bottom: 40px;
+   gap:60px;
+   margin-bottom: 5px;
+   @media (max-width: 567.98px) {
+      gap: 30px;
+   }
 }
 
 .photo_year_card {
