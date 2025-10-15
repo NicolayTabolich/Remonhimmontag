@@ -4,300 +4,287 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Документация</title>
+   <title>Сертификаты</title>
    <style>
-      * {
-         box-sizing: border-box;
-         margin: 0;
-         padding: 0;
+      .certificates__grid {
+         display: grid;
+         grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+         gap: 30px;
       }
 
-      body {
-         font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-         line-height: 1.6;
-         background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
-         color: #333;
-         padding: 20px;
-         min-height: 100vh;
-      }
-
-      .container {
-         max-width: 1440px;
-         margin: 0 auto;
-         background-color: #fff;
-         border-radius: 12px;
-         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-         padding: 30px;
-         overflow: hidden;
-      }
-
-      header {
-         text-align: center;
-         margin-bottom: 30px;
-         padding-bottom: 20px;
-         border-bottom: 1px solid #eaeaea;
-      }
-
-      h1 {
-         font-size: clamp(1.8rem, 4vw, 2.5rem);
-         color: #2c3e50;
-         margin-bottom: 10px;
-         font-weight: 700;
-         word-wrap: break-word;
-      }
-
-      .subtitle {
-         font-size: clamp(1rem, 2vw, 1.2rem);
-         color: #7f8c8d;
-         max-width: 800px;
-         margin: 0 auto;
-         line-height: 1.5;
-      }
-
-      .documents_list {
-         display: flex;
-         flex-direction: column;
-         gap: 15px;
-      }
-
-      .document_item {
-         display: flex;
-         align-items: flex-start;
+      .certificate__item {
          background: white;
          border-radius: 8px;
-         padding: 15px;
-         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-         transition: all 0.3s ease;
-         border: 1px solid #eaeaea;
-      }
-
-      .document_item:hover {
-         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-         background-color: #f8f9fa;
-      }
-
-      .doc_icon {
-         font-size: clamp(24px, 5vw, 32px);
-         margin-right: 15px;
-         color: #2c3e50;
-         flex-shrink: 0;
-         margin-top: 5px;
-      }
-
-      .doc_content {
-         display: flex;
-         flex-grow: 1;
-         justify-content: space-between;
-         align-items: flex-start;
-         min-width: 0;
-         /* Для корректной работы с overflow */
-      }
-
-      .doc_text {
-         flex: 1;
-         min-width: 0;
-         /* Для корректной работы с overflow */
-         margin-right: 20px;
-      }
-
-      .doc_title {
-         font-size: clamp(0.9rem, 2.5vw, 1.1rem);
-         font-weight: 600;
-         color: #2c3e50;
-         word-break: break-word;
-         line-height: 1.4;
-         margin-bottom: 8px;
-      }
-
-      .doc_details {
-         display: flex;
-         gap: 15px;
-         font-size: 0.9rem;
-         color: #7f8c8d;
-         flex-wrap: wrap;
-      }
-
-      .detail_item {
-         display: flex;
-         align-items: center;
-         white-space: nowrap;
-      }
-
-      .detail_label {
-         margin-right: 5px;
-      }
-
-      .doc_actions {
-         display: flex;
-         gap: 10px;
-         flex-shrink: 0;
-         width: 250px;
-         /* Фиксированная ширина для кнопок */
-      }
-
-      .btn {
-         padding: 10px 15px;
-         border: none;
-         border-radius: 6px;
-         font-weight: 600;
+         overflow: hidden;
+         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+         transition: transform 0.3s ease, box-shadow 0.3s ease;
          cursor: pointer;
-         transition: all 0.3s ease;
-         text-align: center;
-         text-decoration: none;
-         font-size: 0.9rem;
+         display: flex;
+         flex-direction: column;
+         height: 100%;
+      }
+
+      .certificate__item:hover {
+         transform: translateY(-5px);
+         box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+      }
+
+      .certificate__image_container {
+         width: 100%;
+         height: 300px;
+         overflow: hidden;
          display: flex;
          align-items: center;
-         gap: 6px;
-         min-width: 110px;
          justify-content: center;
-         white-space: nowrap;
-         flex: 1;
+         position: relative;
       }
 
-      .btn-watch {
-         background-color: #3498db;
-         color: white;
+      .certificate__image {
+         width: 100%;
+         height: 100%;
+         object-fit: cover;
+         transition: transform 0.3s ease;
       }
 
-      .btn-watch:hover {
-         background-color: #2980b9;
+      .certificate__item:hover .certificate__image {
+         transform: scale(1.03);
       }
 
-      .btn-download {
-         background-color: #f1f2f6;
-         color: #2c3e50;
-         border: 1px solid #ddd;
-      }
-
-      .btn-download:hover {
-         background-color: #e4e5e9;
-      }
-
-      .btn-icon {
-         font-size: 1rem;
-      }
-
-      footer {
+      .certificate__caption {
+         padding: 15px;
          text-align: center;
-         margin-top: 40px;
-         padding-top: 20px;
-         border-top: 1px solid #eaeaea;
-         color: #7f8c8d;
-         font-size: 0.9rem;
+         font-weight: 500;
+         color: #2c3e50;
+         border-top: 1px solid #eee;
+         flex-shrink: 0;
+         min-height: 60px;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         word-wrap: break-word;
+         overflow-wrap: break-word;
       }
 
-      /* Медиа-запросы для адаптации */
+      .pages__indicator {
+         position: absolute;
+         top: 10px;
+         right: 10px;
+         background: rgba(0, 0, 0, 0.7);
+         color: white;
+         padding: 4px 8px;
+         border-radius: 4px;
+         font-size: 0.8rem;
+      }
+
+      /* Модальное окно */
+      .certificate__modal {
+         display: none;
+         position: fixed;
+         top: 0;
+         left: 0;
+         width: 100%;
+         height: 100%;
+         background-color: rgba(0, 0, 0, 0.95);
+         z-index: 1000;
+         overflow: auto;
+      }
+
+      .certificate__modal-content {
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+         justify-content: flex-start;
+         min-height: 100%;
+         width: 100%;
+         padding-top: 60px;
+         padding-bottom: 100px;
+      }
+
+      .certificate__modal-image-container {
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         width: 100%;
+         max-width: 90%;
+         height: calc(100vh - 200px);
+         margin: 0 auto;
+      }
+
+      .certificate__modal-image {
+         width: 100%;
+         height: 100%;
+         object-fit: contain;
+      }
+
+      .certificate__close-btn {
+         position: absolute;
+         top: 20px;
+         right: 30px;
+         color: white;
+         font-size: 40px;
+         font-weight: bold;
+         cursor: pointer;
+         z-index: 1001;
+         transition: color 0.3s;
+         background: rgba(0, 0, 0, 0.5);
+         width: 50px;
+         height: 50px;
+         border-radius: 50%;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+      }
+
+      .certificate__close-btn:hover {
+         color: #e74c3c;
+         background: rgba(0, 0, 0, 0.7);
+      }
+
+      .certificate__modal-navigation {
+         position: fixed;
+         bottom: 30px;
+         left: 50%;
+         transform: translateX(-50%);
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         gap: 20px;
+         padding: 15px 20px;
+         background: rgba(0, 0, 0, 0.7);
+         border-radius: 10px;
+         z-index: 1002;
+      }
+
+      .certificate__nav-btn {
+         background: rgba(255, 255, 255, 0.2);
+         color: white;
+         border: none;
+         padding: 10px 20px;
+         border-radius: 5px;
+         cursor: pointer;
+         font-size: 1rem;
+         transition: background 0.3s;
+      }
+
+      .certificate__nav-btn:hover {
+         background: rgba(255, 255, 255, 0.3);
+      }
+
+      .certificate__nav-btn:disabled {
+         opacity: 0.5;
+         cursor: not-allowed;
+      }
+
+      .page-indicator {
+         color: white;
+         font-size: 1.1rem;
+         min-width: 80px;
+         text-align: center;
+      }
+
+      /* Адаптивность */
       @media (max-width: 1024px) {
-         .container {
-            padding: 25px;
+         .certificates__grid {
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 20px;
          }
 
-         .doc_details {
-            gap: 10px;
+         .certificate__image_container {
+            height: 280px;
          }
       }
 
       @media (max-width: 768px) {
-         body {
-            padding: 15px;
-         }
 
-         .container {
-            padding: 20px;
-            border-radius: 10px;
-         }
 
-         .document_item {
-            flex-direction: column;
+         .certificates__grid {
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
             gap: 15px;
-            padding: 15px;
          }
 
-         .doc_icon {
-            margin-right: 0;
-            align-self: center;
+         .certificate__image_container {
+            height: 240px;
          }
 
-         .doc_content {
-            flex-direction: column;
-            width: 100%;
+         .certificate__caption {
+            padding: 10px;
+            font-size: 0.9rem;
+            min-height: 50px;
          }
 
-         .doc_text {
-            margin-right: 0;
-            margin-bottom: 15px;
-            width: 100%;
+         .certificate__close-btn {
+            font-size: 30px;
+            top: 15px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
          }
 
-         .doc_title {
-            margin-right: 0;
-            font-size: 1rem;
+         .certificate__modal-content {
+            padding-top: 50px;
+            padding-bottom: 90px;
          }
 
-         .doc_details {
-            width: 100%;
-            justify-content: space-between;
+         .certificate__modal-image-container {
+            height: calc(100vh - 180px);
+            max-width: 95%;
          }
 
-         .doc_actions {
-            width: 100%;
-            justify-content: stretch;
-         }
-
-         .btn {
-            flex: 1;
-            padding: 12px;
-         }
-
-         h1 {
-            font-size: 1.8rem;
-         }
-
-         .subtitle {
-            font-size: 1rem;
+         .certificate__modal-navigation {
+            bottom: 20px;
+            padding: 12px 15px;
          }
       }
 
       @media (max-width: 480px) {
-         body {
-            padding: 10px;
+         .certificates__grid {
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 15px;
          }
 
-         .container {
-            padding: 15px;
+         .certificate__image_container {
+            height: 200px;
          }
 
-         .document_item {
-            padding: 12px;
-         }
-
-         .doc_details {
-            flex-direction: column;
-            gap: 5px;
-         }
-
-         .detail_item {
-            white-space: normal;
-         }
-
-         .btn {
-            min-width: auto;
+         .certificate__caption {
             font-size: 0.85rem;
-            padding: 10px;
+            min-height: 40px;
          }
 
-         h1 {
-            font-size: 1.6rem;
+         .certificate__modal-content {
+            padding-top: 40px;
+            padding-bottom: 80px;
+         }
+
+         .certificate__modal-image-container {
+            height: calc(100vh - 160px);
+         }
+
+         .certificate__modal-navigation {
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 10px;
+            bottom: 15px;
+         }
+
+         .certificate__nav-btn {
+            padding: 8px 15px;
+            font-size: 0.9rem;
+         }
+
+         .page-indicator {
+            font-size: 1rem;
          }
       }
 
       @media (max-width: 360px) {
-         .doc_actions {
-            flex-direction: column;
+         .certificates__grid {
+            grid-template-columns: 1fr;
+            gap: 15px;
          }
 
-         .btn {
-            width: 100%;
+         .certificate__image_container {
+            height: 250px;
          }
       }
    </style>
@@ -306,162 +293,228 @@
 <body>
    <div class="container">
       <header>
-         <h1>Документация</h1>
-         <p class="subtitle">В этом разделе представлены документы в формате .docx. Вы можете просмотреть их прямо в
-            браузере или скачать на свой компьютер.</p>
+         <h1>Наши сертификаты</h1>
+         <p>Официальные документы, подтверждающие качество нашей работы</p>
       </header>
 
-      <main>
-         <div class="documents_list">
-            <!-- Документ 1 с длинным названием -->
-            <div class="document_item">
-               <div class="doc_icon">📄</div>
-               <div class="doc_content">
-                  <div class="doc_text">
-                     <div class="doc_title">Документация для переговоров по выбору субподрядной организации на
-                        выполнение ремонтно-строительных работ по устройству вентиляции по объекту: «Модернизация здания
-                        импортного оборудования и бытовых помещений (инвентарный номер 350/С-96418) ТУП «Химтранс»,
-                        расположенного по адресу г. Гомель, ул. Химзаводская, 5.</div>
-                     <div class="doc_details">
-                        <div class="detail_item">
-                           <span class="detail_label">Формат:</span>
-                           <span>DOCX</span>
-                        </div>
-                        <div class="detail_item">
-                           <span class="detail_label">Размер:</span>
-                           <span>2.4 МБ</span>
-                        </div>
-                        <div class="detail_item">
-                           <span class="detail_label">Обновлен:</span>
-                           <span>15.05.2023</span>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="doc_actions">
-                     <a href="https://docs.google.com/gview?url=https://ваш-сайт.ru/documents/negotiations.docx"
-                        class="btn btn-watch" target="_blank">
-                        <span class="btn-icon">👁️</span>
-                        Смотреть
-                     </a>
-                     <a href="documents/negotiations.docx" class="btn btn-download" download>
-                        <span class="btn-icon">⤓</span>
-                        Скачать
-                     </a>
-                  </div>
-               </div>
+      <div class="certificates__grid">
+         <!-- Сертификат 1 (одна страница) -->
+         <div class="certificate__item" data-certificate='{
+                "title": "Сертификат соответствия ГОСТ 2023",
+                "pages": [
+                    "https://placehold.co/595x842/2c3e50/ffffff?text=Сертификат+1+Стр.1"
+                ]
+            }'>
+            <div class="certificate__image_container">
+               <img src="https://placehold.co/595x842/2c3e50/ffffff?text=Сертификат+1+Стр.1" alt="Сертификат 1"
+                  class="certificate__image">
+               <div class="pages__indicator">1 стр.</div>
             </div>
-
-            <!-- Документ 2 -->
-            <div class="document_item">
-               <div class="doc_icon">📄</div>
-               <div class="doc_content">
-                  <div class="doc_text">
-                     <div class="doc_title">dogovor.docx</div>
-                     <div class="doc_details">
-                        <div class="detail_item">
-                           <span class="detail_label">Формат:</span>
-                           <span>DOCX</span>
-                        </div>
-                        <div class="detail_item">
-                           <span class="detail_label">Размер:</span>
-                           <span>312 КБ</span>
-                        </div>
-                        <div class="detail_item">
-                           <span class="detail_label">Обновлен:</span>
-                           <span>22.08.2023</span>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="doc_actions">
-                     <a href="https://docs.google.com/gview?url=https://ваш-сайт.ru/documents/dogovor.docx"
-                        class="btn btn-watch" target="_blank">
-                        <span class="btn-icon">👁️</span>
-                        Смотреть
-                     </a>
-                     <a href="documents/dogovor.docx" class="btn btn-download" download>
-                        <span class="btn-icon">⤓</span>
-                        Скачать
-                     </a>
-                  </div>
-               </div>
-            </div>
-
-            <!-- Документ 3 -->
-            <div class="document_item">
-               <div class="doc_icon">📄</div>
-               <div class="doc_content">
-                  <div class="doc_text">
-                     <div class="doc_title">instrukciya.docx</div>
-                     <div class="doc_details">
-                        <div class="detail_item">
-                           <span class="detail_label">Формат:</span>
-                           <span>DOCX</span>
-                        </div>
-                        <div class="detail_item">
-                           <span class="detail_label">Размер:</span>
-                           <span>528 КБ</span>
-                        </div>
-                        <div class="detail_item">
-                           <span class="detail_label">Обновлен:</span>
-                           <span>10.11.2023</span>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="doc_actions">
-                     <a href="https://docs.google.com/gview?url=https://ваш-сайт.ru/documents/instrukciya.docx"
-                        class="btn btn-watch" target="_blank">
-                        <span class="btn-icon">👁️</span>
-                        Смотреть
-                     </a>
-                     <a href="documents/instrukciya.docx" class="btn btn-download" download>
-                        <span class="btn-icon">⤓</span>
-                        Скачать
-                     </a>
-                  </div>
-               </div>
-            </div>
-
-            <!-- Документ 4 -->
-            <div class="document_item">
-               <div class="doc_icon">📄</div>
-               <div class="doc_content">
-                  <div class="doc_text">
-                     <div class="doc_title">otchet.docx</div>
-                     <div class="doc_details">
-                        <div class="detail_item">
-                           <span class="detail_label">Формат:</span>
-                           <span>DOCX</span>
-                        </div>
-                        <div class="detail_item">
-                           <span class="detail_label">Размер:</span>
-                           <span>420 КБ</span>
-                        </div>
-                        <div class="detail_item">
-                           <span class="detail_label">Обновлен:</span>
-                           <span>05.12.2023</span>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="doc_actions">
-                     <a href="https://docs.google.com/gview?url=https://ваш-сайт.ru/documents/otchet.docx"
-                        class="btn btn-watch" target="_blank">
-                        <span class="btn-icon">👁️</span>
-                        Смотреть
-                     </a>
-                     <a href="documents/otchet.docx" class="btn btn-download" download>
-                        <span class="btn-icon">⤓</span>
-                        Скачать
-                     </a>
-                  </div>
-               </div>
-            </div>
+            <div class="certificate__caption">Сертификат соответствия ГОСТ 2023</div>
          </div>
-      </main>
 
-      <footer>
-         <p>© 2023 Документация компании. Все права защищены.</p>
-      </footer>
+         <!-- Сертификат 2 (две страницы) -->
+         <div class="certificate__item" data-certificate='{
+                "title": "Лицензия на образовательную деятельность",
+                "pages": [
+                    "https://placehold.co/595x842/3498db/ffffff?text=Лицензия+Стр.1",
+                    "https://placehold.co/595x842/2980b9/ffffff?text=Лицензия+Стр.2"
+                ]
+            }'>
+            <div class="certificate__image_container">
+               <img src="https://placehold.co/595x842/3498db/ffffff?text=Лицензия+Стр.1" alt="Лицензия"
+                  class="certificate__image">
+               <div class="pages__indicator">2 стр.</div>
+            </div>
+            <div class="certificate__caption">Лицензия на образовательную деятельность с очень длинным названием,
+               которое
+               занимает несколько строк</div>
+         </div>
+
+         <!-- Сертификат 3 (одна страница) -->
+         <div class="certificate__item" data-certificate='{
+                "title": "Сертификат качества ISO 9001",
+                "pages": [
+                    "https://placehold.co/595x842/27ae60/ffffff?text=ISO+9001"
+                ]
+            }'>
+            <div class="certificate__image_container">
+               <img src="https://placehold.co/595x842/27ae60/ffffff?text=ISO+9001" alt="Сертификат ISO 9001"
+                  class="certificate__image">
+               <div class="pages__indicator">1 стр.</div>
+            </div>
+            <div class="certificate__caption">Сертификат качества ISO 9001</div>
+         </div>
+
+         <!-- Сертификат 4 (две страницы) -->
+         <div class="certificate__item" data-certificate='{
+                "title": "Диплом победителя конкурса качества",
+                "pages": [
+                    "https://placehold.co/595x842/e74c3c/ffffff?text=Диплом+Стр.1",
+                    "https://placehold.co/595x842/c0392b/ffffff?text=Диплом+Стр.2"
+                ]
+            }'>
+            <div class="certificate__image_container">
+               <img src="https://placehold.co/595x842/e74c3c/ffffff?text=Диплом+Стр.1" alt="Диплом"
+                  class="certificate__image">
+               <div class="pages__indicator">2 стр.</div>
+            </div>
+            <div class="certificate__caption">Диплом победителя конкурса качества с очень длинным названием, которое
+               занимает несколько строк и расширяет блок с текстом</div>
+         </div>
+
+         <!-- Сертификат 5 (одна страница) -->
+         <div class="certificate__item" data-certificate='{
+                "title": "Свидетельство о членстве в ассоциации",
+                "pages": [
+                    "https://placehold.co/595x842/9b59b6/ffffff?text=Свидетельство"
+                ]
+            }'>
+            <div class="certificate__image_container">
+               <img src="https://placehold.co/595x842/9b59b6/ffffff?text=Свидетельство" alt="Свидетельство"
+                  class="certificate__image">
+               <div class="pages__indicator">1 стр.</div>
+            </div>
+            <div class="certificate__caption">Свидетельство о членстве в ассоциации</div>
+         </div>
+
+         <!-- Сертификат 6 (две страницы) -->
+         <div class="certificate__item" data-certificate='{
+                "title": "Сертификат безопасности продукции",
+                "pages": [
+                    "https://placehold.co/595x842/f39c12/ffffff?text=Безопасность+Стр.1",
+                    "https://placehold.co/595x842/e67e22/ffffff?text=Безопасность+Стр.2"
+                ]
+            }'>
+            <div class="certificate__image_container">
+               <img src="https://placehold.co/595x842/f39c12/ffffff?text=Безопасность+Стр.1"
+                  alt="Сертификат безопасности" class="certificate__image">
+               <div class="pages__indicator">2 стр.</div>
+            </div>
+            <div class="certificate__caption">Сертификат безопасности продукции</div>
+         </div>
+      </div>
    </div>
+
+   <!-- Модальное окно для просмотра сертификатов -->
+   <div id="certificateModal" class="certificate__modal">
+      <span class="certificate__close-btn">&times;</span>
+      <div class="certificate__modal-content">
+         <div class="certificate__modal-image-container">
+            <img class="certificate__modal-image" id="modalImage">
+         </div>
+         <div class="certificate__modal-navigation">
+            <button class="certificate__nav-btn" id="certificate__prevBtn">Назад</button>
+            <div class="page-indicator" id="pageIndicator">1 из 1</div>
+            <button class="certificate__nav-btn" id="certificate__nextBtn">Вперед</button>
+         </div>
+      </div>
+   </div>
+
+   <script>
+      // Получаем элементы DOM
+      const certificate__modal = document.getElementById('certificateModal');
+      const modalImg = document.getElementById('modalImage');
+      const closeBtn = document.querySelector('.certificate__close-btn');
+      const certificate__prevBtn = document.getElementById('certificate__prevBtn');
+      const certificate__nextBtn = document.getElementById('certificate__nextBtn');
+      const pageIndicator = document.getElementById('pageIndicator');
+
+      // Переменные для управления навигацией
+      let currentPages = [];
+      let currentPageIndex = 0;
+
+      // Получаем все элементы сертификатов
+      const certificateItems = document.querySelectorAll('.certificate__item');
+
+      // Добавляем обработчик клика для каждого сертификата
+      certificateItems.forEach(item => {
+         item.addEventListener('click', function () {
+            const certificateData = JSON.parse(this.getAttribute('data-certificate'));
+            currentPages = certificateData.pages;
+            currentPageIndex = 0;
+
+            openModal();
+         });
+      });
+
+      // Функция открытия модального окна
+      function openModal() {
+         certificate__modal.style.display = 'block';
+         document.body.style.overflow = 'hidden';
+         updateModalContent();
+         updateNavigationButtons();
+      }
+
+      // Функция закрытия модального окна
+      function closeModal() {
+         certificate__modal.style.display = 'none';
+         document.body.style.overflow = 'auto';
+      }
+
+      // Функция обновления содержимого модального окна
+      function updateModalContent() {
+         modalImg.src = currentPages[currentPageIndex];
+         pageIndicator.textContent = `${currentPageIndex + 1} из ${currentPages.length}`;
+      }
+
+      // Функция обновления состояния кнопок навигации
+      function updateNavigationButtons() {
+         certificate__prevBtn.disabled = currentPageIndex === 0;
+         certificate__nextBtn.disabled = currentPageIndex === currentPages.length - 1;
+
+         // Скрываем навигацию, если страница только одна
+         document.querySelector('.certificate__modal-navigation').style.display =
+            currentPages.length > 1 ? 'flex' : 'none';
+      }
+
+      // Обработчики для кнопок навигации
+      certificate__prevBtn.addEventListener('click', function () {
+         if (currentPageIndex > 0) {
+            currentPageIndex--;
+            updateModalContent();
+            updateNavigationButtons();
+         }
+      });
+
+      certificate__nextBtn.addEventListener('click', function () {
+         if (currentPageIndex < currentPages.length - 1) {
+            currentPageIndex++;
+            updateModalContent();
+            updateNavigationButtons();
+         }
+      });
+
+      // Закрытие модального окна при клике на крестик
+      closeBtn.addEventListener('click', closeModal);
+
+      // Закрытие модального окна при клике вне изображения
+      certificate__modal.addEventListener('click', function (event) {
+         if (event.target === certificate__modal) {
+            closeModal();
+         }
+      });
+
+      // Закрытие модального окна при нажатии клавиши ESC
+      document.addEventListener('keydown', function (event) {
+         if (event.key === 'Escape') {
+            closeModal();
+         }
+
+         // Навигация с помощью клавиш стрелок
+         if (certificate__modal.style.display === 'block') {
+            if (event.key === 'ArrowLeft' && currentPageIndex > 0) {
+               currentPageIndex--;
+               updateModalContent();
+               updateNavigationButtons();
+            } else if (event.key === 'ArrowRight' && currentPageIndex < currentPages.length - 1) {
+               currentPageIndex++;
+               updateModalContent();
+               updateNavigationButtons();
+            }
+         }
+      });
+   </script>
 </body>
 
 </html>

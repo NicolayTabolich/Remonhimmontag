@@ -8,7 +8,7 @@ const newsData = [
       date: "2025-12-15",
       images: [
          "img/4_ychastok.jpg",
-         "img/news/rmc_svarka.jpg"
+         "img/rmc_svarka.jpg"
       ]
    },
    {
