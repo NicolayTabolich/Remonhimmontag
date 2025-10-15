@@ -4,516 +4,211 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Сертификаты</title>
+   <title>Сайт с панелью доступности</title>
+
+   <!-- Подключение библиотеки ALA -->
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ala@1.0.0/dist/ala.min.css">
+   <script src="https://cdn.jsdelivr.net/npm/ala@1.0.0/dist/ala.min.js"></script>
+
    <style>
-      .certificates__grid {
-         display: grid;
-         grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-         gap: 30px;
-      }
-
-      .certificate__item {
-         background: white;
-         border-radius: 8px;
-         overflow: hidden;
-         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-         transition: transform 0.3s ease, box-shadow 0.3s ease;
-         cursor: pointer;
-         display: flex;
-         flex-direction: column;
-         height: 100%;
-      }
-
-      .certificate__item:hover {
-         transform: translateY(-5px);
-         box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-      }
-
-      .certificate__image_container {
-         width: 100%;
-         height: 300px;
-         overflow: hidden;
-         display: flex;
-         align-items: center;
-         justify-content: center;
-         position: relative;
-      }
-
-      .certificate__image {
-         width: 100%;
-         height: 100%;
-         object-fit: cover;
-         transition: transform 0.3s ease;
-      }
-
-      .certificate__item:hover .certificate__image {
-         transform: scale(1.03);
-      }
-
-      .certificate__caption {
-         padding: 15px;
-         text-align: center;
-         font-weight: 500;
-         color: #2c3e50;
-         border-top: 1px solid #eee;
-         flex-shrink: 0;
-         min-height: 60px;
-         display: flex;
-         align-items: center;
-         justify-content: center;
-         word-wrap: break-word;
-         overflow-wrap: break-word;
-      }
-
-      .pages__indicator {
-         position: absolute;
-         top: 10px;
-         right: 10px;
-         background: rgba(0, 0, 0, 0.7);
-         color: white;
-         padding: 4px 8px;
-         border-radius: 4px;
-         font-size: 0.8rem;
-      }
-
-      /* Модальное окно */
-      .certificate__modal {
-         display: none;
+      /* Стили для кнопки активации */
+      .top_vision_helper {
          position: fixed;
-         top: 0;
-         left: 0;
-         width: 100%;
-         height: 100%;
-         background-color: rgba(0, 0, 0, 0.95);
-         z-index: 1000;
-         overflow: auto;
-      }
-
-      .certificate__modal-content {
-         display: flex;
-         flex-direction: column;
-         align-items: center;
-         justify-content: flex-start;
-         min-height: 100%;
-         width: 100%;
-         padding-top: 60px;
-         padding-bottom: 100px;
-      }
-
-      .certificate__modal-image-container {
-         display: flex;
-         justify-content: center;
-         align-items: center;
-         width: 100%;
-         max-width: 90%;
-         height: calc(100vh - 200px);
-         margin: 0 auto;
-      }
-
-      .certificate__modal-image {
-         width: 100%;
-         height: 100%;
-         object-fit: contain;
-      }
-
-      .certificate__close-btn {
-         position: absolute;
          top: 20px;
-         right: 30px;
-         color: white;
-         font-size: 40px;
-         font-weight: bold;
-         cursor: pointer;
-         z-index: 1001;
-         transition: color 0.3s;
-         background: rgba(0, 0, 0, 0.5);
+         right: 20px;
+         z-index: 10000;
          width: 50px;
          height: 50px;
+         background: #2c3e50;
          border-radius: 50%;
          display: flex;
          align-items: center;
          justify-content: center;
-      }
-
-      .certificate__close-btn:hover {
-         color: #e74c3c;
-         background: rgba(0, 0, 0, 0.7);
-      }
-
-      .certificate__modal-navigation {
-         position: fixed;
-         bottom: 30px;
-         left: 50%;
-         transform: translateX(-50%);
-         display: flex;
-         justify-content: center;
-         align-items: center;
-         gap: 20px;
-         padding: 15px 20px;
-         background: rgba(0, 0, 0, 0.7);
-         border-radius: 10px;
-         z-index: 1002;
-      }
-
-      .certificate__nav-btn {
-         background: rgba(255, 255, 255, 0.2);
-         color: white;
-         border: none;
-         padding: 10px 20px;
-         border-radius: 5px;
          cursor: pointer;
-         font-size: 1rem;
-         transition: background 0.3s;
+         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+         transition: all 0.3s ease;
       }
 
-      .certificate__nav-btn:hover {
-         background: rgba(255, 255, 255, 0.3);
+      .top_vision_helper:hover {
+         transform: scale(1.1);
+         background: #34495e;
       }
 
-      .certificate__nav-btn:disabled {
-         opacity: 0.5;
-         cursor: not-allowed;
+      .top_vision_helper img {
+         width: 24px;
+         height: 24px;
+         filter: brightness(0) invert(1);
       }
 
-      .page-indicator {
-         color: white;
-         font-size: 1.1rem;
-         min-width: 80px;
-         text-align: center;
+      /* Дополнительные стили для демонстрации */
+      .content {
+         max-width: 800px;
+         margin: 0 auto;
+         padding: 20px;
+         font-family: Arial, sans-serif;
       }
 
-      /* Адаптивность */
-      @media (max-width: 1024px) {
-         .certificates__grid {
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-            gap: 20px;
-         }
-
-         .certificate__image_container {
-            height: 280px;
-         }
-      }
-
-      @media (max-width: 768px) {
-
-
-         .certificates__grid {
-            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-            gap: 15px;
-         }
-
-         .certificate__image_container {
-            height: 240px;
-         }
-
-         .certificate__caption {
-            padding: 10px;
-            font-size: 0.9rem;
-            min-height: 50px;
-         }
-
-         .certificate__close-btn {
-            font-size: 30px;
-            top: 15px;
-            right: 20px;
-            width: 40px;
-            height: 40px;
-         }
-
-         .certificate__modal-content {
-            padding-top: 50px;
-            padding-bottom: 90px;
-         }
-
-         .certificate__modal-image-container {
-            height: calc(100vh - 180px);
-            max-width: 95%;
-         }
-
-         .certificate__modal-navigation {
-            bottom: 20px;
-            padding: 12px 15px;
-         }
-      }
-
-      @media (max-width: 480px) {
-         .certificates__grid {
-            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-            gap: 15px;
-         }
-
-         .certificate__image_container {
-            height: 200px;
-         }
-
-         .certificate__caption {
-            font-size: 0.85rem;
-            min-height: 40px;
-         }
-
-         .certificate__modal-content {
-            padding-top: 40px;
-            padding-bottom: 80px;
-         }
-
-         .certificate__modal-image-container {
-            height: calc(100vh - 160px);
-         }
-
-         .certificate__modal-navigation {
-            flex-wrap: wrap;
-            gap: 10px;
-            padding: 10px;
-            bottom: 15px;
-         }
-
-         .certificate__nav-btn {
-            padding: 8px 15px;
-            font-size: 0.9rem;
-         }
-
-         .page-indicator {
-            font-size: 1rem;
-         }
-      }
-
-      @media (max-width: 360px) {
-         .certificates__grid {
-            grid-template-columns: 1fr;
-            gap: 15px;
-         }
-
-         .certificate__image_container {
-            height: 250px;
-         }
+      .demo-image {
+         width: 100%;
+         height: 200px;
+         background: #ecf0f1;
+         margin: 20px 0;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         color: #7f8c8d;
       }
    </style>
 </head>
 
 <body>
-   <div class="container">
-      <header>
-         <h1>Наши сертификаты</h1>
-         <p>Официальные документы, подтверждающие качество нашей работы</p>
-      </header>
-
-      <div class="certificates__grid">
-         <!-- Сертификат 1 (одна страница) -->
-         <div class="certificate__item" data-certificate='{
-                "title": "Сертификат соответствия ГОСТ 2023",
-                "pages": [
-                    "https://placehold.co/595x842/2c3e50/ffffff?text=Сертификат+1+Стр.1"
-                ]
-            }'>
-            <div class="certificate__image_container">
-               <img src="https://placehold.co/595x842/2c3e50/ffffff?text=Сертификат+1+Стр.1" alt="Сертификат 1"
-                  class="certificate__image">
-               <div class="pages__indicator">1 стр.</div>
-            </div>
-            <div class="certificate__caption">Сертификат соответствия ГОСТ 2023</div>
-         </div>
-
-         <!-- Сертификат 2 (две страницы) -->
-         <div class="certificate__item" data-certificate='{
-                "title": "Лицензия на образовательную деятельность",
-                "pages": [
-                    "https://placehold.co/595x842/3498db/ffffff?text=Лицензия+Стр.1",
-                    "https://placehold.co/595x842/2980b9/ffffff?text=Лицензия+Стр.2"
-                ]
-            }'>
-            <div class="certificate__image_container">
-               <img src="https://placehold.co/595x842/3498db/ffffff?text=Лицензия+Стр.1" alt="Лицензия"
-                  class="certificate__image">
-               <div class="pages__indicator">2 стр.</div>
-            </div>
-            <div class="certificate__caption">Лицензия на образовательную деятельность с очень длинным названием,
-               которое
-               занимает несколько строк</div>
-         </div>
-
-         <!-- Сертификат 3 (одна страница) -->
-         <div class="certificate__item" data-certificate='{
-                "title": "Сертификат качества ISO 9001",
-                "pages": [
-                    "https://placehold.co/595x842/27ae60/ffffff?text=ISO+9001"
-                ]
-            }'>
-            <div class="certificate__image_container">
-               <img src="https://placehold.co/595x842/27ae60/ffffff?text=ISO+9001" alt="Сертификат ISO 9001"
-                  class="certificate__image">
-               <div class="pages__indicator">1 стр.</div>
-            </div>
-            <div class="certificate__caption">Сертификат качества ISO 9001</div>
-         </div>
-
-         <!-- Сертификат 4 (две страницы) -->
-         <div class="certificate__item" data-certificate='{
-                "title": "Диплом победителя конкурса качества",
-                "pages": [
-                    "https://placehold.co/595x842/e74c3c/ffffff?text=Диплом+Стр.1",
-                    "https://placehold.co/595x842/c0392b/ffffff?text=Диплом+Стр.2"
-                ]
-            }'>
-            <div class="certificate__image_container">
-               <img src="https://placehold.co/595x842/e74c3c/ffffff?text=Диплом+Стр.1" alt="Диплом"
-                  class="certificate__image">
-               <div class="pages__indicator">2 стр.</div>
-            </div>
-            <div class="certificate__caption">Диплом победителя конкурса качества с очень длинным названием, которое
-               занимает несколько строк и расширяет блок с текстом</div>
-         </div>
-
-         <!-- Сертификат 5 (одна страница) -->
-         <div class="certificate__item" data-certificate='{
-                "title": "Свидетельство о членстве в ассоциации",
-                "pages": [
-                    "https://placehold.co/595x842/9b59b6/ffffff?text=Свидетельство"
-                ]
-            }'>
-            <div class="certificate__image_container">
-               <img src="https://placehold.co/595x842/9b59b6/ffffff?text=Свидетельство" alt="Свидетельство"
-                  class="certificate__image">
-               <div class="pages__indicator">1 стр.</div>
-            </div>
-            <div class="certificate__caption">Свидетельство о членстве в ассоциации</div>
-         </div>
-
-         <!-- Сертификат 6 (две страницы) -->
-         <div class="certificate__item" data-certificate='{
-                "title": "Сертификат безопасности продукции",
-                "pages": [
-                    "https://placehold.co/595x842/f39c12/ffffff?text=Безопасность+Стр.1",
-                    "https://placehold.co/595x842/e67e22/ffffff?text=Безопасность+Стр.2"
-                ]
-            }'>
-            <div class="certificate__image_container">
-               <img src="https://placehold.co/595x842/f39c12/ffffff?text=Безопасность+Стр.1"
-                  alt="Сертификат безопасности" class="certificate__image">
-               <div class="pages__indicator">2 стр.</div>
-            </div>
-            <div class="certificate__caption">Сертификат безопасности продукции</div>
-         </div>
-      </div>
+   <!-- Ваша кнопка для активации панели -->
+   <div class="top_vision_helper" onclick="ALA.togglePanel()">
+      <img
+         src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmZmZmIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PGNpcmNsZSBjeD0iMTIiIGN5PSIxMiIgcj0iMyIvPjxwYXRoIGQ9Ik0xMiAxOWMtMy44NyAwLTcuMTUtMi4zMi04LjY1LTUuNzdDNC4zNSAxMC4wMiA3LjczIDUgMTIgNWM0LjI3IDAgNy42NSA1LjAyIDguNjUgOC4yM0MxOS4xNSAxNi42OCAxNS44NyAxOSAxMiAxOXoiLz48L3N2Zz4="
+         alt="Версия для слабовидящих">
    </div>
 
-   <!-- Модальное окно для просмотра сертификатов -->
-   <div id="certificateModal" class="certificate__modal">
-      <span class="certificate__close-btn">&times;</span>
-      <div class="certificate__modal-content">
-         <div class="certificate__modal-image-container">
-            <img class="certificate__modal-image" id="modalImage">
-         </div>
-         <div class="certificate__modal-navigation">
-            <button class="certificate__nav-btn" id="certificate__prevBtn">Назад</button>
-            <div class="page-indicator" id="pageIndicator">1 из 1</div>
-            <button class="certificate__nav-btn" id="certificate__nextBtn">Вперед</button>
-         </div>
-      </div>
+   <!-- Контент сайта для демонстрации -->
+   <div class="content">
+      <h1>Добро пожаловать на наш сайт</h1>
+      <p>Это демонстрационная страница с панелью доступности для слабовидящих.</p>
+
+      <h2>О нас</h2>
+      <p>Мы занимаемся созданием доступных веб-решений для всех пользователей.</p>
+
+      <div class="demo-image">Демонстрационное изображение</div>
+
+      <h2>Наши услуги</h2>
+      <ul>
+         <li>Веб-разработка</li>
+         <li>Доступность сайтов</li>
+         <li>Пользовательский опыт</li>
+      </ul>
+
+      <a href="#">Пример ссылки</a>
    </div>
 
    <script>
-      // Получаем элементы DOM
-      const certificate__modal = document.getElementById('certificateModal');
-      const modalImg = document.getElementById('modalImage');
-      const closeBtn = document.querySelector('.certificate__close-btn');
-      const certificate__prevBtn = document.getElementById('certificate__prevBtn');
-      const certificate__nextBtn = document.getElementById('certificate__nextBtn');
-      const pageIndicator = document.getElementById('pageIndicator');
-
-      // Переменные для управления навигацией
-      let currentPages = [];
-      let currentPageIndex = 0;
-
-      // Получаем все элементы сертификатов
-      const certificateItems = document.querySelectorAll('.certificate__item');
-
-      // Добавляем обработчик клика для каждого сертификата
-      certificateItems.forEach(item => {
-         item.addEventListener('click', function () {
-            const certificateData = JSON.parse(this.getAttribute('data-certificate'));
-            currentPages = certificateData.pages;
-            currentPageIndex = 0;
-
-            openModal();
-         });
-      });
-
-      // Функция открытия модального окна
-      function openModal() {
-         certificate__modal.style.display = 'block';
-         document.body.style.overflow = 'hidden';
-         updateModalContent();
-         updateNavigationButtons();
-      }
-
-      // Функция закрытия модального окна
-      function closeModal() {
-         certificate__modal.style.display = 'none';
-         document.body.style.overflow = 'auto';
-      }
-
-      // Функция обновления содержимого модального окна
-      function updateModalContent() {
-         modalImg.src = currentPages[currentPageIndex];
-         pageIndicator.textContent = `${currentPageIndex + 1} из ${currentPages.length}`;
-      }
-
-      // Функция обновления состояния кнопок навигации
-      function updateNavigationButtons() {
-         certificate__prevBtn.disabled = currentPageIndex === 0;
-         certificate__nextBtn.disabled = currentPageIndex === currentPages.length - 1;
-
-         // Скрываем навигацию, если страница только одна
-         document.querySelector('.certificate__modal-navigation').style.display =
-            currentPages.length > 1 ? 'flex' : 'none';
-      }
-
-      // Обработчики для кнопок навигации
-      certificate__prevBtn.addEventListener('click', function () {
-         if (currentPageIndex > 0) {
-            currentPageIndex--;
-            updateModalContent();
-            updateNavigationButtons();
-         }
-      });
-
-      certificate__nextBtn.addEventListener('click', function () {
-         if (currentPageIndex < currentPages.length - 1) {
-            currentPageIndex++;
-            updateModalContent();
-            updateNavigationButtons();
-         }
-      });
-
-      // Закрытие модального окна при клике на крестик
-      closeBtn.addEventListener('click', closeModal);
-
-      // Закрытие модального окна при клике вне изображения
-      certificate__modal.addEventListener('click', function (event) {
-         if (event.target === certificate__modal) {
-            closeModal();
-         }
-      });
-
-      // Закрытие модального окна при нажатии клавиши ESC
-      document.addEventListener('keydown', function (event) {
-         if (event.key === 'Escape') {
-            closeModal();
-         }
-
-         // Навигация с помощью клавиш стрелок
-         if (certificate__modal.style.display === 'block') {
-            if (event.key === 'ArrowLeft' && currentPageIndex > 0) {
-               currentPageIndex--;
-               updateModalContent();
-               updateNavigationButtons();
-            } else if (event.key === 'ArrowRight' && currentPageIndex < currentPages.length - 1) {
-               currentPageIndex++;
-               updateModalContent();
-               updateNavigationButtons();
+      // Инициализация панели ALA
+      document.addEventListener('DOMContentLoaded', function () {
+         // Базовая конфигурация ALA
+         const alaConfig = {
+            position: 'right', // Позиция панели (left/right)
+            language: 'ru', // Язык интерфейса
+            tools: {
+               fontBigger: true,
+               fontSmaller: true,
+               contrast: true,
+               invert: true,
+               grayscale: true,
+               textToSpeech: true,
+               speechToText: true,
+               linkUnderline: true,
+               readableFont: true,
+               reset: true
+            },
+            // Кастомизация внешнего вида
+            styles: {
+               primaryColor: '#2c3e50',
+               textColor: '#ffffff',
+               backgroundColor: '#34495e'
             }
+         };
+
+         // Инициализация ALA
+         if (typeof ALA !== 'undefined') {
+            ALA.init(alaConfig);
+         } else {
+            console.error('Библиотека ALA не загружена');
+
+            // Fallback - простая реализация если ALA не загрузилась
+            document.querySelector('.top_vision_helper').addEventListener('click', function () {
+               alert('Панель доступности будет доступна после полной загрузки библиотеки');
+            });
          }
       });
+
+      // Альтернативная реализация на случай проблем с ALA
+      function initAccessibilityFallback() {
+         const fallbackPanel = document.createElement('div');
+         fallbackPanel.id = 'fallback-accessibility-panel';
+         fallbackPanel.innerHTML = `
+                <div style="position: fixed; top: 50%; right: 0; transform: translateY(-50%); background: white; border: 1px solid #ccc; padding: 20px; z-index: 10001; box-shadow: -2px 2px 10px rgba(0,0,0,0.3);">
+                    <h3>Версия для слабовидящих</h3>
+                    <button onclick="changeFontSize('increase')">A+ Увеличить шрифт</button><br>
+                    <button onclick="changeFontSize('decrease')">A- Уменьшить шрифт</button><br>
+                    <button onclick="toggleContrast()">Высокая контрастность</button><br>
+                    <button onclick="resetSettings()">Обычная версия</button><br>
+                    <button onclick="closeFallbackPanel()">✕ Закрыть</button>
+                </div>
+            `;
+         document.body.appendChild(fallbackPanel);
+      }
+
+      // Функции для fallback-панели
+      function changeFontSize(action) {
+         const body = document.body;
+         const currentSize = parseInt(getComputedStyle(body).fontSize);
+
+         if (action === 'increase') {
+            body.style.fontSize = (currentSize + 2) + 'px';
+         } else {
+            body.style.fontSize = (currentSize - 2) + 'px';
+         }
+
+         localStorage.setItem('fontSize', body.style.fontSize);
+      }
+
+      function toggleContrast() {
+         document.body.classList.toggle('high-contrast');
+         localStorage.setItem('highContrast', document.body.classList.contains('high-contrast'));
+      }
+
+      function resetSettings() {
+         document.body.style.fontSize = '';
+         document.body.classList.remove('high-contrast');
+         localStorage.removeItem('fontSize');
+         localStorage.removeItem('highContrast');
+      }
+
+      function closeFallbackPanel() {
+         const panel = document.getElementById('fallback-accessibility-panel');
+         if (panel) panel.remove();
+      }
+
+      // Восстановление настроек при загрузке
+      window.addEventListener('load', function () {
+         const savedFontSize = localStorage.getItem('fontSize');
+         const highContrast = localStorage.getItem('highContrast');
+
+         if (savedFontSize) {
+            document.body.style.fontSize = savedFontSize;
+         }
+
+         if (highContrast === 'true') {
+            document.body.classList.add('high-contrast');
+         }
+      });
+
+      // Стили для high-contrast режима
+      const style = document.createElement('style');
+      style.textContent = `
+            .high-contrast {
+                background: #000 !important;
+                color: #fff !important;
+            }
+            .high-contrast a {
+                color: #ffff00 !important;
+            }
+            .high-contrast .top_vision_helper {
+                background: #ffff00 !important;
+            }
+            .high-contrast .top_vision_helper img {
+                filter: brightness(0) !important;
+            }
+        `;
+      document.head.appendChild(style);
    </script>
 </body>
 

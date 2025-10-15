@@ -228,7 +228,7 @@ main {
   }
 }
 
-.top_vision_helper {
+.accessibility-trigger {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -239,7 +239,7 @@ main {
   -ms-flex-item-align: center;
       align-self: center;
 }
-.top_vision_helper div {
+.accessibility-trigger div {
   height: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -249,13 +249,13 @@ main {
           align-items: center;
 }
 
-.top_vision_helper img {
+.accessibility-trigger img {
   max-height: 17px;
   width: auto;
   cursor: pointer;
 }
 @media (max-width: 767.98px) {
-  .top_vision_helper img {
+  .accessibility-trigger img {
     max-height: 15px;
   }
 }

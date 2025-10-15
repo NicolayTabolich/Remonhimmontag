@@ -109,7 +109,7 @@ body {
    }
 }
 
-.top_vision_helper {
+.accessibility-trigger {
    display: flex;
    height: 100%;
    align-items: center;
@@ -121,7 +121,7 @@ body {
    }
 }
 
-.top_vision_helper img {
+.accessibility-trigger img {
    max-height: 17px;
    width: auto;
    cursor: pointer;
@@ -4345,6 +4345,14 @@ display: flex;
        height: 250px;
     }
  }
+
+
+
+
+
+
+
+
 
 @media (max-width: 1140px) {}
 
