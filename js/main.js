@@ -281,23 +281,7 @@ document.addEventListener('DOMContentLoaded', function () {
       this.innerHTML = '<iframe class="company_video-iframe" src="https://www.youtube.com/embed/T9oVJQvlXBQ?si=Dk1veWe5huZH4TgQ?rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
    });
 
-   // Функция для обрезки текста по высоте видео
-   function adjustContent() {
-      const textContent = document.querySelector('.text-content');
-      const videoContent = document.querySelector('.video-content');
 
-      if (window.innerWidth > 991.98) {
-         // На больших экранах устанавливаем высоту текста равной высоте видео
-         textContent.style.maxHeight = videoContent.offsetHeight + 'px';
-      } else {
-         // На мобильных устройствах используем CSS-правила
-         textContent.style.maxHeight = '';
-      }
-   }
-
-   // Вызываем функцию при загрузке и изменении размера окна
-   window.addEventListener('load', adjustContent);
-   window.addEventListener('resize', adjustContent);
 });
 
 
@@ -510,7 +494,8 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-// Анимация появления на index
+// Анимация появления на cайте
+
 // Плавное появление секций при скролле
 function initScrollAnimation() {
    const sections = document.querySelectorAll('.services_section, .photo_company, .certificates, .company_content_image, .services_page, .contacts__section, .management_section, .company_section, .about-section, .documents, .news__section, .footer, .vacancy_page, .vacancies_section, .other_section, .all-news ');

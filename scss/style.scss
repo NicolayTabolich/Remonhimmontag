@@ -104,7 +104,7 @@ body {
    column-gap: 15px;
    align-items: center;
 
-   div {
+   & div {
       text-transform: uppercase;
       line-height: 100%;
       cursor: pointer;
