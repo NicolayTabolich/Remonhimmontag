@@ -4040,6 +4040,7 @@ select {
       -ms-flex-pack: center;
           justify-content: center;
   overflow: hidden;
+  margin: 5px 0px;
 }
 
 .company_content_image img {
@@ -4080,7 +4081,7 @@ select {
   margin-left: calc(-50vw + 50%);
   background-color: rgba(12, 16, 71, 0.05);
   padding: 20px 0;
-  margin-top: 40px;
+  margin-top: 30px;
   position: relative;
 }
 @media (max-width: 567.98px) {
@@ -4632,6 +4633,7 @@ select {
       -ms-flex-positive: 1;
           flex-grow: 1;
   margin-bottom: 5px;
+  margin-bottom: 20px;
 }
 
 .documents_list {
