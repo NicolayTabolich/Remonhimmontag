@@ -4367,32 +4367,8 @@ display: flex;
    transform: translateY(0);
 }
 
-/* Задержки для последовательного появления */
-.services_section.active{
-   transition-delay: 0.1s;
-}
 
 
-
-.about-section.active {
-   transition-delay: 0.2s;
-}
-
-.news__section.active {
-   transition-delay: 0.3s;
-}
-
-.vacancies_section.active {
-   transition-delay: 0.4s;
-}
-
-.other_section_anim.active {
-   transition-delay: 0.5s;
-}
-
-.footer_anim{
-   transition-delay: 0.6s;
-   }
 
 /* Улучшаем плавность скролла */
 html {
@@ -4401,11 +4377,21 @@ html {
 
 /* Гарантируем, что секции изначально скрыты */
 .services_section,
+.company_section,
 .about-section,
 .news__section,
 .vacancies_section,
-.footer_anim,
-.other_section_anim {
+.photo_company,
+.certificates,
+.company_content_image,
+.services_page,
+.contacts__section,
+.management_section,
+.all-news,
+.footer,
+.documents,
+.vacancy_page,
+.other_section {
    opacity: 0;
    transform: translateY(50px);
 }
