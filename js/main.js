@@ -478,15 +478,48 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
+// Анимация появления на index
+// Плавное появление секций при скролле
+function initScrollAnimation() {
+   const sections = document.querySelectorAll('.services_section, .about-section, .news__section, .footer_anim, .vacancies_section, .other_section_anim');
 
-// О комнпании
+   // Добавляем класс scroll-section для единообразного управления
+   sections.forEach(section => {
+      section.classList.add('scroll-section');
+   });
 
+   const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+   };
 
+   const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, index) => {
+         if (entry.isIntersecting) {
+            // Добавляем задержку для последовательного появления
+            setTimeout(() => {
+               entry.target.classList.add('active');
+            }, index * 200);
 
+            // Перестаем наблюдать за секцией после появления (опционально)
+            // observer.unobserve(entry.target);
+         }
+      });
+   }, observerOptions);
 
-// Фотогалерея
+   // Начинаем наблюдение за секциями
+   sections.forEach(section => {
+      observer.observe(section);
+   });
+}
 
-// сертификаты
+// Запускаем анимацию при загрузке страницы
+document.addEventListener('DOMContentLoaded', function () {
+   initScrollAnimation();
+});
 
-// Получаем элементы DOM
-
+// Также запускаем при полной загрузке страницы
+window.addEventListener('load', function () {
+   // Добавляем небольшую задержку для гарантии корректного определения позиций
+   setTimeout(initScrollAnimation, 100);
+});

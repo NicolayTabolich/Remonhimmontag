@@ -5211,3 +5211,88 @@ select {
     height: 250px;
   }
 }
+/* Анимация появления секций */
+.scroll-section {
+  opacity: 0;
+  -webkit-transform: translateY(50px);
+      -ms-transform: translateY(50px);
+          transform: translateY(50px);
+  -webkit-transition: all 0.8s ease-out;
+  transition: all 0.8s ease-out;
+}
+
+.scroll-section.active {
+  opacity: 1;
+  -webkit-transform: translateY(0);
+      -ms-transform: translateY(0);
+          transform: translateY(0);
+}
+
+/* Задержки для последовательного появления */
+.services_section.active {
+  -webkit-transition-delay: 0.1s;
+          transition-delay: 0.1s;
+}
+
+.about-section.active {
+  -webkit-transition-delay: 0.2s;
+          transition-delay: 0.2s;
+}
+
+.news__section.active {
+  -webkit-transition-delay: 0.3s;
+          transition-delay: 0.3s;
+}
+
+.vacancies_section.active {
+  -webkit-transition-delay: 0.4s;
+          transition-delay: 0.4s;
+}
+
+.other_section_anim.active {
+  -webkit-transition-delay: 0.5s;
+          transition-delay: 0.5s;
+}
+
+.footer_anim {
+  -webkit-transition-delay: 0.6s;
+          transition-delay: 0.6s;
+}
+
+/* Улучшаем плавность скролла */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Гарантируем, что секции изначально скрыты */
+.services_section,
+.about-section,
+.news__section,
+.vacancies_section,
+.footer_anim,
+.other_section_anim {
+  opacity: 0;
+  -webkit-transform: translateY(50px);
+      -ms-transform: translateY(50px);
+          transform: translateY(50px);
+}
+
+/* Гарантируем, что анимации будут работать на GPU */
+.scroll-section {
+  will-change: transform, opacity;
+}
+
+/* Отключаем анимации для пользователей, которые предпочитают reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .scroll-section {
+    -webkit-transition: none;
+    transition: none;
+    opacity: 1;
+    -webkit-transform: none;
+        -ms-transform: none;
+            transform: none;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}

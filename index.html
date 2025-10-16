@@ -287,59 +287,60 @@
          </section>
 
 
-
-         <section class="news__container">
-            <!-- Блок последних новостей -->
-            <section class="latest-news">
-               <div class="services__title">Последние новости</div>
-               <div class="latest-news-grid" id="latest-news-container">
-                  <!-- Последние новости будут загружены через JavaScript -->
+         <section class="news__section">
+            <div class="news__container">
+               <!-- Блок последних новостей -->
+               <section class="latest-news">
+                  <div class="services__title">Последние новости</div>
+                  <div class="latest-news-grid" id="latest-news-container">
+                     <!-- Последние новости будут загружены через JavaScript -->
+                  </div>
+               </section>
+               <div class="btn-container">
+                  <a href="neuws.html" class="button white">Все новости</a>
                </div>
-            </section>
-            <div class="btn-container">
-               <a href="neuws.html" class="button white">Все новости</a>
+               <!-- Остальная часть страницы -->
+               <section class="all-news __news_none">
+                  <h2>Все новости</h2>
+                  <div class="filters">
+                     <div class="filter-group">
+                        <label for="year-filter">Год:</label>
+                        <select id="year-filter">
+                           <option value="all">Все годы</option>
+                           <option value="2023">2023</option>
+                           <option value="2024">2024</option>
+                        </select>
+                     </div>
+
+                     <div class="filter-group">
+                        <label for="month-filter">Месяц:</label>
+                        <select id="month-filter">
+                           <option value="all">Все месяцы</option>
+                           <option value="1">Январь</option>
+                           <option value="2">Февраль</option>
+                           <option value="3">Март</option>
+                           <option value="4">Апрель</option>
+                           <option value="5">Май</option>
+                           <option value="6">Июнь</option>
+                           <option value="7">Июль</option>
+                           <option value="8">Август</option>
+                           <option value="9">Сентябрь</option>
+                           <option value="10">Октябрь</option>
+                           <option value="11">Ноябрь</option>
+                           <option value="12">Декабрь</option>
+                        </select>
+                     </div>
+                  </div>
+
+                  <div class="news-grid" id="news-container">
+                     <!-- Все новости будут загружены через JavaScript -->
+                  </div>
+
+                  <div class="pagination" id="pagination">
+                     <!-- Пагинация будет создана через JavaScript -->
+                  </div>
+               </section>
             </div>
-            <!-- Остальная часть страницы -->
-            <section class="all-news __news_none">
-               <h2>Все новости</h2>
-               <div class="filters">
-                  <div class="filter-group">
-                     <label for="year-filter">Год:</label>
-                     <select id="year-filter">
-                        <option value="all">Все годы</option>
-                        <option value="2023">2023</option>
-                        <option value="2024">2024</option>
-                     </select>
-                  </div>
-
-                  <div class="filter-group">
-                     <label for="month-filter">Месяц:</label>
-                     <select id="month-filter">
-                        <option value="all">Все месяцы</option>
-                        <option value="1">Январь</option>
-                        <option value="2">Февраль</option>
-                        <option value="3">Март</option>
-                        <option value="4">Апрель</option>
-                        <option value="5">Май</option>
-                        <option value="6">Июнь</option>
-                        <option value="7">Июль</option>
-                        <option value="8">Август</option>
-                        <option value="9">Сентябрь</option>
-                        <option value="10">Октябрь</option>
-                        <option value="11">Ноябрь</option>
-                        <option value="12">Декабрь</option>
-                     </select>
-                  </div>
-               </div>
-
-               <div class="news-grid" id="news-container">
-                  <!-- Все новости будут загружены через JavaScript -->
-               </div>
-
-               <div class="pagination" id="pagination">
-                  <!-- Пагинация будет создана через JavaScript -->
-               </div>
-            </section>
          </section>
 
 
@@ -403,7 +404,7 @@
                </div>
             </div>
          </section>
-         <section class="other_section">
+         <section class="other_section other_section_anim" class="other_section_anim">
             <div class="other__container">
                <div class="other_block">
                   <a target="_blank" href="https://gomel-region.gov.by/ru/pamyat-ru/"> <img src="img/other/other_1.jpg"
@@ -419,7 +420,7 @@
             </div>
          </section>
       </main>
-      <footer class="footer">
+      <footer class="footer footer_anim">
          <div class="footer__container">
             <div class="footer_block">
                <div class="footer_logo">
