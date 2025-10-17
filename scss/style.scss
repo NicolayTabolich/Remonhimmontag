@@ -3217,6 +3217,7 @@ select {
          color: #a097f3;
          text-decoration: none;
          font-weight: 600;
+         transition: all 0.3s ease;
          @media (any-hover: hover) {
                &:hover {
                   color: #68629e;
