@@ -3184,7 +3184,153 @@ select {
    margin-bottom: 20px;
 }
 
-
+// скачать резюме
+      /* Стили для секции скачивания резюме */
+      .download-resume {
+         padding: 40px 0;
+         background: #0d0932;
+         // border-top: 1px solid #e9ecef;
+      }
+   
+   
+      .download__columns {
+         display: grid;
+         grid-template-columns: 1fr auto;
+         gap: 40px;
+         align-items: center;
+      }
+   
+      .text__column {
+         display: flex;
+         align-items: center;
+      }
+   
+      .download__text {
+         font-size: 1rem;
+         line-height: 1.5;
+         color: #fff;
+      }
+   
+      .email-link {
+         color: #a097f3;
+         text-decoration: none;
+         font-weight: 600;
+         @media (any-hover: hover) {
+               &:hover {
+                  color: #68629e;
+               }
+             
+            }
+      }
+   
+   
+      .resume_file_column {
+         display: flex;
+         justify-content: flex-end;
+      }
+   
+      .resume_download_file {
+         display: flex;
+         align-items: center;
+         gap: 20px;
+         background: #0d0932;
+         padding: 15px 25px;
+         border-radius: 3px;
+         // box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+         border: 1px solid #ffffff;
+         min-width: 280px;
+      }
+   
+      .resume_file_info {
+         display: flex;
+         align-items: center;
+         gap: 12px;
+      }
+   
+      .resume_file_icon {
+         font-size: 1.5rem;
+      }
+   
+      .resume_file_name {
+         font-size: 1rem;
+         font-weight: 600;
+         color: #ffffff;
+      }
+   
+      .download-btn {
+         display: flex;
+         align-items: center;
+         gap: 8px;
+         background: #ffffff;
+         color: #0d0932;
+         padding: 10px 20px;
+         border-radius: 3px;
+         text-decoration: none;
+         font-weight: 600;
+         font-size: 0.9rem;
+         transition: all 0.3s ease;
+         border: none;
+         cursor: pointer;
+         white-space: nowrap;
+         @media (any-hover: hover) {
+               &:hover {
+                  background: #5c50ce;
+                  transform: translateY(-1px);
+               }
+         
+            }
+      }
+   
+   
+      /* Адаптивность */
+      @media (max-width: 768px) {
+         .download-resume {
+            padding: 30px 0;
+         }
+   
+         .download__columns {
+            grid-template-columns: 1fr;
+            gap: 20px;
+         }
+   
+         .text__column {
+            text-align: center;
+         }
+   
+         .resume_file_column {
+            justify-content: center;
+         }
+   
+         .resume_download_file {
+            min-width: auto;
+            width: 100%;
+            max-width: 400px;
+            justify-content: space-between;
+         }
+      }
+   
+      @media (max-width: 480px) {
+         .container {
+            padding: 0 10px;
+         }
+   
+         .download__text {
+            font-size: 0.9rem;
+         }
+   
+         .resume_download_file {
+            padding: 12px 18px;
+            flex-direction: column;
+            gap: 15px;
+         }
+   
+         .download-btn {
+            padding: 8px 16px;
+            font-size: 0.85rem;
+            width: 100%;
+            justify-content: center;
+         }
+      }
 
 
 // О компании
@@ -4405,7 +4551,7 @@ html {
 .vacancy_page,
 .other_section {
    opacity: 0;
-   transform:  translateY(20px);
+   transform:  translateY(-30px);
 }
 
 .hero_slider{

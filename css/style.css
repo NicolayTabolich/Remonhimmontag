@@ -3896,6 +3896,171 @@ select {
   margin-bottom: 20px;
 }
 
+/* Стили для секции скачивания резюме */
+.download-resume {
+  padding: 40px 0;
+  background: #0d0932;
+}
+
+.download__columns {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 40px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.text__column {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.download__text {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #fff;
+}
+
+.email-link {
+  color: #a097f3;
+  text-decoration: none;
+  font-weight: 600;
+}
+@media (any-hover: hover) {
+  .email-link:hover {
+    color: #68629e;
+  }
+}
+
+.resume_file_column {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+.resume_download_file {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 20px;
+  background: #0d0932;
+  padding: 15px 25px;
+  border-radius: 3px;
+  border: 1px solid #ffffff;
+  min-width: 280px;
+}
+
+.resume_file_info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 12px;
+}
+
+.resume_file_icon {
+  font-size: 1.5rem;
+}
+
+.resume_file_name {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.download-btn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 8px;
+  background: #ffffff;
+  color: #0d0932;
+  padding: 10px 20px;
+  border-radius: 3px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  white-space: nowrap;
+}
+@media (any-hover: hover) {
+  .download-btn:hover {
+    background: #5c50ce;
+    -webkit-transform: translateY(-1px);
+        -ms-transform: translateY(-1px);
+            transform: translateY(-1px);
+  }
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .download-resume {
+    padding: 30px 0;
+  }
+  .download__columns {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .text__column {
+    text-align: center;
+  }
+  .resume_file_column {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .resume_download_file {
+    min-width: auto;
+    width: 100%;
+    max-width: 400px;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+}
+@media (max-width: 480px) {
+  .container {
+    padding: 0 10px;
+  }
+  .download__text {
+    font-size: 0.9rem;
+  }
+  .resume_download_file {
+    padding: 12px 18px;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    gap: 15px;
+  }
+  .download-btn {
+    padding: 8px 16px;
+    font-size: 0.85rem;
+    width: 100%;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+}
 .company_section {
   padding: 10px 0px;
 }
@@ -5263,9 +5428,9 @@ html {
 .vacancy_page,
 .other_section {
   opacity: 0;
-  -webkit-transform: translateY(20px);
-      -ms-transform: translateY(20px);
-          transform: translateY(20px);
+  -webkit-transform: translateY(-30px);
+      -ms-transform: translateY(-30px);
+          transform: translateY(-30px);
 }
 
 .hero_slider {
