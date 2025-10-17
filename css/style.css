@@ -5251,6 +5251,7 @@ html {
 .news__section,
 .vacancies_section,
 .photo_company,
+.company__main,
 .certificates,
 .company_content_image,
 .services_page,
@@ -5262,12 +5263,9 @@ html {
 .vacancy_page,
 .other_section {
   opacity: 0;
-  -webkit-transform: translateY(50px);
-      -ms-transform: translateY(50px);
-          transform: translateY(50px);
-  -webkit-transform: scale(1.1);
-      -ms-transform: scale(1.1);
-          transform: scale(1.1);
+  -webkit-transform: translateY(20px);
+      -ms-transform: translateY(20px);
+          transform: translateY(20px);
 }
 
 .hero_slider {

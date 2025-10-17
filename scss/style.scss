@@ -4393,6 +4393,7 @@ html {
 .news__section,
 .vacancies_section,
 .photo_company,
+.company__main,
 .certificates,
 .company_content_image,
 .services_page,
@@ -4404,8 +4405,7 @@ html {
 .vacancy_page,
 .other_section {
    opacity: 0;
-   transform: translateY(50px);
-   transform: scale(1.1);
+   transform:  translateY(20px);
 }
 
 .hero_slider{

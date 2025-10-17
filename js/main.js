@@ -498,7 +498,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // Плавное появление секций при скролле
 function initScrollAnimation() {
-   const sections = document.querySelectorAll('.services_section, .photo_company, .certificates, .company_content_image, .services_page, .contacts__section, .management_section, .company_section, .about-section, .documents, .news__section, .footer, .vacancy_page, .vacancies_section, .hero_slider, .other_section, .all-news ');
+   const sections = document.querySelectorAll('.services_section, .company__main, .photo_company, .certificates, .company_content_image, .services_page, .contacts__section, .management_section, .company_section, .about-section, .documents, .news__section, .footer, .vacancy_page, .vacancies_section, .hero_slider, .other_section, .all-news ');
 
    // Добавляем класс scroll-section для единообразного управления
    sections.forEach(section => {
@@ -507,7 +507,7 @@ function initScrollAnimation() {
 
    const observerOptions = {
       threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
+      rootMargin: '0px 0px -20px 0px'
    };
 
    const observer = new IntersectionObserver((entries) => {
@@ -516,7 +516,7 @@ function initScrollAnimation() {
             // Добавляем задержку для последовательного появления
             setTimeout(() => {
                entry.target.classList.add('active');
-            }, index * 200);
+            }, index * 50);
 
             // Перестаем наблюдать за секцией после появления (опционально)
             // observer.unobserve(entry.target);
