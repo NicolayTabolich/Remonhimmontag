@@ -3989,7 +3989,7 @@ select {
       -ms-flex-align: center;
           align-items: center;
   gap: 8px;
-  background: #ffffff;
+  background: #f1f2f6;
   color: #0d0932;
   padding: 10px 20px;
   border-radius: 3px;
@@ -4004,7 +4004,7 @@ select {
 }
 @media (any-hover: hover) {
   .download-btn:hover {
-    background: #5c50ce;
+    background: #d6d7da;
     -webkit-transform: translateY(-1px);
         -ms-transform: translateY(-1px);
             transform: translateY(-1px);
@@ -5436,9 +5436,9 @@ html {
 
 .hero_slider {
   opacity: 0;
-  -webkit-transform: scale(1.3);
-      -ms-transform: scale(1.3);
-          transform: scale(1.3);
+  -webkit-transform: scale(1.02);
+      -ms-transform: scale(1.02);
+          transform: scale(1.02);
 }
 
 /* Гарантируем, что анимации будут работать на GPU */

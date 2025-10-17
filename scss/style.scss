@@ -3185,6 +3185,8 @@ select {
 }
 
 // скачать резюме
+
+
       /* Стили для секции скачивания резюме */
       .download-resume {
          padding: 40px 0;
@@ -3261,7 +3263,7 @@ select {
          display: flex;
          align-items: center;
          gap: 8px;
-         background: #ffffff;
+         background: #f1f2f6;
          color: #0d0932;
          padding: 10px 20px;
          border-radius: 3px;
@@ -3274,7 +3276,7 @@ select {
          white-space: nowrap;
          @media (any-hover: hover) {
                &:hover {
-                  background: #5c50ce;
+                  background: #d6d7da;
                   transform: translateY(-1px);
                }
          
@@ -4557,7 +4559,7 @@ html {
 
 .hero_slider{
       opacity: 0;
-      transform: scale(1.3);
+      transform: scale(1.02);
 }
 
 
