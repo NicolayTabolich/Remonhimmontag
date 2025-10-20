@@ -4227,14 +4227,18 @@ select {
 }
 
 .company_content_text_p {
-  font-weight: 500;
+  font-weight: 400;
   font-size: 16px;
-  line-height: 130%;
+  line-height: 150%;
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
+  text-align: justify;
   -ms-flex-item-align: start;
       align-self: flex-start;
+}
+.company_content_text_p i {
+  font-weight: 700;
 }
 @media (max-width: 567.98px) {
   .company_content_text_p {
@@ -4243,12 +4247,17 @@ select {
 }
 
 ._p1 {
+  text-indent: 50px;
   margin-top: 20px;
 }
 @media (max-width: 567.98px) {
   ._p1 {
     margin-top: 5px;
   }
+}
+
+._p2 {
+  text-indent: 50px;
 }
 
 /* Обновленный слайдер с несколькими изображениями */

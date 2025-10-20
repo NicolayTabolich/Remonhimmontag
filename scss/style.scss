@@ -3483,20 +3483,29 @@ select {
 
 .company_content_text_p {
    // margin-bottom: 15px;
-   font-weight: 500;
+   font-weight: 400;
    font-size: 16px;
-   line-height: 130%;
+   line-height: 150%;
    align-items: flex-start;
+   text-align: justify;
    align-self: flex-start;
+   & i {
+      font-weight: 700;
+   }
    @media (max-width: 567.98px) {
    font-size: 14px;
    }
 }
 ._p1 {
+   text-indent: 50px;
    margin-top: 20px;
    @media (max-width: 567.98px) {
             margin-top: 5px;
       }
+}
+
+._p2 {
+   text-indent: 50px;
 }
 
 
