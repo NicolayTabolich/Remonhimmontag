@@ -498,7 +498,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // Плавное появление секций при скролле
 function initScrollAnimation() {
-   const sections = document.querySelectorAll('.services_section, .company__main, .download-resume, .photo_company, .certificates, .company_content_image, .services_page, .contacts__section, .management_section, .company_section, .about-section, .documents, .news__section, .footer, .vacancy_page, .vacancies_section, .hero_slider, .other_section, .all-news ');
+   const sections = document.querySelectorAll('.services_section, .company__main, .download-resume, .photo_company, .certificates, .company_content_image, .services_page, .contacts__section, .management_section, .company_section, .about-section, .documents, .news__section, .footer, .vacancy_page, .vacancies_section, .hero_slider, .other_section, .all-news, .work_types_crc, .intro_text_crc, .gallery_crc ');
 
    // Добавляем класс scroll-section для единообразного управления
    sections.forEach(section => {
@@ -539,4 +539,89 @@ document.addEventListener('DOMContentLoaded', function () {
 window.addEventListener('load', function () {
    // Добавляем небольшую задержку для гарантии корректного определения позиций
    setTimeout(initScrollAnimation, 100);
+});
+
+
+
+// Услуги ЦРЦ
+
+// Минимальный JavaScript для lightbox_crc
+document.addEventListener('DOMContentLoaded', function () {
+   const lightbox_crc = document.getElementById('lightbox_crc');
+   const lightbox_crcImg = document.getElementById('lightbox_crc-img');
+   const lightbox_crcClose = document.getElementById('lightbox_crc-close');
+   const lightbox_crcPrev = document.getElementById('lightbox_crc-prev');
+   const lightbox_crcNext = document.getElementById('lightbox_crc-next');
+   const lightbox_crcCounter = document.getElementById('lightbox_crc-counter');
+
+   const gallery_crcItems = document.querySelectorAll('.gallery_crc_item img');
+   let currentImageIndex = 0;
+
+   // Открытие lightbox_crc
+   gallery_crcItems.forEach((item, index) => {
+      item.addEventListener('click', function () {
+         currentImageIndex = index;
+         lightbox_crcImg.src = this.src;
+         updatelightbox_crcCounter();
+         lightbox_crc.classList.add('active');
+         document.body.style.overflow = 'hidden';
+      });
+   });
+
+   // Закрытие lightbox_crc
+   function closelightbox_crc() {
+      lightbox_crc.classList.remove('active');
+      document.body.style.overflow = 'auto';
+   }
+
+   lightbox_crcClose.addEventListener('click', closelightbox_crc);
+
+   // Навигация
+   function updatelightbox_crcCounter() {
+      lightbox_crcCounter.textContent = `${currentImageIndex + 1} / ${gallery_crcItems.length}`;
+   }
+
+   function showPrevImage() {
+      currentImageIndex = (currentImageIndex - 1 + gallery_crcItems.length) % gallery_crcItems.length;
+      lightbox_crcImg.src = gallery_crcItems[currentImageIndex].src;
+      updatelightbox_crcCounter();
+   }
+
+   function showNextImage() {
+      currentImageIndex = (currentImageIndex + 1) % gallery_crcItems.length;
+      lightbox_crcImg.src = gallery_crcItems[currentImageIndex].src;
+      updatelightbox_crcCounter();
+   }
+
+   lightbox_crcPrev.addEventListener('click', showPrevImage);
+   lightbox_crcNext.addEventListener('click', showNextImage);
+
+   // Закрытие по клику на фон
+   lightbox_crc.addEventListener('click', (e) => {
+      if (e.target === lightbox_crc) closelightbox_crc();
+   });
+
+   // Навигация с клавиатуры
+   document.addEventListener('keydown', (e) => {
+      if (!lightbox_crc.classList.contains('active')) return;
+
+      if (e.key === 'Escape') closelightbox_crc();
+      if (e.key === 'ArrowLeft') showPrevImage();
+      if (e.key === 'ArrowRight') showNextImage();
+   });
+
+   // Свайпы для мобильных устройств
+   let touchStartX = 0;
+
+   lightbox_crc.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+   });
+
+   lightbox_crc.addEventListener('touchend', (e) => {
+      const touchEndX = e.changedTouches[0].screenX;
+      const swipeThreshold = 50;
+
+      if (touchEndX < touchStartX - swipeThreshold) showNextImage();
+      if (touchEndX > touchStartX + swipeThreshold) showPrevImage();
+   });
 });
