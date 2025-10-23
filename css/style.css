@@ -1165,6 +1165,7 @@ main {
   font-size: 36px;
   color: #0d0932;
   position: relative;
+  font-weight: 700;
   margin-bottom: 40px;
 }
 @media (max-width: 767.98px) {
@@ -1478,6 +1479,7 @@ main {
   margin-bottom: 40px;
   color: #fff;
   position: relative;
+  font-weight: 700;
 }
 @media (max-width: 991.98px) {
   .section-title {
