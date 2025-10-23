@@ -846,11 +846,11 @@ main {
 }
 
 .slide:nth-child(1) {
-  background-image: url("../img/svarshik_1.jpg");
+  background-image: url("../img/slider_2.jpg");
 }
 
 .slide:nth-child(2) {
-  background-image: url("../img/crc_chelovelk_1.jpg");
+  background-image: url("../img/slider_3.jpg");
 }
 
 .slide:nth-child(3) {
@@ -1175,7 +1175,7 @@ main {
 }
 @media (max-width: 567.98px) {
   .services__title {
-    margin-bottom: 18px;
+    margin-bottom: 15px;
     font-size: 20px;
   }
 }
@@ -2550,14 +2550,14 @@ select {
 .other_block a img {
   max-height: 60px;
   width: auto;
-  -webkit-transition: all 0.5s ease-in-out;
-  transition: all 0.5s ease-in-out;
+  -webkit-transition: all 0.5s linear;
+  transition: all 0.5s linear;
 }
 @media (any-hover: hover) {
   .other_block a img:hover {
-    -webkit-transform: scale(0.95);
-        -ms-transform: scale(0.95);
-            transform: scale(0.95);
+    -webkit-transform: scale(0.97);
+        -ms-transform: scale(0.97);
+            transform: scale(0.97);
   }
 }
 @media (max-width: 991.98px) {
@@ -5552,6 +5552,10 @@ html {
   color: #fff;
 }
 
+.gallery_crc_container {
+  position: relative;
+}
+
 .gallery_crc {
   padding: 40px 0px 10px;
 }
@@ -5562,14 +5566,40 @@ html {
 }
 @media (max-width: 767.98px) {
   .gallery_crc {
-    padding: 25px 0px 5px;
+    padding: 15px 0px 5px;
   }
 }
 
 .gallery_crc_grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  overflow-x: auto;
   gap: 1.5rem;
+  padding: 1rem 0;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: #0d0932 #f1f1f1;
+}
+@media (max-width: 567.98px) {
+  .gallery_crc_grid {
+    padding: 10px 0px;
+  }
+}
+
+.gallery_crc_grid::-webkit-scrollbar {
+  height: 8px;
+}
+
+.gallery_crc_grid::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.gallery_crc_grid::-webkit-scrollbar-thumb {
+  background: #0d0932;
+  border-radius: 10px;
 }
 
 .gallery_crc_item {
@@ -5577,13 +5607,31 @@ html {
   overflow: hidden;
   height: 250px;
   cursor: pointer;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 auto;
+          flex: 0 0 auto;
+  width: calc(25% - 1.125rem);
+  /* 4 изображения в ряд с учетом gap */
 }
-@media (max-width: 567.98px) {
+
+@media (max-width: 1200px) {
   .gallery_crc_item {
+    width: calc(33.333% - 1rem);
+    /* 3 изображения на планшетах */
+  }
+}
+@media (max-width: 768px) {
+  .gallery_crc_item {
+    width: calc(50% - 0.75rem);
+    /* 2 изображения на мобильных */
     height: 200px;
   }
 }
-
+@media (max-width: 567.98px) {
+  .gallery_crc_item {
+    height: 180px;
+  }
+}
 .gallery_crc_item img {
   width: 100%;
   height: 100%;
@@ -5593,14 +5641,48 @@ html {
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
 }
+
 @media (any-hover: hover) {
   .gallery_crc_item img:hover {
-    -webkit-transform: scale(1.01);
-        -ms-transform: scale(1.01);
-            transform: scale(1.01);
+    -webkit-transform: translateY(-3px);
+        -ms-transform: translateY(-3px);
+            transform: translateY(-3px);
   }
 }
+/* Кнопки навигации для галереи */
+.gallery_nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
 
+.gallery_nav button {
+  background-color: #0d0932;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  -webkit-transition: background-color 0.3s;
+  transition: background-color 0.3s;
+}
+
+@media (any-hover: hover) {
+  .gallery_nav button:hover {
+    background-color: #1a1450;
+  }
+}
+@media (max-width: 567.98px) {
+  .gallery_nav {
+    display: none;
+    /* Скрываем кнопки на мобильных, используем только скролл */
+  }
+}
 .lightbox_crc {
   display: none;
   position: fixed;
@@ -5633,7 +5715,7 @@ html {
   max-height: 80%;
   -o-object-fit: contain;
      object-fit: contain;
-  border-radius: 10px;
+  border-radius: 3px;
   -webkit-box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
           box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
 }

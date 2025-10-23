@@ -624,4 +624,19 @@ document.addEventListener('DOMContentLoaded', function () {
       if (touchEndX < touchStartX - swipeThreshold) showNextImage();
       if (touchEndX > touchStartX + swipeThreshold) showPrevImage();
    });
+
+   // Навигация по галерее с кнопками
+   const galleryGrid = document.getElementById('galleryGrid');
+   const galleryPrev = document.getElementById('galleryPrev');
+   const galleryNext = document.getElementById('galleryNext');
+
+   galleryPrev.addEventListener('click', () => {
+      const scrollAmount = galleryGrid.clientWidth * 0.8;
+      galleryGrid.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+   });
+
+   galleryNext.addEventListener('click', () => {
+      const scrollAmount = galleryGrid.clientWidth * 0.8;
+      galleryGrid.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+   });
 });
