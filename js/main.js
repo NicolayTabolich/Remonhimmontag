@@ -545,7 +545,6 @@ window.addEventListener('load', function () {
 
 // Услуги ЦРЦ
 
-// Минимальный JavaScript для lightbox_crc
 document.addEventListener('DOMContentLoaded', function () {
    const lightbox_crc = document.getElementById('lightbox_crc');
    const lightbox_crcImg = document.getElementById('lightbox_crc-img');
@@ -557,62 +556,96 @@ document.addEventListener('DOMContentLoaded', function () {
    const gallery_crcItems = document.querySelectorAll('.gallery_crc_item img');
    let currentImageIndex = 0;
 
+   // Предзагрузка соседних изображений для lightbox
+   function preloadAdjacentImages(index) {
+      const prevIndex = (index - 1 + gallery_crcItems.length) % gallery_crcItems.length;
+      const nextIndex = (index + 1) % gallery_crcItems.length;
+
+      [prevIndex, nextIndex].forEach(i => {
+         const img = new Image();
+         img.src = gallery_crcItems[i].src;
+      });
+   }
+
    // Открытие lightbox_crc
    gallery_crcItems.forEach((item, index) => {
       item.addEventListener('click', function () {
          currentImageIndex = index;
          lightbox_crcImg.src = this.src;
-         updatelightbox_crcCounter();
+         updateLightboxCounter();
          lightbox_crc.classList.add('active');
          document.body.style.overflow = 'hidden';
+         preloadAdjacentImages(index);
       });
    });
 
-   // Закрытие lightbox_crc
-   function closelightbox_crc() {
+   // Функция для плавной загрузки изображений
+   function loadImage(img) {
+      if (img.getAttribute('data-loaded')) return;
+
+      const tempImg = new Image();
+      tempImg.onload = () => {
+         img.style.opacity = '1';
+         img.setAttribute('data-loaded', 'true');
+      };
+      tempImg.src = img.src;
+   }
+
+   // Intersection Observer для ленивой загрузки
+   const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+         if (entry.isIntersecting) {
+            loadImage(entry.target);
+            observer.unobserve(entry.target);
+         }
+      });
+   }, { rootMargin: '50px' });
+
+   // Наблюдаем за изображениями
+   gallery_crcItems.forEach(img => observer.observe(img));
+
+   // Остальной код lightbox остается без изменений
+   function closeLightbox() {
       lightbox_crc.classList.remove('active');
       document.body.style.overflow = 'auto';
    }
 
-   lightbox_crcClose.addEventListener('click', closelightbox_crc);
+   lightbox_crcClose.addEventListener('click', closeLightbox);
 
-   // Навигация
-   function updatelightbox_crcCounter() {
+   function updateLightboxCounter() {
       lightbox_crcCounter.textContent = `${currentImageIndex + 1} / ${gallery_crcItems.length}`;
    }
 
    function showPrevImage() {
       currentImageIndex = (currentImageIndex - 1 + gallery_crcItems.length) % gallery_crcItems.length;
       lightbox_crcImg.src = gallery_crcItems[currentImageIndex].src;
-      updatelightbox_crcCounter();
+      updateLightboxCounter();
+      preloadAdjacentImages(currentImageIndex);
    }
 
    function showNextImage() {
       currentImageIndex = (currentImageIndex + 1) % gallery_crcItems.length;
       lightbox_crcImg.src = gallery_crcItems[currentImageIndex].src;
-      updatelightbox_crcCounter();
+      updateLightboxCounter();
+      preloadAdjacentImages(currentImageIndex);
    }
 
    lightbox_crcPrev.addEventListener('click', showPrevImage);
    lightbox_crcNext.addEventListener('click', showNextImage);
 
-   // Закрытие по клику на фон
    lightbox_crc.addEventListener('click', (e) => {
-      if (e.target === lightbox_crc) closelightbox_crc();
+      if (e.target === lightbox_crc) closeLightbox();
    });
 
-   // Навигация с клавиатуры
    document.addEventListener('keydown', (e) => {
       if (!lightbox_crc.classList.contains('active')) return;
-
-      if (e.key === 'Escape') closelightbox_crc();
+      if (e.key === 'Escape') closeLightbox();
       if (e.key === 'ArrowLeft') showPrevImage();
       if (e.key === 'ArrowRight') showNextImage();
    });
 
-   // Свайпы для мобильных устройств
+   // Свайпы
    let touchStartX = 0;
-
    lightbox_crc.addEventListener('touchstart', (e) => {
       touchStartX = e.changedTouches[0].screenX;
    });
@@ -620,23 +653,7 @@ document.addEventListener('DOMContentLoaded', function () {
    lightbox_crc.addEventListener('touchend', (e) => {
       const touchEndX = e.changedTouches[0].screenX;
       const swipeThreshold = 50;
-
       if (touchEndX < touchStartX - swipeThreshold) showNextImage();
       if (touchEndX > touchStartX + swipeThreshold) showPrevImage();
-   });
-
-   // Навигация по галерее с кнопками
-   const galleryGrid = document.getElementById('galleryGrid');
-   const galleryPrev = document.getElementById('galleryPrev');
-   const galleryNext = document.getElementById('galleryNext');
-
-   galleryPrev.addEventListener('click', () => {
-      const scrollAmount = galleryGrid.clientWidth * 0.8;
-      galleryGrid.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-   });
-
-   galleryNext.addEventListener('click', () => {
-      const scrollAmount = galleryGrid.clientWidth * 0.8;
-      galleryGrid.scrollBy({ left: scrollAmount, behavior: 'smooth' });
    });
 });
