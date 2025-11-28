@@ -597,4 +597,5 @@ function applyFilters() {
       behavior: 'smooth'
    });
 }
-// Сброс фильтров
+
+

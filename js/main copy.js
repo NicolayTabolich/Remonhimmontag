@@ -691,7 +691,3 @@ const imageObserver = new IntersectionObserver((entries, observer) => {
 document.querySelectorAll('img[data-src]').forEach(img => {
    imageObserver.observe(img);
 });
-
-
-
-// Проблемма с дерганием контента при открытии новостей

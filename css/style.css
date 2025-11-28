@@ -1222,7 +1222,7 @@ main {
   text-align: center;
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
-  padding: 10px;
+  padding: 35px 10px;
   margin-bottom: 30px;
 }
 @media (max-width: 567.98px) {
@@ -2042,7 +2042,7 @@ select {
   position: absolute;
   top: 15px;
   right: 15px;
-  font-size: 1.5rem;
+  font-size: 2.5rem;
   cursor: pointer;
   color: #7f8c8d;
   z-index: 10;
@@ -3694,6 +3694,10 @@ select {
   gap: 10px;
 }
 
+.vacancy_page_title {
+  font-weight: 900;
+}
+
 .vacancy_page_meta {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -3701,6 +3705,15 @@ select {
   gap: 20px;
   font-size: 14px;
   color: #000000;
+}
+@media (max-width: 567.98px) {
+  .vacancy_page_meta {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    gap: 3px;
+  }
 }
 
 .vacancy_page_meta_item {
@@ -5637,7 +5650,7 @@ html {
 }
 @media (max-width: 567.98px) {
   .gallery_crc_item {
-    height: 180px;
+    height: auto;
   }
 }
 .gallery_crc_item img {
@@ -5782,4 +5795,20 @@ html {
   color: white;
   font-size: 18px;
   margin-top: 10px;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+img {
+  opacity: 1;
+  -webkit-transition: opacity 0.3s ease-in-out;
+  transition: opacity 0.3s ease-in-out;
+}
+
+img[data-src] {
+  opacity: 0;
 }
