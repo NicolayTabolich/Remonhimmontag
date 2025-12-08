@@ -479,13 +479,15 @@ function openNewsModal(news) {
 
    updatenews_news_slider();
 
+
+
    newsModal.style.display = 'block';
-   document.body.style.overflow = 'hidden';
+   document.body.style.overflow = 'hidden'; // Блокируем прокрутку body
 }
 
 function closeNewsModal() {
    newsModal.style.display = 'none';
-   document.body.style.overflow = 'auto';
+   document.body.style.overflow = 'auto'; // Восстанавливаем прокрутку body только здесь
 }
 
 function changenews_slide(direction) {
@@ -514,16 +516,43 @@ function updatenews_news_slider() {
    });
 }
 
+// Функция открытия полноэкранного просмотра
 function openFullscreenImage(news_slideIndex) {
    fullscreencurrentnews_slide_2 = news_slideIndex;
    updateFullscreenImage();
    fullscreenImage.style.display = 'flex';
-   document.body.style.overflow = 'hidden';
-}
 
+   // Сохраняем текущее состояние прокрутки модального окна
+   const modalContent = document.querySelector('.modal-content');
+   const scrollTop = modalContent.scrollTop;
+
+   // Блокируем прокрутку только в модальном окне, а не во всем body
+   document.body.style.overflow = 'hidden';
+   modalContent.style.overflow = 'hidden';
+
+   // Сохраняем позицию прокрутки для восстановления
+   fullscreenImage.dataset.modalScrollTop = scrollTop;
+}
+// Функция закрытия полноэкранного просмотра
 function closeFullscreenImage() {
    fullscreenImage.style.display = 'none';
-   document.body.style.overflow = 'auto';
+
+   // Восстанавливаем прокрутку модального окна
+   const modalContent = document.querySelector('.modal-content');
+   const modalScrollTop = fullscreenImage.dataset.modalScrollTop || 0;
+
+   // Восстанавливаем прокрутку модального окна
+   modalContent.style.overflow = 'auto';
+
+   // Прокручиваем к сохраненной позиции
+   if (modalScrollTop > 0) {
+      setTimeout(() => {
+         modalContent.scrollTop = parseInt(modalScrollTop);
+      }, 10);
+   }
+
+   // Не восстанавливаем прокрутку body, так как модальное окно еще открыто
+   // document.body.style.overflow = 'auto'; // УБЕРИТЕ ЭТУ СТРОКУ
 }
 
 function changeFullscreennews_slide(direction) {
