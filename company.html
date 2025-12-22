@@ -121,8 +121,8 @@
                         <li><a class="active_company_link" href="company.html">О компании</a></li>
                         <li><a href="documentation.html">Документация</a></li>
                         <li><a href="certificates.html">Сертификаты</a></li>
-                        <li><a href="corubation.html">Противодействие коррупции</a></li>
                         <li><a href="photo.html">Фотогалерея</a></li>
+                        <li><a href="corubation.html">Противодействие коррупции</a></li>
                      </ul>
                   </div>
                </div>
@@ -211,10 +211,7 @@
                         вулканизации;<br>
                         - устройство и ремонт облицовочных футеровочных покрытий из химически стойких и огнеупорных
                         материалов;<br>
-
                      </p>
-
-
 
                   </div>
                   <div class="company_content_image">
@@ -255,44 +252,6 @@
 
             </div>
          </section>
-
-         <!-- Обновленный слайдер с несколькими изображениями -->
-         <!-- <div class="company_slider-container_company"> -->
-         <!-- <div class="company_slider"> -->
-         <!-- <div class="company_slider-wrapper"> -->
-         <!-- <div class="company_slider-track" id="sliderTrack"> -->
-         <!-- Слайды будут добавлены динамически -->
-         <!-- </div> -->
-
-         <!-- Кнопки навигации -->
-         <!-- <button class="company_slider-btn prev"> -->
-         <!-- <span class="2">&#10094;</span> -->
-         <!-- </button> -->
-         <!-- <button class="company_slider-btn next"> -->
-         <!-- <span class="1">&#10095;</span> -->
-         <!-- </button> -->
-         <!-- </div> -->
-         <!-- </div> -->
-         <!-- </div> -->
-
-         <!-- Модальное окно для полноэкранного просмотра -->
-         <!-- <div class="company_modal" id="imageModal"> -->
-         <!-- <button class="company_modal-close" id="modalClose">
-            <span class="close-fullscreen">&times;</span>
-         </button>
-         <button class="company_modal-nav prev" id="modalPrev">
-            <span class="">&#10094;</span>
-         </button>
-         <button class="company_modal-nav next" id="modalNext">
-            <span class="">&#10095;</span>
-         </button>
-         <div class="company_modal-content">
-            <img src="" alt="" id="modalImage">
-         </div>
-         <div class="company_modal-counter" id="modalCounter"></div> -->
-         <!-- </div> -->
-         <!-- </div> -->
-
 
          <section class="other_section">
             <div class="other__container">
@@ -368,229 +327,7 @@
          </div>
       </footer>
    </div>
-   <!-- <script>
-      document.addEventListener('DOMContentLoaded', function () {
-         // Элементы слайдера
-         const sliderTrack = document.getElementById('sliderTrack');
-         const prevBtn = document.querySelector('.company_slider-btn.prev');
-         const nextBtn = document.querySelector('.company_slider-btn.next');
 
-         // Элементы модального окна
-         const imageModal = document.getElementById('imageModal');
-         const modalImage = document.getElementById('modalImage');
-         const modalClose = document.getElementById('modalClose');
-         const modalPrev = document.getElementById('modalPrev');
-         const modalNext = document.getElementById('modalNext');
-         const modalCounter = document.getElementById('modalCounter');
-
-         // Данные для слайдера
-         const slideData = [
-            { src: 'img/', alt: 'Фото производства 1' },
-            { src: 'img/', alt: 'Фото производства 2' },
-            { src: 'img/', alt: 'Фото производства 4' },
-            { src: 'img/', alt: 'Фото производства 5' },
-            { src: 'img/', alt: 'Фото производства 3' },
-            { src: 'img/bg_3.jpg', alt: 'Фото производства 6' },
-            { src: 'img/bg_1.jpg', alt: 'Фото производства 7' },
-            { src: 'img/bg_2.jpg', alt: 'Фото производства 8' }
-         ];
-
-         let currentSlide = 0;
-         let slidesToShow = getSlidesToShow();
-         let isAnimating = false;
-
-         // Определяем количество видимых слайдов
-         function getSlidesToShow() {
-            const width = window.innerWidth;
-            if (width < 768) return 1;
-            if (width < 992) return 2;
-            if (width < 1200) return 3;
-            return 4;
-         }
-
-         // Создаем слайды
-         function createSlides() {
-            sliderTrack.innerHTML = '';
-            slideData.forEach((slide, index) => {
-               const slideElement = document.createElement('div');
-               slideElement.className = 'company_slider-item';
-
-               const img = document.createElement('img');
-               img.src = slide.src;
-               img.alt = slide.alt;
-               img.dataset.index = index;
-
-               slideElement.appendChild(img);
-               sliderTrack.appendChild(slideElement);
-            });
-            updateSlider();
-         }
-
-         // Обновляем позицию слайдера
-         function updateSlider() {
-            if (isAnimating) return;
-
-            isAnimating = true;
-            const translateX = -currentSlide * (100 / slidesToShow);
-            sliderTrack.style.transform = `translateX(${translateX}%)`;
-
-            // Сбрасываем флаг анимации после завершения перехода
-            setTimeout(() => {
-               isAnimating = false;
-            }, 500);
-         }
-
-         // Переход к следующему слайду
-         function nextSlide() {
-            if (isAnimating) return;
-
-            const maxSlide = Math.max(0, slideData.length - slidesToShow);
-            if (currentSlide >= maxSlide) {
-               currentSlide = 0;
-            } else {
-               currentSlide++;
-            }
-            updateSlider();
-         }
-
-         // Переход к предыдущему слайду
-         function prevSlide() {
-            if (isAnimating) return;
-
-            const maxSlide = Math.max(0, slideData.length - slidesToShow);
-            if (currentSlide <= 0) {
-               currentSlide = maxSlide;
-            } else {
-               currentSlide--;
-            }
-            updateSlider();
-         }
-
-         // Открытие модального окна
-         function openModal(index) {
-            currentSlide = parseInt(index);
-            updateModal();
-            imageModal.style.display = 'flex';
-            document.body.style.overflow = 'hidden';
-         }
-
-         // Закрытие модального окна
-         function closeModal() {
-            imageModal.style.display = 'none';
-            document.body.style.overflow = 'auto';
-         }
-
-         // Обновление модального окна
-         function updateModal() {
-            modalImage.src = slideData[currentSlide].src;
-            modalImage.alt = slideData[currentSlide].alt;
-            modalCounter.textContent = `${currentSlide + 1} / ${slideData.length}`;
-         }
-
-         // Следующее изображение в модальном окне
-         function modalNextSlide() {
-            currentSlide = (currentSlide + 1) % slideData.length;
-            updateModal();
-         }
-
-         // Предыдущее изображение в модальном окне
-         function modalPrevSlide() {
-            currentSlide = (currentSlide - 1 + slideData.length) % slideData.length;
-            updateModal();
-         }
-
-         // Обработчики событий для слайдера
-         prevBtn.addEventListener('click', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-            prevSlide();
-         });
-
-         nextBtn.addEventListener('click', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-            nextSlide();
-         });
-
-         // Обработчики событий для модального окна
-         modalClose.addEventListener('click', closeModal);
-         modalPrev.addEventListener('click', modalPrevSlide);
-         modalNext.addEventListener('click', modalNextSlide);
-
-         // Закрытие модального окна при клике на фон
-         imageModal.addEventListener('click', function (e) {
-            if (e.target === imageModal) {
-               closeModal();
-            }
-         });
-
-         // Открытие модального окна при клике на изображение в слайдере
-         sliderTrack.addEventListener('click', function (e) {
-            if (e.target.tagName === 'IMG') {
-               const index = e.target.dataset.index;
-               openModal(index);
-            }
-         });
-
-         // Обработчики клавиатуры
-         document.addEventListener('keydown', function (e) {
-            if (imageModal.style.display === 'flex') {
-               if (e.key === 'Escape') {
-                  closeModal();
-               } else if (e.key === 'ArrowLeft') {
-                  modalPrevSlide();
-               } else if (e.key === 'ArrowRight') {
-                  modalNextSlide();
-               }
-            }
-         });
-
-         // Адаптация при изменении размера окна
-         window.addEventListener('resize', function () {
-            const newSlidesToShow = getSlidesToShow();
-            if (newSlidesToShow !== slidesToShow) {
-               slidesToShow = newSlidesToShow;
-               // Корректируем текущий слайд, чтобы не выходить за пределы
-               const maxSlide = Math.max(0, slideData.length - slidesToShow);
-               if (currentSlide > maxSlide) {
-                  currentSlide = maxSlide;
-               }
-               updateSlider();
-            }
-         });
-
-         // Инициализация
-         createSlides();
-
-         // Добавляем обработчики для touch событий на мобильных устройствах
-         let startX = 0;
-         let endX = 0;
-
-         sliderTrack.addEventListener('touchstart', function (e) {
-            startX = e.touches[0].clientX;
-         }, { passive: true });
-
-         sliderTrack.addEventListener('touchend', function (e) {
-            endX = e.changedTouches[0].clientX;
-            handleSwipe();
-         }, { passive: true });
-
-         function handleSwipe() {
-            const swipeThreshold = 50;
-            const diff = startX - endX;
-
-            if (Math.abs(diff) > swipeThreshold) {
-               if (diff > 0) {
-                  // Свайп влево - следующий слайд
-                  nextSlide();
-               } else {
-                  // Свайп вправо - предыдущий слайд
-                  prevSlide();
-               }
-            }
-         }
-      });
-   </script> -->
    <script src="js/main.js" defer></script>
    <script src="https://lidrekon.ru/slep/js/jquery.js"></script>
    <script src="https://lidrekon.ru/slep/js/uhpv-hover-full.min.js"></script>
