@@ -7,11 +7,18 @@
    <title>Контакты</title>
    <link rel="stylesheet" href="css/style.css">
    <link rel="shortcut icon" href="img/logo_black.svg" type="image/png">
+   <!--Для Снежинок на новый ГОД -->
+   <link href="https://cdn.jsdelivr.net/gh/Alaev-Co/snowflakes/dist/snow.min.css" rel="stylesheet">
    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-   <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes"> -->
 </head>
 
 <body>
+   <!-- Для новогодних снежинок -->
+   <script src="https://cdn.jsdelivr.net/gh/Alaev-Co/snowflakes/dist/Snow.min.js"></script>
+   <script>
+      new Snow();
+   </script>
+
    <div class="wrapper">
       <div class="top_header">
          <div class="top_header__container">
@@ -50,6 +57,8 @@
                <div class="header_logo">
                   <a class="header_logo_link" href="index.html">
                      <img class="header_logo_img" src=" img/logo_white.svg" alt="logo">
+                     <!-- Шляпа для нового года -->
+                     <div class="new__year_logo"></div>
                   </a>
                </div>
 
@@ -85,7 +94,7 @@
       <div class="menu_overlay" id="menuOverlay"></div>
       <div class="search_overlay" id="searchOverlay">
          <div class="search_form">
-            <input type="text" class="search_input" placeholder="Введите запрос для поиска...">
+            <input type="text" class="search_input" placeholder="Введите запрос для поиска......(В разработке)">
             <div class="close_search" id="closeSearch">
                <span></span>
                <span></span>

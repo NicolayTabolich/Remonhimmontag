@@ -230,12 +230,31 @@ body {
    transform: translateX(-50%);
 }
 
+
+// Шляпа для НОВОГО ГОДА
+.new__year_logo{
+   position: relative;
+      &::after {
+      content: url('../img/new_year/logo_new_year.svg');
+      position: absolute;
+      left: 85%;
+      top: -60px;
+      // width: 150px;
+      // height: 150px;
+      @media (max-width: 767.98px) {
+            left: 70%;
+            top: -42px;
+         }
+   }
+}
+
 .header_logo_img {
    max-height: 45px;
    width: auto;
    @media (max-width: 767.98px) {
       max-height: 25px;
    }
+
 }
 
 .header_burger {
@@ -646,8 +665,15 @@ body {
 }
 
 .slide:nth-child(1) {
-   background-image: url("../img/slider_2.jpg");
+   background-image: url("../img/new_year/1.jpg");
 }
+
+// Включить после нового года!!
+// Включить после нового года!!
+// Включить после нового года!!
+// .slide:nth-child(1) {
+//    background-image: url("../img/slider_2.jpg");
+// }
 .slide:nth-child(2) {
    background-image: url("../img/slider_3.jpg");
 }
@@ -846,14 +872,14 @@ body {
 }
 
 // Включить для скрытия кнопки на первом слайде
-//  .services_link.hidden {
-//     display: none;
-//  }
+ .services_link.hidden {
+    display: none;
+ }
 
-// .services_link:hover {
-//    background-color: #0D0932;
-//    box-shadow: 0 6px 20px #0D0932;
-// }
+.services_link:hover {
+   background-color: #0D0932;
+   box-shadow: 0 6px 20px #0D0932;
+}
 
 .slider_controls {
    position: absolute;

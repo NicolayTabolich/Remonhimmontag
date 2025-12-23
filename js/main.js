@@ -145,22 +145,10 @@ document.addEventListener('keydown', function (e) {
 
 const slides = document.querySelectorAll('.slide');
 const dots = document.querySelectorAll('.slider_dot');
-// const servicesLink = document.querySelector('.services_link');   //Для скрытия кнопки услуги на первом слайде включить
+const servicesLink = document.querySelector('.services_link');   //Для скрытия кнопки услуги на первом слайде включить
 let currentSlide = 0;
 let slideInterval;
 
-// Функция для показа слайда
-// function showSlide(n) {
-//    slides.forEach(slide => slide.classList.remove('active'));
-//    dots.forEach(dot => dot.classList.remove('active'));
-
-//    currentSlide = (n + slides.length) % slides.length;
-
-//    slides[currentSlide].classList.add('active');
-//    dots[currentSlide].classList.add('active');
-
-
-// }
 
 // Функция для показа слайда
 function showSlide(n) {
@@ -172,12 +160,12 @@ function showSlide(n) {
    slides[currentSlide].classList.add('active');
    dots[currentSlide].classList.add('active');
 
-   //    // Скрываем кнопку на первом слайде (индекс 0), показываем на остальных
-   //    if (currentSlide === 0) {                                    //Для скрытия кнопки услуги на первом слайде включить
-   //       servicesLink.classList.add('hidden');                       //Для скрытия кнопки услуги на первом слайде включить
-   //    } else {                                                       //Для скрытия кнопки услуги на первом слайде включить
-   //       servicesLink.classList.remove('hidden');                    //Для скрытия кнопки услуги на первом слайде включить
-   //    }
+   // Скрываем кнопку на первом слайде (индекс 0), показываем на остальных
+   if (currentSlide === 0) {                                    //Для скрытия кнопки услуги на первом слайде включить
+      servicesLink.classList.add('hidden');                       //Для скрытия кнопки услуги на первом слайде включить
+   } else {                                                       //Для скрытия кнопки услуги на первом слайде включить
+      servicesLink.classList.remove('hidden');                    //Для скрытия кнопки услуги на первом слайде включить
+   }
 }
 
 // Функция для следующего слайда
@@ -658,38 +646,5 @@ document.addEventListener('DOMContentLoaded', function () {
    });
 });
 
-
-// // Решение проблемы с изображениями
-// document.addEventListener('DOMContentLoaded', function () {
-//    const images = document.querySelectorAll('img');
-
-//    images.forEach(img => {
-//       // Добавляем плавную загрузку
-//       img.style.opacity = '0';
-//       img.style.transition = 'opacity 0.3s';
-
-//       img.onload = function () {
-//          this.style.opacity = '1';
-//       };
-
-//       // Если изображение уже загружено
-//       if (img.complete) img.style.opacity = '1';
-//    });
-// });
-
-// const imageObserver = new IntersectionObserver((entries, observer) => {
-//    entries.forEach(entry => {
-//       if (entry.isIntersecting) {
-//          const img = entry.target;
-//          img.src = img.dataset.src;
-//          img.classList.remove('lazy');
-//          imageObserver.unobserve(img);
-//       }
-//    });
-// });
-
-// document.querySelectorAll('img[data-src]').forEach(img => {
-//    imageObserver.observe(img);
-// });
 
 
