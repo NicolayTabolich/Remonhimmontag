@@ -100,6 +100,8 @@
             </div>
          </div>
       </div>
+
+
       <main class="main main_margin">
          <div class="obolochka_news">
             <section class="bread_crumbs">
@@ -110,8 +112,7 @@
                         <span class="bread_crumbs_span"><img src="icons/arrow_next.svg" alt=""></span>
                      </li>
                      <li class="bread_crumbs_li">
-                        <a href="neuws.html" class="bread_crumbs_link">Новости</a>
-
+                        <a href="news.html" class="bread_crumbs_link">Новости</a>
                      </li>
                   </ul>
                   <div class="bread_crumbs_title">
@@ -119,26 +120,15 @@
                   </div>
                </div>
             </section>
-            <section class="news__container">
-               <!-- Блок последних новостей -->
-               <section class="latest-news __news_laset_none">
-                  <div class="section-title">Последние новости</div>
-                  <div class="latest-news-grid" id="latest-news-container">
-                     <!-- Последние новости будут загружены через JavaScript -->
-                  </div>
-               </section>
 
-               <!-- Остальная часть страницы -->
+            <section class="news__container">
                <section class="all-news">
                   <div class="filters">
                      <div class="filter-group">
                         <label for="year-filter">Год:</label>
                         <select id="year-filter">
                            <option value="all">Все годы</option>
-                           <option value="2022">2022</option>
-                           <option value="2023">2023</option>
-                           <option value="2024">2024</option>
-                           <option value="2025">2025</option>
+                           <!-- Годы добавятся через JS -->
                         </select>
                      </div>
 
@@ -160,60 +150,18 @@
                            <option value="12">Декабрь</option>
                         </select>
                      </div>
-
                   </div>
 
                   <div class="news-grid" id="news-container">
-                     <!-- Все новости будут загружены через JavaScript -->
+                     <!-- Новости загружаются через JS -->
                   </div>
 
-                  <div class="pagination" id="pagination">
-                     <!-- Пагинация будет создана через JavaScript -->
-                  </div>
+                  <div class="pagination" id="pagination"></div>
                </section>
             </section>
-
-            <!-- Модальное окно для новости -->
-            <div class="modal" id="news-modal">
-               <div class="modal-content">
-                  <span class="close-modal" id="close-modal">&times;</span>
-                  <h2 class="modal-title" id="modal-title">Заголовок новости</h2>
-                  <div class="modal-date" id="modal-date">Дата публикации</div>
-                  <div class="modal-main-image">
-                     <img id="modal-main-image" src="" alt="Главное изображение новости">
-                  </div>
-                  <div class="modal-text" id="modal-text">
-                     Полный текст новости...
-                  </div>
-                  <div class="modal-gallery">
-                     <div class="news_news_news_slider_container">
-                        <div class="news_news_slider" id="news_news_slider">
-                           <!-- Слайды будут добавлены через JavaScript -->
-                        </div>
-                        <button class="news_news_slider-arrow prev" id="prev-btn">&#10094;</button>
-                        <button class="news_news_slider-arrow next" id="next-btn">&#10095;</button>
-                     </div>
-                     <div class="news_news_slider-controls">
-                        <div class="news_news_slider-news_dots" id="news_news_slider-news_dots">
-                           <!-- Точки будут добавлены через JavaScript -->
-                        </div>
-                     </div>
-                  </div>
-               </div>
-            </div>
-
-            <!-- Полноэкранный просмотр изображения -->
-            <div class="fullscreen-image" id="fullscreen-image">
-               <span class="close-fullscreen">&times;</span>
-               <div class="fullscreen-container">
-                  <button class="fullscreen-arrow prev" id="fullscreen-prev">&#10094;</button>
-                  <img src="" alt="Полноэкранное изображение">
-                  <button class="fullscreen-arrow next" id="fullscreen-next">&#10095;</button>
-               </div>
-               <div class="fullscreen-caption" id="fullscreen-caption"></div>
-            </div>
          </div>
-         <section class="other_section">
+
+         <section class="other_section other_section_index" class="other_section_anim">
             <div class="other__container">
                <div class="other_block">
                   <a target="_blank" href="https://gomel-region.gov.by/ru/pamyat-ru/"> <img class="other_img"
@@ -226,17 +174,17 @@
                   <a target="_blank" href="https://gomel-region.gov.by/ru/80-ru"> <img class="other_img"
                         src="img/other/other_4.jpg" alt=""> </a>
                   <a target="_blank" href="https://president.gov.by/ru"> <img class="other_img"
-                        src="img/other/other_5.jpg" alt="">
-                  </a>
+                        src="img/other/other_5.jpg" alt=""> </a>
                </div>
             </div>
          </section>
       </main>
+
       <footer class="footer">
          <div class="footer__container">
             <div class="footer_block">
                <div class="footer_logo">
-                  <a href="index.html"> <img src="img/logo.svg" alt="logo"></a>
+                  <a href=""> <img src="img/logo.svg" alt="logo"></a>
                </div>
                <nav class="footer_nav">
 
@@ -286,15 +234,143 @@
             </div>
          </div>
       </footer>
-   </div>
-   <script>
 
-   </script>
-   <script src="js/main.js" defer></script>
-   <script src="js/news.js" defer></script>
-   <script src="https://lidrekon.ru/slep/js/jquery.js"></script>
-   <script src="https://lidrekon.ru/slep/js/uhpv-hover-full.min.js"></script>
+      <script src="js/news-data.js"></script>
+      <script>
+         // Элементы DOM
+         const newsContainer = document.getElementById('news-container');
+         const paginationContainer = document.getElementById('pagination');
+         const yearFilter = document.getElementById('year-filter');
+         const monthFilter = document.getElementById('month-filter');
 
+         // Переменные состояния
+         let currentPage = 1;
+         const newsPerPage = 12;
+         let filteredNews = [...newsData];
+
+         // Функция инициализации
+         function init() {
+            populateYearFilter();
+            renderNews();
+            setupFilters();
+         }
+
+         // Заполнение фильтра годов
+         function populateYearFilter() {
+            const years = new Set();
+            newsData.forEach(news => {
+               const year = new Date(news.date).getFullYear();
+               years.add(year);
+            });
+
+            const sortedYears = Array.from(years).sort((a, b) => b - a);
+
+            sortedYears.forEach(year => {
+               const option = document.createElement('option');
+               option.value = year;
+               option.textContent = year;
+               yearFilter.appendChild(option);
+            });
+         }
+
+         // Рендер новостей
+         function renderNews() {
+            newsContainer.innerHTML = '';
+
+            const startIndex = (currentPage - 1) * newsPerPage;
+            const endIndex = startIndex + newsPerPage;
+            const newsToShow = filteredNews.slice(startIndex, endIndex);
+
+            if (newsToShow.length === 0) {
+               newsContainer.innerHTML = '<p style="grid-column: 1 / -1; text-align: center; padding: 40px;">Новости не найдены</p>';
+               paginationContainer.innerHTML = '';
+               return;
+            }
+
+            newsToShow.forEach(news => {
+               const newsCard = document.createElement('a');
+               newsCard.className = 'news-card-link';
+               newsCard.href = `news-single.html?id=${news.id}`;
+
+               const date = new Date(news.date);
+               const formattedDate = date.toLocaleDateString('ru-RU', {
+                  year: 'numeric',
+                  month: 'long',
+                  day: 'numeric'
+               });
+
+               newsCard.innerHTML = `
+                <div class="news-card">
+                    <img src="${news.images[0]}" alt="${news.title}" class="news-image">
+                    <div class="news-content">
+                        <div class="news-date">${formattedDate}</div>
+                        <h3 class="news-title">${news.title}</h3>
+                        <p class="news-summary">${news.summary}</p>
+                    </div>
+                </div>
+            `;
+
+               newsContainer.appendChild(newsCard);
+            });
+
+            renderPagination();
+         }
+
+         // Рендер пагинации
+         function renderPagination() {
+            const totalPages = Math.ceil(filteredNews.length / newsPerPage);
+            paginationContainer.innerHTML = '';
+
+            if (totalPages < 2) return;
+
+            for (let i = 1; i <= totalPages; i++) {
+               const pageBtn = document.createElement('button');
+               pageBtn.className = `page-btn ${i === currentPage ? 'active' : ''}`;
+               pageBtn.textContent = i;
+               pageBtn.addEventListener('click', () => {
+                  currentPage = i;
+                  renderNews();
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+               });
+
+               paginationContainer.appendChild(pageBtn);
+            }
+         }
+
+         // Настройка фильтров
+         function setupFilters() {
+            yearFilter.addEventListener('change', applyFilters);
+            monthFilter.addEventListener('change', applyFilters);
+         }
+
+         // Применение фильтров
+         function applyFilters() {
+            const selectedYear = yearFilter.value;
+            const selectedMonth = monthFilter.value;
+
+            currentPage = 1;
+
+            filteredNews = newsData.filter(news => {
+               const newsDate = new Date(news.date);
+               const newsYear = newsDate.getFullYear().toString();
+               const newsMonth = (newsDate.getMonth() + 1).toString();
+
+               const yearMatch = selectedYear === 'all' || newsYear === selectedYear;
+               const monthMatch = selectedMonth === 'all' || newsMonth === selectedMonth;
+
+               return yearMatch && monthMatch;
+            });
+
+            renderNews();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+         }
+
+         // Запуск
+         init();
+      </script>
+      <script src="js/main.js" defer></script>
+      <script src="https://lidrekon.ru/slep/js/jquery.js"></script>
+      <script src="https://lidrekon.ru/slep/js/uhpv-hover-full.min.js"></script>
 </body>
 
 </html>
