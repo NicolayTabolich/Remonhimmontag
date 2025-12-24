@@ -1483,7 +1483,15 @@ body {
    width: 100%;
    height: 250px;
    object-fit: cover;
+
+   @media (max-width: 767.98px) {
+   height: 350px;
+      }
+   @media (max-width: 567.98px) {
+         height: 250px;
+   }
 }
+
 
 .latest-news-content {
    padding: 15px;
@@ -1922,11 +1930,11 @@ select {
    }
 
    .modal-main-image img {
-      height: 200px;
+      height: 350px;
    }
 
    .news_slide img {
-      height: 200px;
+      height: 350px;
    }
 
    .news_news_slider-arrow {

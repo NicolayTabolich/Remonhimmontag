@@ -1866,6 +1866,16 @@ main {
   -o-object-fit: cover;
      object-fit: cover;
 }
+@media (max-width: 767.98px) {
+  .latest-news-image {
+    height: 350px;
+  }
+}
+@media (max-width: 567.98px) {
+  .latest-news-image {
+    height: 250px;
+  }
+}
 
 .latest-news-content {
   padding: 15px;
@@ -2389,10 +2399,10 @@ select {
     padding: 20px;
   }
   .modal-main-image img {
-    height: 200px;
+    height: 350px;
   }
   .news_slide img {
-    height: 200px;
+    height: 350px;
   }
   .news_news_slider-arrow {
     width: 30px;
