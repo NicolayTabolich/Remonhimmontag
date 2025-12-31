@@ -103,13 +103,14 @@ body {
    display: flex;
    column-gap: 15px;
    align-items: center;
+   color: #999;
 
    & div {
       text-transform: uppercase;
       line-height: 100%;
       cursor: pointer;
       &.active {
-         color: #999;
+         color: #ffffff;
       }
    }
 
@@ -3447,7 +3448,7 @@ select {
 
 .company_content_text_p {
    // margin-bottom: 15px;
-   font-weight: 400;
+   font-weight: 600;
    font-size: 17px;
    line-height: 150%;
    align-items: flex-start;
@@ -3972,7 +3973,7 @@ select {
    padding: 15px;
    box-shadow: 0 2px 8px rgba(17, 6, 80, 0.05);
    transition: all 0.3s ease;
-   border: 1px solid #eaeaea;
+   border: 1px solid #bdbdbd;
    @media (any-hover: hover) {
       &:hover {
          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -4848,6 +4849,7 @@ img[data-src] {
 
 
 
+
 @media (max-width: 1140px) {}
 
 @media (max-width: 991.98px) {}
@@ -4860,4 +4862,8 @@ img[data-src] {
    // &:hover {
 
    // }
+}
+
+[data-lang="director2"] {
+   white-space: pre-line;
 }
