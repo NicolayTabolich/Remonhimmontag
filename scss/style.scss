@@ -2174,7 +2174,7 @@ select {
    width: 100%;
    justify-content: space-between;
    gap: 15px;
-   @media (max-width: 767.98px) {
+   @media (max-width: 920px) {
       display: none;
    }
 }
@@ -2186,7 +2186,7 @@ select {
 .nav_twu,
 .nav_one {
    display: none;
-   @media (max-width: 767.98px) {
+   @media (max-width: 920px) {
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -2916,7 +2916,7 @@ select {
 }
 
 .vacancy_page_item {
-   background: white;
+   background: #fff;
    border-radius: 3px;
    margin-bottom: 15px;
    box-shadow: 0 2px 10px rgba(28, 7, 78, 0.25);
@@ -2924,17 +2924,28 @@ select {
    transition: all 0.3s ease;
 }
 
+.vacancy_page_item.active .vacancy_page_header{
+   background-color: #b6b6b8;
+   color: #000;
+}
+
+.vacancy_page_item.active .vacancy_page_meta{
+   color: #000;
+}
+
 .vacancy_page_item.active {
    box-shadow: 0 5px 15px rgba(28, 7, 78, 0.3);
 }
 
 .vacancy_page_header {
+   color: #fff;
    padding: 20px 25px;
    cursor: pointer;
    display: flex;
+   gap: 5px;
    justify-content: space-between;
    align-items: center;
-   background-color: #fff;
+   background-color: #0D0932;
    transition: background-color 0.3s ease;
    position: relative;
    @media (max-width: 567.98px) {
@@ -2942,19 +2953,19 @@ select {
    }
    @media (any-hover: hover) {
       &:hover {
-         background-color: #0d0932;
+         background-color: #dbdcdf;
       }
       &:hover .vacancy_page_meta {
-         color: #fff;
+         color: #0D0932;
       }
       &:hover .vacancy_page_title {
-         color: #fff;
+         color: #0D0932;
       }
       &:hover .vacancy_page_toggle::before {
-         background-color: #ffffff;
+         background-color: #0D0932;
       }
       &:hover .vacancy_page_toggle::after {
-         background-color: #ffffff;
+         background-color: #0D0932;
       }
    }
 }
@@ -2970,13 +2981,33 @@ select {
    font-weight: 900;
    // color: #000;
    // margin-right: 15px;
+   line-height: 1.4;
 }
+
+
+.vacancies_page_text {
+   padding-bottom: 20px;
+   @media (max-width: 567.98px) {
+            padding-bottom: 15px;
+      }
+}
+
+.vacancies_page_text_p {
+   font-weight: 600;
+   font-size: 1.1rem;
+   line-height: 150%;
+   text-indent: 25px;
+   @media (max-width: 567.98px) {
+         font-size: 0.9rem;
+      }
+}
+
 
 .vacancy_page_meta {
    display: flex;
    gap: 20px;
    font-size: 14px;
-   color: #000000;
+   color: #fff;
    @media (max-width: 567.98px) {
         flex-direction: column;
          gap: 3px;
@@ -2996,7 +3027,7 @@ select {
 }
 
 .vacancy_page_toggle {
-   width: 20px;
+   min-width: 20px;
    height: 20px;
    position: relative;
    transition: transform 0.3s ease;
@@ -3006,7 +3037,7 @@ select {
 .vacancy_page_toggle::after {
    content: "";
    position: absolute;
-   background-color: #000;
+   background-color: #fff;
    transition: all 0.3s ease;
 }
 
@@ -3035,7 +3066,7 @@ select {
    transition:
       max-height 0.4s ease,
       padding 0.3s ease;
-   background-color: #f9f9f9;
+   background-color: #e6e2e2;
 }
 
 .vacancy_page_item.active .vacancy_page_content {
@@ -3043,16 +3074,7 @@ select {
    padding: 10px 25px 25px;
 }
 
-.vacancy_page_description {
-   margin-bottom: 20px;
-   line-height: 1.6;
-   color: #000000;
-   & p {
-      @media (max-width: 567.98px) {
-         font-size: 14px;
-      }
-   }
-}
+
 
 .vacancy_page_requirements,
 .vacancy_page_conditions {
@@ -3087,7 +3109,7 @@ select {
 .vacancy_page_contact {
    margin-top: 25px;
    padding-top: 20px;
-   border-top: 1px solid #e0e0e0;
+   border-top: 1px solid #0D0932;
 }
 
 .show_phone_btn {
@@ -3181,9 +3203,10 @@ select {
 }
 
 .download__text {
-   font-size: 1rem;
+   font-size: 1.1rem;
    line-height: 1.5;
    color: #fff;
+   text-indent: 25px;
 }
 
 .email-link {
@@ -3684,269 +3707,6 @@ select {
    }
 }
 
-// Фотогалерея
-
-.photo_company {
-   flex-grow: 1;
-}
-
-.photo__container {
-   padding: 20px 0px;
-}
-
-.photo_years_container {
-   display: flex;
-   flex-wrap: wrap;
-   justify-content: center;
-   gap: 60px;
-   margin-bottom: 5px;
-   @media (max-width: 567.98px) {
-      gap: 30px;
-   }
-}
-
-.photo_year_card {
-   background: white;
-   border-radius: 3px;
-   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-   overflow: hidden;
-   width: 280px;
-   cursor: pointer;
-   transition:
-      transform 0.3s,
-      box-shadow 0.3s;
-   @media (any-hover: hover) {
-      &:hover {
-         transform: translateY(-3px);
-         box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
-      }
-   }
-}
-
-.photo_year_header {
-   background: #0d0932;
-   color: white;
-   padding: 15px;
-   text-align: center;
-   font-size: 1.5rem;
-   font-weight: bold;
-}
-
-.photo_year_preview {
-   display: grid;
-   grid-template-columns: 1fr 1fr;
-   gap: 5px;
-   padding: 5px;
-}
-
-.photo_year_preview img {
-   width: 100%;
-   height: 100px;
-   object-fit: cover;
-   border-radius: 4px;
-}
-
-/* Слайдер */
-.photogalery_slider {
-   position: fixed;
-   top: 0;
-   left: 0;
-   width: 100%;
-   height: 100%;
-   background: rgba(0, 0, 0, 0.95);
-   display: none;
-   flex-direction: column;
-   z-index: 1000;
-   touch-action: pan-y pinch-zoom;
-}
-
-.photogalery_slider.active {
-   display: flex;
-}
-
-.photogalery_slider-header {
-   color: white;
-   font-size: 1.8rem;
-   text-align: center;
-   padding: 15px 0;
-   flex-shrink: 0;
-}
-
-.photogalery_slider-close {
-   position: absolute;
-   top: 20px;
-   right: 30px;
-   color: white;
-   font-size: 2rem;
-   cursor: pointer;
-   background: none;
-   border: none;
-   z-index: 1001;
-}
-
-.photogalery_slider-main {
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   width: 100%;
-   margin: 0 auto;
-   position: relative;
-   flex: 1;
-   min-height: 0;
-   /* Важно для flex-элементов с overflow */
-   padding: 0 10px;
-   touch-action: pan-y pinch-zoom;
-}
-
-.photogalery_slider-image-container {
-   position: relative;
-   overflow: hidden;
-   border-radius: 3px;
-   touch-action: pan-y pinch-zoom;
-   width: 100%;
-   height: 100%;
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   background-color: #000;
-}
-
-.photogalery_slider-image {
-   max-width: 100%;
-   max-height: 100%;
-   object-fit: contain;
-   display: block;
-   transition: transform 0.3s ease;
-   transform: scale(1.05);
-   /* Легкое увеличение изображения */
-}
-
-.photogalery_slider-nav {
-   display: flex;
-   justify-content: center;
-   margin: 20px 0;
-}
-
-.photogalery_slider-nav button {
-   background: rgba(255, 255, 255, 0.2);
-   border: none;
-   color: white;
-   font-size: 2rem;
-   width: 50px;
-   height: 50px;
-   border-radius: 50%;
-   margin: 0 15px;
-   cursor: pointer;
-   transition: background 0.3s;
-}
-
-.photogalery_slider-nav button:hover {
-   background: rgba(255, 255, 255, 0.4);
-}
-
-.photogalery_slider-thumbnails {
-   display: flex;
-   justify-content: center;
-   gap: 10px;
-   margin-top: 20px;
-   padding: 10px;
-   max-width: 100%;
-   overflow-x: auto;
-   touch-action: pan-x pinch-zoom;
-}
-
-.photogalery_slider-thumbnail {
-   width: 80px;
-   height: 60px;
-   object-fit: cover;
-   border-radius: 4px;
-   cursor: pointer;
-   opacity: 0.6;
-   transition: opacity 0.3s;
-}
-
-.photogalery_slider-thumbnail.active {
-   opacity: 1;
-   border: 2px solid white;
-}
-
-.photogalery_slider-thumbnail:hover {
-   opacity: 0.8;
-}
-
-.swipe-hint {
-   position: absolute;
-   bottom: 20px;
-   left: 0;
-   width: 100%;
-   text-align: center;
-   color: rgba(255, 255, 255, 0.7);
-   font-size: 0.9rem;
-   display: none;
-}
-
-.photogalery_slider-counter {
-   position: absolute;
-   bottom: 20px;
-   left: 0;
-   width: 100%;
-   text-align: center;
-   color: rgba(255, 255, 255, 0.7);
-   font-size: 1rem;
-}
-
-@media (max-width: 768px) {
-   .photo_year_card {
-      width: 100%;
-      max-width: 350px;
-   }
-
-   .photogalery_slider-nav button {
-      font-size: 1.5rem;
-      width: 40px;
-      height: 40px;
-      margin: 0 10px;
-   }
-
-   .photogalery_slider-thumbnail {
-      width: 60px;
-      height: 45px;
-   }
-
-   .swipe-hint {
-      display: block;
-   }
-
-   .photogalery_slider-main {
-      height: 60vh;
-   }
-   .slider-header {
-      font-size: 1.5rem;
-      padding: 10px 0;
-   }
-
-   .slider-close {
-      top: 10px;
-      right: 15px;
-      font-size: 1.8rem;
-   }
-
-   .slider-main {
-      padding: 0 5px;
-   }
-}
-
-@media (max-width: 480px) {
-   .slider-header {
-      font-size: 1.3rem;
-   }
-}
-
-@media (max-width: 480px) {
-   .photogalery_slider-main {
-      height: 50vh;
-   }
-}
 
 // Документация
 
@@ -4480,7 +4240,6 @@ html {
 .about-section,
 .news__section,
 .vacancies_section,
-.photo_company,
 .company__main,
 .certificates,
 .company_content_image,
@@ -4864,6 +4623,15 @@ img[data-src] {
    // }
 }
 
-[data-lang="director2"] {
+// Для переноса имени на новую строку в файле translation
+
+[data-lang="director2"],
+[data-lang="chief_engineer2"],
+[data-lang="director_of_production2"],
+[data-lang="director_for_economics2"],
+[data-lang="director_of_ideology2"],
+[data-lang="chief_accountant2"],
+[data-lang="chief_pto2"],
+[data-lang="chief_omts2"] {
    white-space: pre-line;
 }

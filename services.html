@@ -4,7 +4,7 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Услуги</title>
+   <title data-lang="services">Услуги</title>
    <link rel="stylesheet" href="css/style.css">
    <link rel="shortcut icon" href="img/logo_black.svg" type="image/png">
    <!--Для Снежинок на новый ГОД -->
@@ -38,9 +38,9 @@
                   <a href="tel:+375232492229">+375 23 249-22-29</a>
                </div>
                <div class="top_language-switcher">
-                  <div class="active">РУ</div>
-                  <div>EN</div>
-                  <div>БЕЛ</div>
+                  <div class="active" data-lang="ru">РУ</div>
+                  <!-- <div>EN</div> -->
+                  <div data-lang="be">БЕЛ</div>
                </div>
                <div class="accessibility-trigger ">
                   <div class="top_vision_helper" id="specialButton"><img id='glazd' src="img/eye.svg"
@@ -68,8 +68,8 @@
                </div>
 
                <div class="header_burger" id="burger">
-                  <span id="open_menu" class="header_burger_menu">Меню</span>
-                  <span id="close_menu" class="header_burger_clouse">Закрыть</span>
+                  <span id="open_menu" class="header_burger_menu" data-lang="menu">Меню</span>
+                  <span id="close_menu" class="header_burger_clouse" data-lang="close">Закрыть</span>
                   <div class="header_burger_line">
                      <span></span>
                      <span></span>
@@ -80,17 +80,23 @@
          </div>
          <nav class="header_nav" id="headernav">
             <ul class="header_menu">
-               <li class="header_li"><a class="header_link" href="index.html">Главная</a></li>
-               <li class="header_li"><a class="header_link" href="company.html">О компании</a></li>
-               <li class="header_li"><a class="header_link" href="services.html">Услуги</a></li>
-               <li class="header_li"><a class="header_link" href="contacts.html">Контакты</a></li>
-               <li class="header_li"><a class="header_link" href="neuws.html">Новости</a></li>
-               <li class="header_li"><a class="header_link" href="vacancies.html">Вакансии</a></li>
-               <li class="header_li"><a class="header_link" href="documentation.html">Документация</a></li>
+               <li class="header_li"><a class="header_link" href="index.html" data-lang="home">Главная</a></li>
+               <li class="header_li"><a class="header_link" href="company.html" data-lang="about">О компании</a></li>
+               <li class="header_li"><a class="header_link" href="services.html" data-lang="services">Услуги</a></li>
+               <li class="header_li"><a class="header_link" href="contacts.html" data-lang="contacts">Контакты</a></li>
+               <li class="header_li"><a class="header_link" href="neuws.html" data-lang="news">Новости</a></li>
+               <li class="header_li"><a class="header_link" href="vacancies.html" data-lang="vacancies">Вакансии</a>
+               </li>
+               <li class="header_li"><a class="header_link" href="documentation.html"
+                     data-lang="documentation">Документация</a>
+               </li>
+               <li class="header_li"><a class="header_link" href="suppliers.html"
+                     data-lang="suppliers_p1">Поставщикам</a>
+               </li>
             </ul>
             <div class="mobile_contact_info">
-               <a href="mailto:rhm@himzavod.by"> rhm@himzavod.by</a>
-               <a href="tel:+375232492229">+375 23 249-22-29</a>
+               <a href="mailto:rhm@himzavod.by" data-lang="email"> rhm@himzavod.by</a>
+               <a href="tel:+375232492229" data-lang="phone">+375 23 249-22-29</a>
             </div>
          </nav>
       </header>
@@ -98,7 +104,8 @@
       <div class="menu_overlay" id="menuOverlay"></div>
       <div class="search_overlay" id="searchOverlay">
          <div class="search_form">
-            <input type="text" class="search_input" placeholder="Введите запрос для поиска......(В разработке)">
+            <input data-lang="search_placeholder" type="text" class="search_input"
+               placeholder="Введите запрос для поиска......(В разработке)">
             <div class="close_search" id="closeSearch">
                <span></span>
                <span></span>
@@ -114,11 +121,11 @@
                      <span class="bread_crumbs_span"><img src="icons/arrow_next.svg" alt=""></span>
                   </li>
                   <li class="bread_crumbs_li">
-                     <a href="services.html" class="bread_crumbs_link">Услуги</a>
+                     <a href="services.html" class="bread_crumbs_link" data-lang="services">Услуги</a>
                   </li>
                </ul>
                <div class="bread_crumbs_title">
-                  <p class="bread_crumbs_text">Услуги</p>
+                  <p class="bread_crumbs_text" data-lang="services">Услуги</p>
                </div>
             </div>
          </section>
@@ -131,16 +138,17 @@
                         <path
                            d="M78.5625 31.47H73.275C72.7181 29.8247 72.1359 28.455 71.4666 27.1359L71.5537 27.3244L75.3169 23.6006C76.3013 22.7569 76.92 21.5138 76.92 20.1244C76.92 18.9825 76.5009 17.9363 75.8063 17.1347L75.8119 17.1403L66.8737 8.20219C66.0778 7.51032 65.0344 7.09126 63.8897 7.09126C62.5003 7.09126 61.2544 7.71282 60.4191 8.69438L60.4134 8.7L56.6672 12.4406C55.5366 11.8613 54.1697 11.2791 52.7578 10.7925L52.5272 10.7222L52.5525 5.43469C52.5609 5.32219 52.5666 5.19282 52.5666 5.06063C52.5666 2.65875 50.7103 0.690005 48.3534 0.512817H48.3394H35.6944C33.3206 0.690005 31.4616 2.65875 31.4616 5.06063C31.4616 5.19282 31.4672 5.32219 31.4784 5.45157V5.43469V10.7194C29.8331 11.2763 28.4662 11.8556 27.1472 12.5222L27.3356 12.435L23.6119 8.6775C22.7709 7.6875 21.525 7.06594 20.1356 7.06594C18.9909 7.06594 17.9475 7.48782 17.1459 8.18251L17.1516 8.17688L8.21063 17.1178C7.51875 17.9138 7.09687 18.96 7.09687 20.1019C7.09687 21.4913 7.71844 22.7372 8.7 23.5725L8.70563 23.5781L12.4434 27.3159C11.8613 28.4494 11.2791 29.8219 10.7925 31.2394L10.725 31.47L5.4375 31.4447C5.325 31.4363 5.19563 31.4306 5.06344 31.4306C2.66156 31.4306 0.692813 33.2897 0.515625 35.6466V35.6606V48.3028C0.69 50.6766 2.66156 52.5356 5.06344 52.5356C5.19563 52.5356 5.325 52.53 5.45438 52.5188H5.4375H10.725C11.2819 54.1641 11.8612 55.5338 12.5306 56.8528L12.4462 56.6672L8.69156 60.3797C7.70438 61.2234 7.08281 62.4722 7.08281 63.8644C7.08281 65.0091 7.50187 66.0553 8.19656 66.8569L8.19094 66.8513L17.1319 75.7894C17.8322 76.4813 18.7941 76.9116 19.86 76.9116C19.8797 76.9116 19.8994 76.9116 19.9191 76.9116H19.9163C21.3647 76.875 22.6641 76.2619 23.595 75.2916L23.5978 75.2888L27.3384 71.5481C28.4719 72.1303 29.8444 72.7125 31.2619 73.1991L31.4925 73.2694L31.4672 78.5513C31.4587 78.6638 31.4531 78.7931 31.4531 78.9225C31.4531 81.3244 33.3122 83.2959 35.6691 83.4703H35.6831H48.3281C50.6991 83.2903 52.5553 81.3244 52.5553 78.9225C52.5553 78.7903 52.5497 78.6609 52.5384 78.5316V78.5484V73.2581C54.1838 72.7013 55.5563 72.1191 56.8781 71.4497L56.6897 71.5369L60.405 75.2859C61.3388 76.2534 62.6353 76.8666 64.0725 76.9003H64.0781H64.0837C64.1006 76.9003 64.1203 76.9003 64.1372 76.9003C65.2003 76.9003 66.1622 76.4756 66.8681 75.7894L75.8034 66.8541C76.4897 66.1538 76.9144 65.1919 76.9144 64.1316C76.9144 64.1063 76.9144 64.0838 76.9144 64.0584C76.8806 62.6156 76.2703 61.3247 75.3056 60.3938L75.3028 60.3909L71.5594 56.6447C72.1387 55.5169 72.7181 54.15 73.2075 52.7381L73.2778 52.5047L78.5625 52.53C78.675 52.5384 78.8044 52.5441 78.9337 52.5441C81.3384 52.5441 83.3072 50.685 83.4816 48.3253V48.3113V35.6691C83.3044 33.2953 81.3356 31.4391 78.9309 31.4391C78.7988 31.4391 78.6694 31.4447 78.5428 31.4559H78.5597L78.5625 31.47ZM78.5737 48.3281L71.7787 48.2944C71.7225 48.2944 71.6747 48.3225 71.6212 48.3253C71.0644 48.3928 70.575 48.6488 70.2122 49.0256C70.0575 49.2281 69.9225 49.4559 69.8156 49.7006L69.8072 49.7231C69.7931 49.7625 69.7622 49.7906 69.7509 49.8328C69.0759 52.2066 68.1956 54.2738 67.0959 56.2003L67.1691 56.0625C67.0172 56.3438 66.9272 56.6756 66.9272 57.03C66.9272 57.0328 66.9272 57.0384 66.9272 57.0413C66.9272 57.0863 66.9356 57.12 66.9384 57.1678C66.9553 57.6938 67.1634 58.1663 67.4981 58.5206L67.5234 58.5853L72.3244 63.3919C72.6309 63.6984 72.7097 63.9966 72.8194 63.8869L64.095 72.6984C63.8166 72.6619 63.5719 72.5269 63.3975 72.3328L58.6247 67.515C58.6022 67.4897 58.5628 67.5009 58.5403 67.4784C58.2 67.1634 57.7528 66.9638 57.2578 66.9356H57.2522C57.1959 66.9272 57.1284 66.9216 57.0609 66.9188C56.7094 66.9188 56.3747 67.0088 56.0878 67.1663L56.0991 67.1606C54.3103 68.1787 52.2375 69.0619 50.0634 69.7003L49.8553 69.7538C49.8131 69.765 49.785 69.7959 49.7456 69.81C49.4756 69.9281 49.2422 70.0688 49.0284 70.2291L49.0369 70.2234C48.9384 70.3191 48.8512 70.4231 48.7753 70.5328L48.7697 70.5384C48.6937 70.6312 48.6206 70.7353 48.5588 70.8478L48.5531 70.8591C48.4603 71.0869 48.3872 71.3512 48.3478 71.6297L48.345 71.6494C48.3422 71.6944 48.3169 71.7366 48.3169 71.7816V78.5653C48.3169 78.9872 48.1622 79.2628 48.3169 79.2684L35.9137 79.3331C35.7675 79.1447 35.6775 78.9028 35.6775 78.6413C35.6775 78.6188 35.6775 78.5963 35.6803 78.5738L35.7141 71.7928C35.7141 71.745 35.6916 71.7028 35.6859 71.6578C35.6719 71.5088 35.6437 71.3709 35.6016 71.2388L35.6044 71.2528C35.5706 71.1038 35.5256 70.9716 35.4694 70.845L35.475 70.8591C35.3288 70.6172 35.1684 70.4091 34.9884 70.2206C34.9069 70.1531 34.8141 70.0913 34.7184 70.035L34.7072 70.0294C34.5834 69.945 34.4456 69.8719 34.2966 69.8156L34.2825 69.81C34.2431 69.7959 34.215 69.765 34.1728 69.7538C31.7906 69.0759 29.715 68.1956 27.7828 67.0988L27.9263 67.1719C27.6478 67.02 27.3187 66.93 26.9672 66.93C26.9053 66.9272 26.8547 66.9413 26.7928 66.9441C26.2866 66.9666 25.8309 67.1691 25.485 67.4869C25.4625 67.5094 25.4288 67.4981 25.4063 67.5206L20.6109 72.3159C20.31 72.6169 20.0034 72.7069 20.1103 72.8166L11.2959 64.095C11.3297 63.8138 11.4647 63.5691 11.6616 63.3919L16.4822 58.6247L16.5131 58.5516C16.8366 58.2056 17.0447 57.7472 17.0672 57.2409V57.2353C17.07 57.1763 17.0812 57.1313 17.0812 57.0722C17.0812 57.0694 17.0812 57.0666 17.0812 57.0638C17.0812 56.7094 16.9913 56.3747 16.8337 56.085L16.8394 56.0963C15.8128 54.3075 14.9297 52.2403 14.2997 50.0634L14.2491 49.8609C14.2378 49.8188 14.2041 49.7878 14.19 49.7456C14.0719 49.4813 13.9369 49.2506 13.7794 49.0425L13.785 49.0509C13.6022 48.8794 13.4025 48.7219 13.1888 48.5869L13.1719 48.5784C13.0284 48.5081 12.8653 48.4519 12.6909 48.4181L12.6769 48.4153C12.5953 48.39 12.4941 48.3703 12.39 48.3563H12.3787C12.3225 48.3506 12.2747 48.3225 12.2156 48.3225H5.43187C5.00437 48.3281 4.73437 48.1678 4.72875 48.3169L4.66688 35.9166C4.85531 35.7703 5.09156 35.6803 5.35313 35.6803C5.37844 35.6803 5.40094 35.6803 5.42625 35.6831H5.42344L12.2184 35.7169C12.6459 35.7056 13.0397 35.565 13.3631 35.3344L13.3575 35.34C13.425 35.3006 13.4813 35.2613 13.5375 35.2191L13.5319 35.2219C13.8384 34.9744 14.0691 34.6425 14.1928 34.2628L14.1956 34.2488C14.2041 34.2206 14.235 34.2094 14.2434 34.1784C14.9241 31.7963 15.8044 29.7263 16.9041 27.7941L16.8309 27.9347C16.9828 27.6534 17.0728 27.3216 17.0728 26.9672C17.0728 26.9644 17.0728 26.9644 17.0728 26.9616C17.0756 26.9081 17.0644 26.8688 17.0616 26.8153C17.0419 26.2978 16.8366 25.8309 16.5075 25.4794L16.4794 25.4119L11.6841 20.6166C11.3803 20.3072 11.2847 19.995 11.1891 20.1159L19.9134 11.3016C20.1975 11.3241 20.445 11.4647 20.6109 11.67L20.6138 11.6728L25.3866 16.4906C25.4372 16.5413 25.5159 16.5216 25.5694 16.5666C25.9209 16.9069 26.3991 17.1178 26.9278 17.1178C27.2934 17.1178 27.6338 17.0166 27.9263 16.8422L27.9178 16.8478C29.7066 15.8241 31.7766 14.9438 33.9506 14.3109L34.1531 14.2603C34.1925 14.2491 34.2206 14.2181 34.26 14.2069C34.4203 14.1478 34.5553 14.0747 34.6847 13.9903L34.6763 13.9959C35.1347 13.7428 35.4666 13.3097 35.5791 12.795L35.5819 12.7838C35.6213 12.6628 35.6522 12.5222 35.6663 12.3759V12.3675C35.6691 12.3225 35.6916 12.2831 35.6916 12.2381V5.45438C35.6916 5.02969 35.8491 4.75407 35.6944 4.75126L48.0975 4.68657C48.2437 4.87501 48.3309 5.11407 48.3309 5.37563C48.3309 5.40094 48.3309 5.42344 48.3281 5.44875L48.2944 12.2297C48.2944 12.2747 48.3169 12.3141 48.3197 12.3619C48.3337 12.5166 48.3619 12.66 48.4069 12.7978L48.4041 12.7838C48.6038 13.4419 49.0875 13.9622 49.7091 14.2069L49.7231 14.2125C49.7625 14.2266 49.7934 14.2575 49.8328 14.2688C52.2094 14.9494 54.2766 15.8297 56.2031 16.9266L56.0625 16.8534C56.3578 17.0222 56.7122 17.1234 57.0919 17.1234H57.0947C57.6094 17.1009 58.0706 16.8928 58.4194 16.5666C58.4672 16.5244 58.5403 16.5441 58.5853 16.4991L63.3919 11.7038C63.6872 11.4056 63.9909 11.3184 63.8869 11.2088L72.6984 19.9331C72.6647 20.2144 72.5325 20.4563 72.3356 20.6334L67.5122 25.4063L67.4812 25.4794C67.155 25.8253 66.9469 26.2866 66.9244 26.7956V26.8013C66.9216 26.8575 66.9103 26.9025 66.9103 26.9588C66.9103 26.9616 66.9103 26.9644 66.9103 26.9672C66.9103 27.3216 67.0003 27.6563 67.1578 27.9459L67.1522 27.9347C68.1787 29.7234 69.0619 31.7906 69.6891 33.9647L69.7397 34.1644C69.7481 34.1981 69.7847 34.2122 69.7931 34.2431C69.9225 34.6284 70.1503 34.9547 70.4456 35.1966L70.4484 35.1994C70.5019 35.2416 70.5638 35.2838 70.6256 35.3203L70.6341 35.3259C70.9491 35.5509 71.3428 35.6916 71.7647 35.7028H78.5513C78.9788 35.7 79.2487 35.8631 79.2544 35.7056L79.3134 48.1059C79.1306 48.255 78.8944 48.345 78.6384 48.345C78.6103 48.345 78.585 48.345 78.5569 48.3422H78.5597L78.5737 48.3281ZM42 28.6406C34.6228 28.6406 28.6406 34.6228 28.6406 42C28.6406 49.3772 34.6228 55.3594 42 55.3594C49.3772 55.3594 55.3594 49.3772 55.3594 42C55.3509 34.6256 49.3744 28.6491 42 28.6406ZM42 51.1406C36.9516 51.1406 32.8594 47.0484 32.8594 42C32.8594 36.9516 36.9516 32.8594 42 32.8594C47.0484 32.8594 51.1406 36.9516 51.1406 42C51.135 47.0456 47.0456 51.135 42 51.1406Z" />
                      </svg>
-                     <div class="services_page_title">Централизованый ремонтный цех</div>
+                     <div class="services_page_title" data-lang="crc1">Централизованый ремонтный цех</div>
                      <ul class="services_page_text">
-                        <li>изготовление товаров народно производства (лавочки, мангалы и др.)</li>
-                        <li>испытание запорной арматуры</li>
-                        <li>ремонт и изготовление оборудования</li>
-                        <li>пескоструйная очистка и покраска оборудования</li>
-                        <li>гуммирование поверхности</li>
+                        <li data-lang="crc_li_1">изготовление товаров народного производства (лавочки, мангалы и др.)
+                        </li>
+                        <li data-lang="crc_li_2">испытание запорной арматуры</li>
+                        <li data-lang="crc_li_3">ремонт и изготовление оборудования</li>
+                        <li data-lang="crc_li_4">пескоструйная очистка и покраска оборудования</li>
+                        <li data-lang="crc_li_5">гуммирование поверхности</li>
                      </ul>
                      <div class="services_page_link">
-                        <div href="">Подробнее</div>
+                        <div href="" data-lang="more_details1">Подробнее</div>
                      </div>
                   </a>
 
@@ -157,14 +165,14 @@
                         <path
                            d="M88.1266 81.4238V71.4915C88.1266 62.0357 84.8191 53.2574 78.8134 46.7737C72.6638 40.1345 64.1611 36.4783 54.872 36.4783C35.7946 36.4783 20.2206 51.715 19.7549 70.6205L1.40142 79.7672C0.393141 80.2697 -0.154769 81.3509 0.0384142 82.458C0.231422 83.565 1.11296 84.3988 2.23252 84.5326L45.3372 89.6883C45.3926 89.6948 45.4487 89.6981 45.5048 89.6981H87.3052C88.7912 89.6981 90.0003 88.493 90.0003 87.0118V83.9813C90.0001 82.7857 89.2119 81.771 88.1266 81.4238ZM54.872 39.2794C62.1815 39.2794 68.7335 41.7359 73.8704 45.9511C70.2576 44.6307 66.3768 43.9477 62.366 43.9477C53.6642 43.9477 45.3149 47.1428 38.8565 52.9446C32.974 58.229 29.081 65.2827 27.7502 72.9858L22.5664 70.6013C23.0419 53.2497 37.3511 39.2794 54.872 39.2794ZM87.1899 86.8974H45.5886L3.48355 81.8613L21.1735 73.0452L34.2222 79.0482C36.2738 79.992 38.3905 80.8072 40.5521 81.4916C41.46 81.7791 42.3876 81.1086 42.3876 80.1591V80.1574C42.3876 79.5501 41.9949 79.0107 41.4143 78.8269C39.3607 78.1767 37.3494 77.4016 35.4 76.5048L30.3999 74.2046C32.7272 58.4706 46.2636 46.7488 62.366 46.7488C68.607 46.7488 74.4957 48.5464 79.4094 51.9466C83.1492 57.2948 85.3164 64.0193 85.3164 71.4915V73.8258H75.8678C74.8778 73.8258 74.0754 74.6256 74.0754 75.6123V81.2954H65.6445V75.6123C65.6445 74.6256 64.8421 73.8258 63.8521 73.8258H53.3857C52.3957 73.8258 51.5933 74.6256 51.5933 75.6123V80.98C49.9928 80.8034 48.3992 80.5521 46.8198 80.2292C45.9526 80.0521 45.1428 80.7189 45.1428 81.6009C45.1428 82.2671 45.6141 82.8403 46.2689 82.9738C49.8963 83.7139 53.5961 84.0962 57.2821 84.0962H87.1899V86.8974ZM85.3164 76.6268V81.2952H76.8858V76.6268H85.3164ZM62.8343 76.6268V81.2952H57.2821C56.323 81.2952 55.3631 81.2673 54.4037 81.2135V76.6266H62.8343V76.6268Z" />
                      </svg>
-                     <div class="services_page_title">Ремонтно-строительный цех</div>
+                     <div class="services_page_title" data-lang="rsc1">Ремонтно-строительный цех</div>
                      <ul class="services_page_text">
-                        <li>строительные работы</li>
-                        <li>изготовление изделий из ПВХ профиля</li>
-                        <li>изготовление мебели</li>
+                        <li data-lang="rsc_li_1">строительные работы</li>
+                        <li data-lang="rsc_li_2">изготовление изделий из ПВХ профиля</li>
+                        <li data-lang="rsc_li_3">изготовление мебели</li>
                      </ul>
                      <div class="services_page_link">
-                        <div href="">Подробнее</div>
+                        <div href="" data-lang="more_details1">Подробнее</div>
                      </div>
                   </a>
 
@@ -174,17 +182,17 @@
                         <path
                            d="M70.75 23.125H65.125V14.6875C65.125 6.92219 58.8278 0.625 51.0625 0.625H22.9375C15.1722 0.625 8.875 6.92219 8.875 14.6875V23.125H3.25C1.6975 23.125 0.4375 24.385 0.4375 25.9375V34.375C0.4375 35.9275 1.6975 37.1875 3.25 37.1875H8.875V45.6813C8.875 49.3853 9.24063 53.0809 9.96625 56.7119L13.1416 72.5912C13.9319 76.5372 17.3941 79.375 21.4159 79.375H52.5813C56.6031 79.375 60.0653 76.5372 60.8556 72.5912L64.0309 56.7119C64.7594 53.0781 65.125 49.3853 65.125 45.6813V37.1875H70.75C72.3025 37.1875 73.5625 35.9275 73.5625 34.375V25.9375C73.5625 24.385 72.3025 23.125 70.75 23.125ZM11.6875 14.6875C11.6875 8.48312 16.7331 3.4375 22.9375 3.4375H51.0625C57.2669 3.4375 62.3125 8.48312 62.3125 14.6875V28.75H59.5V23.125C59.5 20.0172 56.9828 17.5 53.875 17.5H20.125C17.0172 17.5 14.5 20.0172 14.5 23.125V28.75H11.6875V14.6875ZM56.6875 23.125V37.1875C56.6875 38.7372 55.4247 40 53.875 40H20.125C18.5753 40 17.3125 38.7372 17.3125 37.1875V23.125C17.3125 21.5753 18.5753 20.3125 20.125 20.3125H53.875C55.4247 20.3125 56.6875 21.5753 56.6875 23.125ZM3.25 34.375V25.9375H8.875V34.375H3.25ZM62.3125 45.6813C62.3125 49.1912 61.9638 52.7181 61.2747 56.1606L58.0994 72.04C57.5734 74.6612 55.2559 76.5625 52.5841 76.5625H21.4159C18.7441 76.5625 16.4238 74.6612 15.9006 72.04L12.7253 56.1606C12.0363 52.7181 11.6875 49.1912 11.6875 45.6813V31.5625H14.5V37.1875C14.5 40.2953 17.0172 42.8125 20.125 42.8125H53.875C56.9828 42.8125 59.5 40.2953 59.5 37.1875V31.5625H62.3125V45.6813ZM70.75 34.375H65.125V25.9375H70.75V34.375ZM20.125 37.1875H53.875V23.125H20.125V37.1875ZM22.9375 25.9375H51.0625V34.375H22.9375V25.9375Z" />
                      </svg>
-                     <div class="services_page_title">Ремонтно-механический цех</div>
+                     <div class="services_page_title" data-lang="rmc1">Ремонтно-механический цех</div>
                      <ul class="services_page_text">
-                        <li>сварочные работы</li>
-                        <li>станочные работы</li>
-                        <li>литейное производство</li>
-                        <li>механо-сборочные работы</li>
-                        <li>гибка металла</li>
-                        <li>плазменная резка</li>
+                        <li data-lang="rmc_li_1">сварочные работы</li>
+                        <li data-lang="rmc_li_2">станочные работы</li>
+                        <li data-lang="rmc_li_3">литейное производство</li>
+                        <li data-lang="rmc_li_4">механо-сборочные работы</li>
+                        <li data-lang="rmc_li_5">гибка металла</li>
+                        <li data-lang="rmc_li_6">плазменная резка</li>
                      </ul>
                      <div class="services_page_link">
-                        <div href="">Подробнее</div>
+                        <div href="" data-lang="more_details1">Подробнее</div>
                      </div>
                   </a>
 
@@ -196,15 +204,14 @@
                <div class="other_block">
                   <a target="_blank" href="https://gomel-region.gov.by/ru/pamyat-ru/"> <img class="other_img"
                         src="img/other/other_1.jpg" alt=""> </a>
-                  <a target="_blank" href="https://gomel-region.gov.by/ru/2025-ru"> <img class="other_img"
-                        src="img/other/other_2.jpg" alt=""> </a>
-                  <a target="_blank" href="https://belfert.by/"> <img class="other_img" src="img/other/BelFert.jpg"
-                        alt="photo">
+                  <a target="_blank" href="https://president.gov.by/ru/events/2026-god-ob-avlen-godom-belorusskoj-zensiny"> <img
+                        class="other_img" src="img/other/2026.jpg" alt=""> </a>
+                  <a target="_blank" href="https://belfert.by/"> <img class="other_img" src="img/other/BelFert.jpg" alt="photo">
                   </a>
                   <a target="_blank" href="https://gomel-region.gov.by/ru/80-ru"> <img class="other_img"
                         src="img/other/other_4.jpg" alt=""> </a>
-                  <a target="_blank" href="https://president.gov.by/ru"> <img class="other_img"
-                        src="img/other/other_5.jpg" alt="">
+                  <a target="_blank" href="https://president.gov.by/ru"> <img class="other_img" src="img/other/other_5.jpg"
+                        alt="">
                   </a>
                </div>
             </div>
@@ -219,30 +226,46 @@
                <nav class="footer_nav">
 
                   <ul class="footer_ul">
-                     <li class="footer_li"><a class="footer_li_a" href="index.html">Главная</a></li>
-                     <li class="footer_li"><a class="footer_li_a" href="company.html">О компании</a></li>
-                     <li class="footer_li"><a class="footer_li_a" href="services.html">Услуги</a></li>
-                     <li class="footer_li"><a class="footer_li_a" href="contacts.html">Контакты</a></li>
-                     <li class="footer_li"><a class="footer_li_a" href="neuws.html">Новости</a></li>
-                     <li class="footer_li"><a class="footer_li_a" href="vacancies.html">Вакансии</a></li>
-                     <li class="footer_li"><a class="footer_li_a" href="documentation.html">Документация</a></li>
+                     <li class="footer_li"><a class="footer_li_a" href="index.html" data-lang="home">Главная</a></li>
+                     <li class="footer_li"><a class="footer_li_a" href="company.html" data-lang="about">О компании</a>
+                     </li>
+                     <li class="footer_li"><a class="footer_li_a" href="services.html" data-lang="services">Услуги</a>
+                     </li>
+                     <li class="footer_li"><a class="footer_li_a" href="contacts.html" data-lang="contacts">Контакты</a>
+                     </li>
+                     <li class="footer_li"><a class="footer_li_a" href="neuws.html" data-lang="news">Новости</a></li>
+                     <li class="footer_li"><a class="footer_li_a" href="vacancies.html"
+                           data-lang="vacancies">Вакансии</a>
+                     </li>
+                     <li class="footer_li"><a class="footer_li_a" href="documentation.html"
+                           data-lang="documentation">Документация</a></li>
+                     <li class="footer_li"><a class="footer_li_a" href="suppliers.html"
+                           data-lang="suppliers_p1">Поставщикам</a></li>
                   </ul>
                   <ul class="footer_ul nav_one">
-                     <li class="footer_li"><a class="footer_li_a" href="index.html">Главная</a></li>
-                     <li class="footer_li"><a class="footer_li_a" href="company.html">О компании</a></li>
-                     <li class="footer_li"><a class="footer_li_a" href="services.html">Услуги</a></li>
-                     <li class="footer_li"><a class="footer_li_a" href="contacts.html">Контакты</a></li>
+                     <li class="footer_li"><a class="footer_li_a" href="index.html" data-lang="home">Главная</a></li>
+                     <li class="footer_li"><a class="footer_li_a" href="company.html" data-lang="about">О компании</a>
+                     </li>
+                     <li class="footer_li"><a class="footer_li_a" href="services.html" data-lang="services">Услуги</a>
+                     </li>
+                     <li class="footer_li"><a class="footer_li_a" href="contacts.html" data-lang="contacts">Контакты</a>
+                     </li>
                   </ul>
                   <ul class="footer_ul nav_twu">
-                     <li class="footer_li"><a class="footer_li_a" href="neuws.html">Новости</a></li>
-                     <li class="footer_li"><a class="footer_li_a" href="vacancies.html">Вакансии</a></li>
-                     <li class="footer_li"><a class="footer_li_a" href="documentation.html">Документация</a></li>
+                     <li class="footer_li"><a class="footer_li_a" href="neuws.html" data-lang="news">Новости</a></li>
+                     <li class="footer_li"><a class="footer_li_a" href="vacancies.html"
+                           data-lang="vacancies">Вакансии</a>
+                     </li>
+                     <li class="footer_li"><a class="footer_li_a" href="documentation.html "
+                           data-lang="documentation">Документация</a></li>
+                     <li class="footer_li"><a class="footer_li_a" href="suppliers.html"
+                           data-lang="suppliers_p1">Поставщикам</a></li>
                   </ul>
                </nav>
 
                <div class="footer_midle">
                   <div class="footer_midle_text">
-                     <div class="footer_midle_text_info">Приёмная:</div>
+                     <div class="footer_midle_text_info" data-lang="reception">Приёмная:</div>
                      <div class="footer_midle_text_links">
                         <a class="footer_midle_text_link" href="tel:+375232492229">+375 23 249-22-29</a>
                         <a class="footer_midle_text_link" href="mailto:rhm@himzavod.by">rhm@himzavod.by</a>
@@ -258,14 +281,16 @@
                <div class="footer_bot">
                   <a target="_blank"
                      href="https://yandex.by/maps/org/rsup_remontkhimmontazh/1233590479/?ll=30.866949%2C52.434099&mode=search&sll=27.555691%2C53.902735&sspn=0.480652%2C0.168886&text=%D1%80%D0%B5%D0%BC%D0%be%D0%BD%D1%82%D1%85%D0%B8%D0%BC%D0%BC%D0%be%D0%BD%D1%82%D0%B0%D0%B6&z=17"
-                     class="footer_bot_adress">246012, Химзаводская, 5, Гомель, Республика Беларусь</a>
-                  <div class="footer_bot_info">© 2025, РСУП “Ремонтхиммонтаж” УНП 491063479</div>
+                     class="footer_bot_adress" data-lang="address">246012, Химзаводская, 5, Гомель, Республика
+                     Беларусь</a>
+                  <div class="footer_bot_info" data-lang="copyright">© 2026, РСУП “Ремонтхиммонтаж” УНП 491063479</div>
                </div>
             </div>
          </div>
       </footer>
    </div>
    <script src="js/main.js" defer></script>
+   <script src="js/translation.js" defer></script>
    <script src="https://lidrekon.ru/slep/js/jquery.js"></script>
    <script src="https://lidrekon.ru/slep/js/uhpv-hover-full.min.js"></script>
 </body>
