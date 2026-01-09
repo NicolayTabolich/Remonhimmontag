@@ -4870,6 +4870,34 @@ select {
     width: 100%;
   }
 }
+.suppliers_text {
+  padding: 0px 0px 10px 0px;
+}
+
+.suppliers_p {
+  line-height: 140%;
+  font-size: 1.15rem;
+  font-weight: 600;
+  text-indent: 25px;
+  text-align: justify;
+}
+@media (max-width: 768px) {
+  .suppliers_p {
+    font-size: 1rem;
+  }
+}
+
+.suppliers_link {
+  color: #0d0932;
+  -webkit-transition: 0.3s all ease-in-out;
+  transition: 0.3s all ease-in-out;
+}
+@media (any-hover: hover) {
+  .suppliers_link:hover {
+    color: #241985;
+  }
+}
+
 .certificates {
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
@@ -5211,6 +5239,7 @@ html {
 .vacancy_page,
 .intro_text_crc,
 .work_types_crc,
+.suppliers,
 .gallery_crc,
 .other_section {
   opacity: 0;

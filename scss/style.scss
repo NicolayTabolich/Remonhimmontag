@@ -3927,6 +3927,36 @@ select {
    }
 }
 
+// Поставщикам
+
+.suppliers_text {
+   padding: 0px 0px 10px 0px;
+   
+
+}
+
+.suppliers_p {
+   line-height: 140%;
+      font-size: 1.15rem;
+      font-weight: 600;
+      text-indent: 25px;
+      text-align: justify;
+      @media (max-width: 768px) {
+      font-size: 1rem;
+      }
+}
+
+.suppliers_link {
+   color: #0d0932;
+   transition: 0.3s all ease-in-out;
+   @media (any-hover: hover) {
+         &:hover {
+            color: #241985;
+         }
+      }
+}
+
+
 // Cертификаты
 
 .certificates {
@@ -3976,22 +4006,6 @@ select {
    object-fit: cover;
 }
 
-// .certificate__caption {
-//    padding: 5px;
-//    text-align: center;
-//    font-weight: 600;
-//    color: #000000;
-//    //  border-top: 1px solid #eee;
-//    flex-shrink: 0;
-//    min-height: 60px;
-//    display: flex;
-//    align-items: center;
-//    justify-content: center;
-//    word-wrap: break-word;
-//    overflow-wrap: break-word;
-//    line-height: 130%;
-   
-// }
 
 .pages__indicator {
    position: absolute;
@@ -4253,6 +4267,7 @@ html {
 .vacancy_page,
 .intro_text_crc,
 .work_types_crc,
+.suppliers,
 .gallery_crc,
 .other_section {
    opacity: 0;
@@ -4607,6 +4622,19 @@ img[data-src] {
 
 
 
+// Для переноса имени на новую строку в файле translation
+
+[data-lang="director2"],
+[data-lang="chief_engineer2"],
+[data-lang="director_of_production2"],
+[data-lang="director_for_economics2"],
+[data-lang="director_of_ideology2"],
+[data-lang="chief_accountant2"],
+[data-lang="chief_pto2"],
+[data-lang="chief_omts2"] {
+   white-space: pre-line;
+}
+
 
 
 @media (max-width: 1140px) {}
@@ -4621,17 +4649,4 @@ img[data-src] {
    // &:hover {
 
    // }
-}
-
-// Для переноса имени на новую строку в файле translation
-
-[data-lang="director2"],
-[data-lang="chief_engineer2"],
-[data-lang="director_of_production2"],
-[data-lang="director_for_economics2"],
-[data-lang="director_of_ideology2"],
-[data-lang="chief_accountant2"],
-[data-lang="chief_pto2"],
-[data-lang="chief_omts2"] {
-   white-space: pre-line;
 }

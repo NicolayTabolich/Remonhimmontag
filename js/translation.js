@@ -19,6 +19,7 @@ document.addEventListener('DOMContentLoaded', function () {
          news: 'Новости',
          vacancies: 'Вакансии',
          documentation: 'Документация',
+         suppliers: 'Поставщикам',
 
 
          // Слайдер
@@ -85,6 +86,7 @@ document.addEventListener('DOMContentLoaded', function () {
          learn_more: 'Подробнее',
 
          // Новости
+         latest_news: 'Последние новости',
          all_news: 'Все новости',
          all_news2: 'Все новости',
          year: 'Год:',
@@ -129,12 +131,10 @@ document.addEventListener('DOMContentLoaded', function () {
          company_title: 'О компании',
          meta_description_company: 'Ремонтно-строительное унитарное предприятие «Ремонтхиммонтаж» создано в 2014 году...',
 
-         // Хлебные крошки
-         about_company: 'О компании',
+
 
          // Подменю
          certificates: 'Сертификаты',
-         T_suppliers_p1: 'Поставщикам',
          anti_corruption: 'Противодействие коррупции',
          anti_corruption1: 'Противод. коррупции',
 
@@ -158,7 +158,7 @@ document.addEventListener('DOMContentLoaded', function () {
          document3: 'Устав РСУП "Ремонтхиммонтаж"',
          document4: 'Шаблон резюме',
          document5: 'Реквизиты РСУП "Ремонтхиммонтаж"',
-         document6: 'План работы комиссии по противодействию коррупции РСУП «Ремонтхиммонтаж» на 2024 год',
+         document6: 'План работы комиссии по противодействию коррупции РСУП «Ремонтхиммонтаж» на 2026 год',
          document7: 'Закон Республики Беларусь № 305-З «О борьбе с коррупцией»',
          format1: 'Формат:',
          size1: 'Размер:',
@@ -278,6 +278,7 @@ document.addEventListener('DOMContentLoaded', function () {
          news: 'Навіны',
          vacancies: 'Вакансіі',
          documentation: 'Дакументацыя',
+         suppliers: 'Пастаўшчыкам',
 
          // Слайдер
          slide_mix: 'Сумесь вопыту і ведаў',
@@ -387,12 +388,8 @@ document.addEventListener('DOMContentLoaded', function () {
          meta_description_company: 'Рэмонтна-будаўнічае унітарнае прадпрыемства «Рэмонтхіммантаж» створана ў 2014 годзе...',
 
 
-         // Хлебные крошки
-         about_company: 'Пра кампанію',
-
          // Подменю
          certificates: 'Сэртыфікаты',
-         suppliers_p1: 'Пастаўшчыкам',
          anti_corruption: 'Супрацьдзеянне карупцыі',
          anti_corruption1: 'Супрацьдз. карупцыі',
 
@@ -417,7 +414,7 @@ document.addEventListener('DOMContentLoaded', function () {
          document3: 'Статут РСУП "Рамонтхіммантаж"',
          document4: 'Шаблон рэзюмэ',
          document5: 'Рэквізіты РСУП "Рамонтхіммантаж"',
-         document6: 'План працы камісіі па супрацьдзеянні карупцыі РСУП "Рамонтхіммантаж" на 2024 год',
+         document6: 'План працы камісіі па супрацьдзеянні карупцыі РСУП "Рамонтхіммантаж" на 2026 год',
          document7: 'Закон Рэспублікі Беларусь № 305-З "Аб барацьбе з карупцыяй"',
          format1: 'Фармат:',
          size1: 'Памер:',
@@ -516,8 +513,6 @@ document.addEventListener('DOMContentLoaded', function () {
          show_phone_btn_p1: 'Паказаць тэлефон',
          phone_text_p1: 'Патэлефануйце для кансультацыі па вакансіі',
          download__text_p1: 'Для Вашага зручнасці мы падрыхтавалі гатовы ўзор рэзюмэ. Вы можаце спампаваць шаблон, запоўніць яго сваёй інфармацыяй і дашліце па электроннай пошце ў наш адрас:',
-
-
 
       }
    };

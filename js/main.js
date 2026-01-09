@@ -486,7 +486,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // Плавное появление секций при скролле
 function initScrollAnimation() {
-   const sections = document.querySelectorAll('.services_section, .company__main, .download-resume, .certificates, .company_content_image, .services_page, .contacts__section, .management_section, .company_section, .about-section, .documents, .news__section, .footer, .vacancy_page, .vacancies_section, .hero_slider, .other_section, .all-news, .work_types_crc, .intro_text_crc, .gallery_crc ');
+   const sections = document.querySelectorAll('.services_section, .company__main, .download-resume, .certificates, .company_content_image, .services_page, .contacts__section, .management_section, .company_section, .about-section, .documents, .news__section, .footer, .vacancy_page, .vacancies_section, .hero_slider, .other_section, .all-news, .work_types_crc, .intro_text_crc, .gallery_crc, .suppliers');
 
    // Добавляем класс scroll-section для единообразного управления
    sections.forEach(section => {
