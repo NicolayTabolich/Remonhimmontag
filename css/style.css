@@ -2593,7 +2593,14 @@ select {
 }
 
 .other_block a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   max-height: 70px;
+  text-align: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .other_img {
@@ -3972,6 +3979,9 @@ select {
   .contact_phone {
     font-size: 14px;
   }
+}
+.contact_phone:not(:last-child) {
+  margin-bottom: 15px;
 }
 
 .contact_phone:hover {

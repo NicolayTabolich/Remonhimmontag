@@ -2084,7 +2084,10 @@ select {
 }
 
 .other_block a{
+   display: flex;
    max-height: 70px;
+   text-align: center;
+   justify-content: center;
 }
 
 .other_img {
@@ -3138,6 +3141,7 @@ select {
    background-color: #e8f5e9;
    border-radius: 4px;
    border-left: 4px solid #4caf50;
+   
 }
 
 .phone_container.active {
@@ -3152,8 +3156,12 @@ select {
    display: flex;
    align-items: center;
    gap: 10px;
+   
    @media (max-width: 567.98px) {
       font-size: 14px;
+   }
+   &:not(:last-child){
+      margin-bottom: 15px;
    }
 }
 
