@@ -38,9 +38,9 @@
                   <a href="tel:+375232492229">+375 23 249-22-29</a>
                </div>
                <div class="top_language-switcher">
-                  <div class="active">РУ</div>
-                  <div>EN</div>
-                  <div>БЕЛ</div>
+                  <div class="active" data-lang="ru">РУ</div>
+                  <!-- <div>EN</div> -->
+                  <div data-lang="be">БЕЛ</div>
                </div>
                <div class="accessibility-trigger ">
                   <div class="top_vision_helper" id="specialButton"><img id='glazd' src="img/eye.svg"
@@ -68,8 +68,8 @@
                </div>
 
                <div class="header_burger" id="burger">
-                  <span id="open_menu" class="header_burger_menu">Меню</span>
-                  <span id="close_menu" class="header_burger_clouse">Закрыть</span>
+                  <span id="open_menu" class="header_burger_menu" data-lang="menu">Меню</span>
+                  <span id="close_menu" class="header_burger_clouse" data-lang="close">Закрыть</span>
                   <div class="header_burger_line">
                      <span></span>
                      <span></span>
@@ -80,13 +80,16 @@
          </div>
          <nav class="header_nav" id="headernav">
             <ul class="header_menu">
-               <li class="header_li"><a class="header_link" href="index.html">Главная</a></li>
-               <li class="header_li"><a class="header_link" href="company.html">О компании</a></li>
-               <li class="header_li"><a class="header_link" href="services.html">Услуги</a></li>
-               <li class="header_li"><a class="header_link" href="contacts.html">Контакты</a></li>
-               <li class="header_li"><a class="header_link" href="neuws.html">Новости</a></li>
-               <li class="header_li"><a class="header_link" href="vacancies.html">Вакансии</a></li>
-               <li class="header_li"><a class="header_link" href="documentation.html">Документация</a></li>
+               <li class="header_li"><a class="header_link" href="index.html" data-lang="home">Главная</a></li>
+               <li class="header_li"><a class="header_link" href="company.html" data-lang="about">О компании</a></li>
+               <li class="header_li"><a class="header_link" href="services.html" data-lang="services">Услуги</a></li>
+               <li class="header_li"><a class="header_link" href="contacts.html" data-lang="contacts">Контакты</a></li>
+               <li class="header_li"><a class="header_link" href="neuws.html" data-lang="news">Новости</a></li>
+               <li class="header_li"><a class="header_link" href="vacancies.html" data-lang="vacancies">Вакансии</a>
+               </li>
+               <li class="header_li"><a class="header_link" href="documentation.html"
+                     data-lang="documentation">Документация</a>
+               </li>
                <li class="header_li"><a class="header_link" href="suppliers.html" data-lang="suppliers">Поставщикам</a>
                </li>
             </ul>
@@ -101,7 +104,7 @@
       <div class="search_overlay" id="searchOverlay">
          <div class="search_form">
             <input type="text" class="search_input" placeholder="Введите запрос для поиска......(В разработке)">
-            <div class="close_search" id="closeSearch">
+            <div class="close_search" id="closeSearch" data-lang="search_placeholder">
                <span></span>
                <span></span>
             </div>
@@ -112,19 +115,19 @@
             <div class="bread_crumbs__container">
                <ul class="bread_crumbs_links">
                   <li class="bread_crumbs_li">
-                     <a href="index.html" class="bread_crumbs_link">Главная</a>
+                     <a href="index.html" class="bread_crumbs_link" data-lang="home">Главная</a>
                      <span class="bread_crumbs_span"><img src="icons/arrow_next.svg" alt=""></span>
                   </li>
                   <li class="bread_crumbs_li">
-                     <a href="services.html" class="bread_crumbs_link">Услуги</a>
+                     <a href="services.html" class="bread_crumbs_link" data-lang="services">Услуги</a>
                      <span class="bread_crumbs_span"><img src="icons/arrow_next.svg" alt=""></span>
                   </li>
                   <li class="bread_crumbs_li">
-                     <a href="services.html" class="bread_crumbs_link">Услуги РМЦ</a>
+                     <a href="services.html" class="bread_crumbs_link" data-lang="services_rmc">Услуги РМЦ</a>
                   </li>
                </ul>
                <div class="bread_crumbs_title">
-                  <p class="bread_crumbs_text">Услуги РМЦ</p>
+                  <p class="bread_crumbs_text" data-lang="services_rmc">Услуги РМЦ</p>
                </div>
             </div>
          </section>
@@ -133,77 +136,85 @@
          <section class="intro_text_crc">
             <div class="intro_text_crc__container">
                <div class="intro_content_crc">
-                  <h3 class="services__title">Ремонтно-механически цех</h3>
-                  <p>Ремонтно-механическому цеху 50 лет.
+                  <h3 class="services__title" data-lang="rmc_title">Ремонтно-механический цех</h3>
+                  <p data-lang="rmc_p1">Ремонтно-механическому цеху 50 лет.
                      На момент открытия ремонтно-механический цех состоял из станочного и антикоррозионного участков,
                      службы
                      механика-энергетика. Его первым начальником был Людвиг Анатольевич Калманович. 1 января 1977-го в
                      цехе запустили
                      литейное отделение а 13 сентября это же года была произведена первая плавка.</p>
-                  <p>Долгие годы РМЦ обеспечивает устойчивую работу завода, выполняет заказы по изготовлению
+                  <p data-lang="rmc_p2">Долгие годы РМЦ обеспечивает устойчивую работу завода, выполняет заказы по
+                     изготовлению
                      нестандартного оборудования при
                      реконструкции цехов. Здесь также выпускают запасные части к насосному, дробильному-размольному,
                      грузоподъемному и
                      химическому оборудованию. В разные периоды ремонтно-механическим цехом руководили В.А. Сердюков,
                      А.Н. Кулаковский,
                      Г.П.Беляков, А.М. Корбачев. Под их началом результативно трудились 100 человек.</p>
-                  <p> С 2015 года РМЦ возглавляет Д.В. Бортновский. В числе лидеров руководитель называет как ветеранов
+                  <p data-lang="rmc_p3">С 2015 года РМЦ возглавляет Д.В. Бортновский. В числе лидеров руководитель
+                     называет как
+                     ветеранов
                      цеха – начальника
                      участков котельно-сварочного и станочного участка А.И. Железнякова, мастер котельно-сварочного
                      участков А.И Жуковца,
-                     котельщика М.Ф. Гаврикова, токаря 6-го разряда М.А. Пинчука, газоэлектросварщиков Е.В. Сенчукова.
+                     котельщика М.Ф. Гаврикова, токаря 6-го разряда М.А. Пинчука, газоэлектросварщиков Е.В. Сенчукова,
                      Г.Е.Гапонова,
                      котельщика П.М. Селезнева.
                   </p>
-                  <p>После того как цех вошел в состав РСУП "Ремонтхиммонтаж", был обновлен парк сварочного и станочного
+                  <p data-lang="rmc_p4">После того как цех вошел в состав РСУП "Ремонтхиммонтаж", был обновлен парк
+                     сварочного и
+                     станочного
                      оборудования, приобретен гидравлический листогибочный пресс.</p>
-                  <p>В состав ремонтно-механического цеха входят три специализированных участка: котельно-сварочный,
+                  <p data-lang="rmc_p5">В состав ремонтно-механического цеха входят три специализированных участка:
+                     котельно-сварочный,
                      станочный и литейный. Здесь занимаются изготовлением нестандартного оборудования и
                      металлоконструкций различной сложности.</p>
-                  <p>Станочный парк цеха позволяет осущетсвлять множетсво видов механической обработки: токарную,
+                  <p data-lang="rmc_p6">Станочный парк цеха позволяет осуществлять множество видов механической
+                     обработки:
+                     токарную,
                      фрезерную, токарно-расточную, токарно-карусельную, шлифовальную, круглошлифовальную,
                      строгальную, долбежную, зубофрезерную, зубодолбежную.</p>
-                  <p>Литейный участок занимаюется изготовлением отливок по чертежам заказчиков из сплавов - это чугун
-                     разных марок, сталь и высоколегированная сталь. Производит модельную остнастку различной сложности
+                  <p data-lang="rmc_p7">Литейный участок занимается изготовлением отливок по чертежам заказчиков из
+                     сплавов - это
+                     чугун
+                     разных марок, сталь и высоколегированная сталь. Производит модельную оснастку различной сложности
                      и художественное литье.</p>
                </div>
             </div>
          </section>
 
          <section class="work_types_crc">
-            <div class="work_types_crс__container">
+            <div class="work_types_crc__container">
                <div class="section-title">
-                  <h2>Основные виды работ</h2>
+                  <h2 data-lang="rmc_work_title">Основные виды работ</h2>
                </div>
                <div class="work_list_crc">
                   <ul>
-                     <li>Токарная обработка
-                     </li>
-                     <li>Фрезерная обработка</li>
-                     <li>Шлифовальная обработка</li>
-                     <li>Строгальная обработка</li>
-                     <li>Долбежная обработка</li>
-                     <li>Токарно-карусельная обработка</li>
-                     <li>Горизонтально-расточная обработка</li>
-                     <li>Разделка и склеивание транспортных лент</li>
-                     <li>Сварочные работы </li>
-                     <li>Рубка металла </li>
-                     <li>Гибка металла</li>
-                     <li>Вальцовка металла </li>
-                     <li>Лезерная резка металла </li>
-                     <li>Изготовление отливок по чертежам заказчика</li>
-                     <li>Изготовление модельной остнастки различной сложности</li>
-                     <li>Художественное литье по чертежам заказчика</li>
-                     <li>Изготовление нестандартного оборудование</li>
+                     <li data-lang="rmc_work_li1">Токарная обработка</li>
+                     <li data-lang="rmc_work_li2">Фрезерная обработка</li>
+                     <li data-lang="rmc_work_li3">Шлифовальная обработка</li>
+                     <li data-lang="rmc_work_li4">Строгальная обработка</li>
+                     <li data-lang="rmc_work_li5">Долбежная обработка</li>
+                     <li data-lang="rmc_work_li6">Токарно-карусельная обработка</li>
+                     <li data-lang="rmc_work_li7">Горизонтально-расточная обработка</li>
+                     <li data-lang="rmc_work_li8">Разделка и склеивание транспортных лент</li>
+                     <li data-lang="rmc_work_li9">Сварочные работы</li>
+                     <li data-lang="rmc_work_li10">Рубка металла</li>
+                     <li data-lang="rmc_work_li11">Гибка металла</li>
+                     <li data-lang="rmc_work_li12">Вальцовка металла</li>
+                     <li data-lang="rmc_work_li13">Лазерная резка металла</li>
+                     <li data-lang="rmc_work_li14">Изготовление отливок по чертежам заказчика</li>
+                     <li data-lang="rmc_work_li15">Изготовление модельной оснастки различной сложности</li>
+                     <li data-lang="rmc_work_li16">Художественное литье по чертежам заказчика</li>
+                     <li data-lang="rmc_work_li17">Изготовление нестандартного оборудования</li>
                   </ul>
                </div>
             </div>
          </section>
-
          <section class="gallery_crc">
             <div class="gallery_crc__container">
                <div>
-                  <h2 class="services__title">Наш цех</h2>
+                  <h2 class="services__title" data-lang="aur_chex">Наш цех</h2>
                </div>
                <div class="gallery_crc_grid">
                   <div class="gallery_crc_item">
@@ -255,8 +266,8 @@
             <img class="lightbox_crc-img" id="lightbox_crc-img" src="" alt="">
             <div class="lightbox_crc-counter" id="lightbox_crc-counter"></div>
             <div class="lightbox_crc-nav">
-               <button class="lightbox_crc-prev" id="lightbox_crc-prev">Назад</button>
-               <button class="lightbox_crc-next" id="lightbox_crc-next">Вперед</button>
+               <button class="lightbox_crc-prev" id="lightbox_crc-prev" data-lang="nazad">Назад</button>
+               <button class="lightbox_crc-next" id="lightbox_crc-next" data-lang="vpered">Вперед</button>
             </div>
          </div>
 
@@ -353,6 +364,8 @@
       </footer>
    </div>
    <script src="js/main.js" defer></script>
+   <script src="js/translation.js"></script>
+
    <script src="https://lidrekon.ru/slep/js/jquery.js"></script>
    <script src="https://lidrekon.ru/slep/js/uhpv-hover-full.min.js"></script>
 

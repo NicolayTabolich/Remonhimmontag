@@ -4,7 +4,7 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Услуги РСЦ</title>
+   <title data-lang="services_rsc">Услуги РСЦ</title>
    <link rel="stylesheet" href="css/style.css">
    <link rel="shortcut icon" href="img/logo_black.svg" type="image/png">
    <!--Для Снежинок на новый ГОД -->
@@ -38,9 +38,9 @@
                   <a href="tel:+375232492229">+375 23 249-22-29</a>
                </div>
                <div class="top_language-switcher">
-                  <div class="active">РУ</div>
-                  <div>EN</div>
-                  <div>БЕЛ</div>
+                  <div class="active" data-lang="ru">РУ</div>
+                  <!-- <div>EN</div> -->
+                  <div data-lang="be">БЕЛ</div>
                </div>
                <div class="accessibility-trigger ">
                   <div class="top_vision_helper" id="specialButton"><img id='glazd' src="img/eye.svg"
@@ -68,8 +68,8 @@
                </div>
 
                <div class="header_burger" id="burger">
-                  <span id="open_menu" class="header_burger_menu">Меню</span>
-                  <span id="close_menu" class="header_burger_clouse">Закрыть</span>
+                  <span id="open_menu" class="header_burger_menu" data-lang="menu">Меню</span>
+                  <span id="close_menu" class="header_burger_clouse" data-lang="close">Закрыть</span>
                   <div class="header_burger_line">
                      <span></span>
                      <span></span>
@@ -80,19 +80,22 @@
          </div>
          <nav class="header_nav" id="headernav">
             <ul class="header_menu">
-               <li class="header_li"><a class="header_link" href="index.html">Главная</a></li>
-               <li class="header_li"><a class="header_link" href="company.html">О компании</a></li>
-               <li class="header_li"><a class="header_link" href="services.html">Услуги</a></li>
-               <li class="header_li"><a class="header_link" href="contacts.html">Контакты</a></li>
-               <li class="header_li"><a class="header_link" href="neuws.html">Новости</a></li>
-               <li class="header_li"><a class="header_link" href="vacancies.html">Вакансии</a></li>
-               <li class="header_li"><a class="header_link" href="documentation.html">Документация</a></li>
+               <li class="header_li"><a class="header_link" href="index.html" data-lang="home">Главная</a></li>
+               <li class="header_li"><a class="header_link" href="company.html" data-lang="about">О компании</a></li>
+               <li class="header_li"><a class="header_link" href="services.html" data-lang="services">Услуги</a></li>
+               <li class="header_li"><a class="header_link" href="contacts.html" data-lang="contacts">Контакты</a></li>
+               <li class="header_li"><a class="header_link" href="neuws.html" data-lang="news">Новости</a></li>
+               <li class="header_li"><a class="header_link" href="vacancies.html" data-lang="vacancies">Вакансии</a>
+               </li>
+               <li class="header_li"><a class="header_link" href="documentation.html"
+                     data-lang="documentation">Документация</a>
+               </li>
                <li class="header_li"><a class="header_link" href="suppliers.html" data-lang="suppliers">Поставщикам</a>
                </li>
             </ul>
             <div class="mobile_contact_info">
-               <a href="mailto:rhm@himzavod.by"> rhm@himzavod.by</a>
-               <a href="tel:+375232492229">+375 23 249-22-29</a>
+               <a href="mailto:rhm@himzavod.by" data-lang="email"> rhm@himzavod.by</a>
+               <a href="tel:+375232492229" data-lang="phone">+375 23 249-22-29</a>
             </div>
          </nav>
       </header>
@@ -101,7 +104,7 @@
       <div class="search_overlay" id="searchOverlay">
          <div class="search_form">
             <input type="text" class="search_input" placeholder="Введите запрос для поиска......(В разработке)">
-            <div class="close_search" id="closeSearch">
+            <div class="close_search" id="closeSearch" data-lang="search_placeholder">
                <span></span>
                <span></span>
             </div>
@@ -112,19 +115,19 @@
             <div class="bread_crumbs__container">
                <ul class="bread_crumbs_links">
                   <li class="bread_crumbs_li">
-                     <a href="index.html" class="bread_crumbs_link">Главная</a>
+                     <a href="index.html" class="bread_crumbs_link" data-lang="home">Главная</a>
                      <span class="bread_crumbs_span"><img src="icons/arrow_next.svg" alt=""></span>
                   </li>
                   <li class="bread_crumbs_li">
-                     <a href="services.html" class="bread_crumbs_link">Услуги</a>
+                     <a href="services.html" class="bread_crumbs_link" data-lang="services">Услуги</a>
                      <span class="bread_crumbs_span"><img src="icons/arrow_next.svg" alt=""></span>
                   </li>
                   <li class="bread_crumbs_li">
-                     <a href="services.html" class="bread_crumbs_link">Услуги РСЦ</a>
+                     <a href="services.html" class="bread_crumbs_link" data-lang="services_rsc">Услуги РСЦ</a>
                   </li>
                </ul>
                <div class="bread_crumbs_title">
-                  <p class="bread_crumbs_text">Услуги РСЦ</p>
+                  <p class="bread_crumbs_text" data-lang="services_rsc">Услуги РСЦ</p>
                </div>
             </div>
          </section>
@@ -132,44 +135,51 @@
          <section class="intro_text_crc">
             <div class="intro_text_crc__container">
                <div class="intro_content_crc">
-                  <h3 class="services__title">Ремонтно-строительный цех</h3>
-                  <p>Спектр задач ремонтно-строительного цеха довольно широк. В первую очередь это текущий ремонт зданий
+                  <h3 class="services__title" data-lang="rsc_title">Ремонтно-строительный цех</h3>
+                  <p data-lang="rsc_p1">Спектр задач ремонтно-строительного цеха довольно широк. В первую очередь это
+                     текущий
+                     ремонт зданий
                      и сооружений, а именно: обновление штукатурки, замена фасадов и кровель, оконных и дверных блоков,
-                     обустройство полов, подвесных потолов и многие другие виды строительных работ.</p>
-                  <p>Спустя год после присоединения к предприятию цех запустил новую производственную линию, открывшую
+                     обустройство полов, подвесных потолков и многие другие виды строительных работ.</p>
+                  <p data-lang="rsc_p2">Спустя год после присоединения к предприятию цех запустил новую производственную
+                     линию,
+                     открывшую
                      важное направление в деятельности РСУП "Ремонтхиммонтаж". В связи с высокой потребностью в оконных
                      и дверных блоках возникла необходимость в создании такого производства на базе предприятия. В 2017
                      году запустили линию по выпуску окон и дверей из профиля ПВХ, которые изготавливаются для зданий
                      различного назначения - производственных, складских и других помещений, в том числе неотапливаемых.
                   </p>
-                  <p>Заказчикам предлагаются оконные и дверные блоки разной монтажной ширины, классов А и В. Также
+                  <p data-lang="rsc_p3">Заказчикам предлагаются оконные и дверные блоки разной монтажной ширины, классов
+                     А и В.
+                     Также
                      изготавливаются окна с различными видами заполнения, одно- и двухкамерные стеклопакеты,
-                     энегросберегающие окна, с применение стекла и поликорбаната.
+                     энергосберегающие окна, с применением стекла и поликарбоната.
                   </p>
-                  <p>С момента запуска новой линии по производству оконных и дверных блоков из профиля ПВХ
+                  <p data-lang="rsc_p4">С момента запуска новой линии по производству оконных и дверных блоков из
+                     профиля ПВХ
                      ремонтно-строительный цех изготовил более 25 000 квадратных метров изделий.</p>
-                  <p>На сегодняшний день силами РСЦ возможно строительство объектов первого-чертвертого классов
+                  <p data-lang="rsc_p5">На сегодняшний день силами РСЦ возможно строительство объектов
+                     первого-четвертого классов
                      сложности.</p>
-
                </div>
             </div>
          </section>
 
          <section class="work_types_crc">
-            <div class="work_types_crс__container">
+            <div class="work_types_crc__container">
                <div class="intro_content_crc">
-                  <h3 class="section-title">Виды работ</h3>
+                  <h3 class="section-title" data-lang="rsc_work_title">Виды работ</h3>
                </div>
                <div class="work_list_crc">
                   <ul>
-                     <li>изготовление окон и балконных дверей из ПВХ профиля</li>
-                     <li>изготовление блоков дверных внутренних их ПВХ профиля</li>
-                     <li>монтаж каменных и армокаменных конструкций</li>
-                     <li>устройство кровли</li>
-                     <li>устройство систем теплоизоляции и фасадов зданий</li>
-                     <li>заполнение оконных и дверных проемов</li>
-                     <li>устройство полов</li>
-                     <li>отделочные работы</li>
+                     <li data-lang="rsc_work_li1">Изготовление окон и балконных дверей из ПВХ профиля</li>
+                     <li data-lang="rsc_work_li2">Изготовление блоков дверных внутренних из ПВХ профиля</li>
+                     <li data-lang="rsc_work_li3">Монтаж каменных и армокаменных конструкций</li>
+                     <li data-lang="rsc_work_li4">Устройство кровли</li>
+                     <li data-lang="rsc_work_li5">Устройство систем теплоизоляции и фасадов зданий</li>
+                     <li data-lang="rsc_work_li6">Заполнение оконных и дверных проемов</li>
+                     <li data-lang="rsc_work_li7">Устройство полов</li>
+                     <li data-lang="rsc_work_li8">Отделочные работы</li>
                   </ul>
                </div>
             </div>
@@ -178,7 +188,7 @@
          <section class="gallery_crc">
             <div class="gallery_crc__container">
                <div>
-                  <h2 class="services__title">Наш цех</h2>
+                  <h2 class="services__title" data-lang="aur_chex">Наш цех</h2>
                </div>
                <div class="gallery_crc_grid">
                   <div class="gallery_crc_item">
@@ -209,8 +219,8 @@
             <img class="lightbox_crc-img" id="lightbox_crc-img" src="" alt="">
             <div class="lightbox_crc-counter" id="lightbox_crc-counter"></div>
             <div class="lightbox_crc-nav">
-               <button class="lightbox_crc-prev" id="lightbox_crc-prev">Назад</button>
-               <button class="lightbox_crc-next" id="lightbox_crc-next">Вперед</button>
+               <button class="lightbox_crc-prev" id="lightbox_crc-prev" data-lang="nazad">Назад</button>
+               <button class="lightbox_crc-next" id="lightbox_crc-next" data-lang="vpered">Вперед</button>
             </div>
          </div>
 
@@ -307,6 +317,7 @@
       </footer>
    </div>
    <script src="js/main.js" defer></script>
+   <script src="js/translation.js"></script>
    <script src="https://lidrekon.ru/slep/js/jquery.js"></script>
    <script src="https://lidrekon.ru/slep/js/uhpv-hover-full.min.js"></script>
 </body>
