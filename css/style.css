@@ -338,22 +338,6 @@ main {
           transform: translateX(-50%);
 }
 
-.new__year_logo {
-  position: relative;
-}
-.new__year_logo::after {
-  content: url("../img/new_year/logo_new_year.svg");
-  position: absolute;
-  left: 85%;
-  top: -60px;
-}
-@media (max-width: 767.98px) {
-  .new__year_logo::after {
-    left: 70%;
-    top: -42px;
-  }
-}
-
 .header_logo_img {
   max-height: 45px;
   width: auto;
@@ -863,7 +847,7 @@ main {
 }
 
 .slide:nth-child(1) {
-  background-image: url("../img/new_year/1.jpg");
+  background-image: url("../img/slider_2.jpg");
 }
 
 .slide:nth-child(2) {
@@ -1124,10 +1108,6 @@ main {
     transform: translateY(100%);
   }
 }
-.services_link.hidden {
-  display: none;
-}
-
 .services_link:hover {
   background-color: #0D0932;
   -webkit-box-shadow: 0 6px 20px #0D0932;
@@ -3777,6 +3757,7 @@ select {
 
 .vacancies_page_text {
   padding-bottom: 20px;
+  text-align: justify;
 }
 @media (max-width: 567.98px) {
   .vacancies_page_text {

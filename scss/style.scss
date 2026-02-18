@@ -233,21 +233,21 @@ body {
 
 
 // Шляпа для НОВОГО ГОДА
-.new__year_logo{
-   position: relative;
-      &::after {
-      content: url('../img/new_year/logo_new_year.svg');
-      position: absolute;
-      left: 85%;
-      top: -60px;
-      // width: 150px;
-      // height: 150px;
-      @media (max-width: 767.98px) {
-            left: 70%;
-            top: -42px;
-         }
-   }
-}
+// .new__year_logo{
+//    position: relative;
+//       &::after {
+//       content: url('../img/new_year/logo_new_year.svg');
+//       position: absolute;
+//       left: 85%;
+//       top: -60px;
+//       // width: 150px;
+//       // height: 150px;
+//       @media (max-width: 767.98px) {
+//             left: 70%;
+//             top: -42px;
+//          }
+//    }
+// }
 
 .header_logo_img {
    max-height: 45px;
@@ -497,7 +497,7 @@ body {
    }
 }
 
-// размытие фона
+// Размытие фона
 .menu_overlay {
    z-index: 4;
    position: absolute;
@@ -665,16 +665,17 @@ body {
    opacity: 1;
 }
 
-.slide:nth-child(1) {
-   background-image: url("../img/new_year/1.jpg");
-}
+// .slide:nth-child(1) {
+//    background-image: url("../img/new_year/1.jpg");
+// }
 
 // Включить после нового года!!
 // Включить после нового года!!
 // Включить после нового года!!
-// .slide:nth-child(1) {
-//    background-image: url("../img/slider_2.jpg");
-// }
+
+.slide:nth-child(1) {
+   background-image: url("../img/slider_2.jpg");
+}
 .slide:nth-child(2) {
    background-image: url("../img/slider_3.jpg");
 }
@@ -873,9 +874,9 @@ body {
 }
 
 // Включить для скрытия кнопки на первом слайде
- .services_link.hidden {
-    display: none;
- }
+//  .services_link.hidden {
+//     display: none;
+//  }
 
 .services_link:hover {
    background-color: #0D0932;
@@ -944,8 +945,6 @@ body {
       font-size: 20px;
    }
 }
-
-
 
 
 .services__slider_block {
@@ -1174,8 +1173,8 @@ body {
    }
 }
 
-// О компании
 
+// О предприятии
 .about-section {
    padding: 40px 0px 30px 0px;
    background-color: #0d0932;
@@ -1441,6 +1440,7 @@ body {
       min-height: 200px;
    }
 }
+
 
 // Новости
 
@@ -1961,6 +1961,7 @@ select {
       right: 10px;
    }
 }
+
 
 // Вакансии
 
@@ -2993,6 +2994,7 @@ select {
 
 .vacancies_page_text {
    padding-bottom: 20px;
+   text-align: justify;
    @media (max-width: 567.98px) {
             padding-bottom: 15px;
       }
@@ -3338,7 +3340,7 @@ select {
    }
 }
 
-// О компании
+// О предприятии
 
 .company_section {
    // flex-grow: 1;
@@ -4646,6 +4648,8 @@ img[data-src] {
 [data-lang="chief_omts2"] {
    white-space: pre-line;
 }
+
+
 
 
 
